@@ -1,17 +1,44 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot } from 'lucide-react';
+import { Bot, Loader2 } from 'lucide-react';
 import { Section, Container, FadeIn, Heading, Text, Button } from '../UI';
 import { useLanguage } from '../LanguageContext';
 
+const API_URL = import.meta.env.PROD ? '/api' : 'http://localhost:3001/api';
+
 export const CTA = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const { t } = useLanguage();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
+    setLoading(true);
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    try {
+      const res = await fetch(`${API_URL}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: formData.get('name'),
+          lastName: '',
+          email: formData.get('email'),
+          company: '',
+          position: '',
+          source: 'homepage-cta',
+          message: formData.get('description'),
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        setTimeout(() => setSubmitted(false), 5000);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -36,12 +63,16 @@ export const CTA = () => {
                 onSubmit={handleSubmit}
               >
                 <div className="grid grid-cols-2 gap-4">
-                  <input type="text" placeholder={t('cta.form.name')} className="bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
-                  <input type="email" placeholder={t('cta.form.email')} className="bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
+                  <input type="text" name="name" placeholder={t('cta.form.name')} className="bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
+                  <input type="email" name="email" placeholder={t('cta.form.email')} className="bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
                 </div>
-                <textarea rows={3} placeholder={t('cta.form.description')} className="w-full bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
-                <Button variant="primary">
-                  <span className="w-full block text-center">{t('cta.form.submit')}</span>
+                <textarea rows={3} name="description" placeholder={t('cta.form.description')} className="w-full bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
+                <Button variant="primary" disabled={loading}>
+                  {loading ? (
+                    <span className="w-full flex items-center justify-center gap-2"><Loader2 className="w-4 h-4 animate-spin" /> Odesílám...</span>
+                  ) : (
+                    <span className="w-full block text-center">{t('cta.form.submit')}</span>
+                  )}
                 </Button>
               </motion.form>
             ) : (

@@ -31,9 +31,9 @@ const WorkHero = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
-                            <span className="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
-                            <span className="text-sm font-medium text-sky-100/80 uppercase tracking-widest">
+                        <div className="inline-flex items-center gap-2 mb-6">
+                            <span className="w-2 h-2 rounded-full bg-brand-purple animate-pulse"></span>
+                            <span className="text-sm font-medium text-brand-purple uppercase tracking-widest">
                                 {language === 'cs' ? 'Selected Work' : 'Selected Work'}
                             </span>
                         </div>
@@ -63,10 +63,14 @@ const WorkHero = () => {
                         </p>
 
                         <div className="flex items-center gap-4">
-                            <Link to="/contact">
-                                <Button size="lg" className="rounded-full px-8 bg-foreground text-background hover:bg-foreground/90 transition-all">
-                                    {language === 'cs' ? 'Pojďme to probrat' : 'Let\'s Discuss'}
-                                    <ArrowRight className="ml-2 w-4 h-4" />
+                            <Link to="/contact" className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 bg-[length:200%_auto] animate-water-flow rounded-full blur-md opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
+                                <Button size="lg" className="relative rounded-full px-8 bg-black hover:bg-black text-white border border-white/10 shadow-2xl overflow-hidden">
+                                     <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <span className="relative z-10 flex items-center">
+                                        {language === 'cs' ? 'Pojďme to probrat' : 'Let\'s Discuss'}
+                                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                    </span>
                                 </Button>
                             </Link>
                         </div>

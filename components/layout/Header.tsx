@@ -133,11 +133,14 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
              <div className="hidden md:block">
                 <Button 
                     onClick={(e: any) => handleMenuAction('contact')} 
-                    className="group bg-gradient-to-r from-brand-purple to-[#a855f7] hover:opacity-90 text-white rounded-full px-5 py-2.5 font-semibold text-sm flex items-center gap-2 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)] border-none !normal-case tracking-normal"
+                    className="group bg-gradient-to-r from-brand-purple to-[#a855f7] hover:opacity-90 text-white rounded-full px-5 py-2.5 font-semibold text-sm flex items-center gap-2 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)] border-none !normal-case tracking-normal overflow-hidden"
                     variant="primary"
                 >
-                    {t('nav.inquiry') || "Pojďme začít"}
-                    <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+                    <span className="relative z-10">{t('nav.inquiry') || "Domluvit mini-audit"}</span>
+                    <div className="relative w-4 h-4 ml-1 overflow-hidden">
+                        <ArrowRight className="absolute inset-0 w-full h-full transition-transform duration-300 group-hover:translate-x-[150%]" />
+                         <ArrowRight className="absolute inset-0 w-full h-full -translate-x-[150%] transition-transform duration-300 group-hover:translate-x-0" />
+                    </div>
                 </Button>
              </div>
 

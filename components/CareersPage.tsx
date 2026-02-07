@@ -92,7 +92,7 @@ export const CareersPage = () => {
                                  
                                  <Button 
                                     className="w-full justify-center bg-white text-black hover:bg-gray-200"
-                                    onClick={() => window.location.href = 'mailto:hello@growthspect.com'}
+                                    onClick={() => window.location.href = 'mailto:team@growthspect.com'}
                                  >
                                      Napište nám
                                  </Button>

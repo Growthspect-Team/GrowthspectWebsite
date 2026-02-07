@@ -82,7 +82,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: 0.4, duration: 0.5 }}
-                            href="mailto:hello@growthspect.com" 
+                            href="mailto:team@growthspect.com" 
                             className="group flex items-center gap-3 bg-brand-purple hover:bg-brand-purple/90 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(136,37,237,0.3)] hover:shadow-[0_0_30px_rgba(136,37,237,0.5)] w-fit"
                         >
                             Pojďme začít
@@ -135,9 +135,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         <h3 className="text-gray-500 text-sm uppercase tracking-widest mb-4">Ozvěte se</h3>
                         
                         <div className="space-y-6">
-                            <a href="mailto:hello@growthspect.com" className="flex items-center gap-3 text-lg text-white hover:text-brand-purple transition-colors group">
+                            <a href="mailto:team@growthspect.com" className="flex items-center gap-3 text-lg text-white hover:text-brand-purple transition-colors group">
                                 <Mail className="w-5 h-5 text-gray-500 group-hover:text-brand-purple transition-colors" />
-                                hello@growthspect.com
+                                team@growthspect.com
+                            </a>
+                            <a href="tel:+420775371556" className="flex items-center gap-3 text-lg text-white hover:text-brand-purple transition-colors group">
+                                <Phone className="w-5 h-5 text-gray-500 group-hover:text-brand-purple transition-colors" />
+                                +420 775 371 556
                             </a>
 
                              {/* Social Icons moved here */}
@@ -170,7 +174,18 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     </div>
                     
                     <div className="flex gap-6">
-                        <a href="#" className="hover:text-white transition-colors">Ochrana osobních údajů</a>
+                        <a 
+                            href="/privacy-policy" 
+                            onClick={(e) => {
+                                if (onNavigate) {
+                                    e.preventDefault();
+                                    onNavigate('privacy-policy');
+                                }
+                            }}
+                            className="hover:text-white transition-colors whitespace-nowrap"
+                        >
+                            Ochrana osobních údajů
+                        </a>
                         <span className="hidden md:inline">Built for future.</span>
                     </div>
                 </div>

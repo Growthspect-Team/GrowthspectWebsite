@@ -1,108 +1,67 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import logo from '../../assets/Branding/Growthspect_AI_white.png';
 
 export const LoadingScreen: React.FC<{ onFinished: () => void; isFast?: boolean }> = ({ onFinished, isFast = false }) => {
-  const [progress, setProgress] = useState(0);
-
   useEffect(() => {
-    // Simulate loading
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          setTimeout(onFinished, isFast ? 200 : 600); 
-          return 100;
-        }
-        // Organic increment
-        const remaining = 100 - prev;
-        let increment;
-        
-        if (isFast) {
-            // Faster loading logic
-            increment = Math.max(2, remaining * 0.15 + Math.random() * 5);
-        } else {
-            // Original slow loading
-            increment = Math.max(0.5, remaining * 0.05 + Math.random() * 2);
-        }
-        
-        return Math.min(prev + increment, 100);
-      });
-    }, isFast ? 20 : 50);
+    // Premium cinematic feel needs a moment to establish presence
+    const duration = isFast ? 1000 : 2500;
+    
+    const timer = setTimeout(() => {
+      onFinished();
+    }, duration);
 
-    return () => clearInterval(timer);
+    return () => clearTimeout(timer);
   }, [onFinished, isFast]);
 
   return (
     <motion.div
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050505]"
-      initial={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
+      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050505] overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }}
     >
-      <div className="flex flex-col items-center justify-center gap-8 md:gap-12 w-full max-w-md px-4">
-        
-        {/* Logo Container with Scan Effect */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-48 md:w-64 h-auto"
-        >
-          {/* Base dimmed logo */}
-          <img 
-            src={logo} 
-            alt="GrowthSpect" 
-            className="w-full h-auto opacity-20"
-          />
+        {/* Ambient Background Glow */}
+        <motion.div 
+            className="absolute w-[500px] h-[500px] bg-brand-purple/10 blur-[120px] rounded-full pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.3, 0.5, 0.3], scale: [0.8, 1.1, 0.8] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
 
-          {/* Scanned bright logo */}
-          <motion.div
-            className="absolute inset-0"
-            initial={{ WebkitMaskPosition: '-150%' }}
-            animate={{ WebkitMaskPosition: '150%' }}
-            transition={{ 
-              repeat: Infinity, 
-              duration: 2.5, 
-              ease: "linear",
-              repeatDelay: 0.5 
-            }}
-            style={{
-              maskImage: 'linear-gradient(90deg, transparent 0%, rgba(0,0,0,1) 50%, transparent 100%)',
-              WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, #000 50%, transparent 100%)',
-              maskSize: '50% 100%',
-              WebkitMaskSize: '50% 100%',
-              maskRepeat: 'no-repeat',
-              WebkitMaskRepeat: 'no-repeat',
-            }}
-          >
-            <img 
-              src={logo} 
-              alt="GrowthSpect" 
-              className="w-full h-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]" 
+        <div className="relative z-10 flex flex-col items-center justify-center">
+            {/* Logo Container */}
+            <motion.div
+                initial={{ opacity: 0, scale: 0.95, filter: "blur(12px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }} 
+                className="relative w-64 md:w-80 h-auto px-4"
+            >
+                <img src={logo} alt="GrowthSpect" className="w-full h-full object-contain" />
+                
+                {/* Shimmer Effect */}
+                <motion.div
+                    className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12"
+                    initial={{ x: '-150%', opacity: 0 }}
+                    animate={{ x: '150%', opacity: 1 }}
+                    transition={{ 
+                        duration: 1.8, 
+                        ease: "easeInOut", 
+                        repeat: Infinity, 
+                        repeatDelay: 0.2,
+                        delay: 0.5
+                    }}
+                />
+            </motion.div>
+
+            {/* Cinematic Line Decorator */}
+            <motion.div
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: "100px", opacity: 0.6 }}
+                transition={{ delay: 0.8, duration: 1.2, ease: "easeOut" }}
+                className="h-[1px] bg-gradient-to-r from-transparent via-brand-purple to-transparent mt-8"
             />
-          </motion.div>
-        </motion.div>
-
-        {/* Technical Progress Bar */}
-        <div className="w-full relative flex flex-col gap-2">
-          {/* Progress Line */}
-          <div className="h-[1px] w-full bg-white/10 overflow-hidden relative rounded-full">
-             <motion.div
-              className="absolute left-0 top-0 bottom-0 bg-white shadow-[0_0_10px_rgba(255,255,255,0.5)]"
-              initial={{ width: "0%" }}
-              animate={{ width: `${progress}%` }}
-              transition={{ type: "tween", ease: "easeOut", duration: 0.2 }}
-            />
-          </div>
-
-          {/* Data output / Percentage */}
-          <div className="flex justify-between text-[10px] md:text-xs text-white/40 font-mono tracking-widest uppercase">
-            <span>System Initializing</span>
-            <span>{Math.floor(progress)}%</span>
-          </div>
         </div>
-
-      </div>
     </motion.div>
   );
 };

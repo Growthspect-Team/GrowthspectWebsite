@@ -20,6 +20,7 @@ const ScalexPage = React.lazy(() => import('./components/ScalexPage').then(modul
 const BlogPage = React.lazy(() => import('./components/BlogPage').then(module => ({ default: module.BlogPage })));
 const ContactPage = React.lazy(() => import('./components/ContactPage').then(module => ({ default: module.ContactPage })));
 const CareersPage = React.lazy(() => import('./components/CareersPage').then(module => ({ default: module.CareersPage })));
+const PrivacyPolicyPage = React.lazy(() => import('./components/PrivacyPolicyPage').then(module => ({ default: module.PrivacyPolicyPage })));
 
 // Layout & Utils
 import { Header } from './components/layout/Header';
@@ -106,6 +107,7 @@ export default function App() {
       if (path.startsWith('/blog')) return 'blog';
       if (path.startsWith('/careers')) return 'careers';
       if (path === '/contact') return 'contact';
+      if (path === '/privacy-policy') return 'privacy-policy';
       return 'home';
   };
 
@@ -119,6 +121,7 @@ export default function App() {
     else if (page === 'careers') navigate('/careers');
     else if (page === 'contact') navigate('/contact');
     else if (page === 'projects') navigate('/work');
+    else if (page === 'privacy-policy') navigate('/privacy-policy');
   };
 
   return (
@@ -139,15 +142,17 @@ export default function App() {
       </AnimatePresence>
       
       <div className="bg-brand-black min-h-screen text-white selection:bg-brand-purple selection:text-white w-full">
-        <Header onNavigate={handleNavigate} activePage={activePage} />
-        
-        <main>
-          <React.Suspense fallback={<div className="h-screen w-full flex items-center justify-center bg-brand-black text-white/50 font-mono">Loading...</div>}>
-            <Routes>
-                <Route path="/" element={
-                    <>
-                        <SEO title="Domov" />
-                        <Hero onViewProjects={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} />
+        {!isLoading && (
+            <>
+                <Header onNavigate={handleNavigate} activePage={activePage} />
+                
+                <main>
+                  <React.Suspense fallback={<div className="h-screen w-full flex items-center justify-center bg-brand-black text-white/50 font-mono">Loading...</div>}>
+                    <Routes>
+                        <Route path="/" element={
+                            <>
+                                <SEO title="Domov" />
+                                <Hero onViewProjects={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} />
                         <section id="projects">
                             <ProjectShowcase onProjectSelect={(p) => navigate(`/projects/${encodeURIComponent(p.title)}`)} />
                         </section>
@@ -203,6 +208,13 @@ export default function App() {
                     </>
                 } />
 
+                <Route path="/privacy-policy" element={
+                    <>
+                        <SEO title="Ochrana osobních údajů" />
+                        <PrivacyPolicyPage />
+                    </>
+                } />
+
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </React.Suspense>
@@ -210,6 +222,8 @@ export default function App() {
         
         <Footer onNavigate={handleNavigate} />
         <CookieBanner />
+            </>
+        )}
       </div>
     </>
   );

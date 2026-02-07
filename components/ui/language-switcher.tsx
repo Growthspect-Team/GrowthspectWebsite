@@ -65,7 +65,7 @@ export const LanguageSwitcher = () => {
                                     setIsOpen(false);
                                 }}
                                 className={cn(
-                                    "w-full px-4 py-2.5 text-left text-sm flex items-center justify-between transition-colors hover:bg-white/5",
+                                    "w-full px-4 py-2.5 text-left text-sm flex items-center justify-between transition-colors ",
                                     language === lang.code ? "text-brand-purple font-medium" : "text-gray-400 hover:text-white"
                                 )}
                             >

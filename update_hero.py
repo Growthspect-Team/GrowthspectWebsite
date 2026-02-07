@@ -1,4 +1,7 @@
-import React, { Suspense, lazy, useRef } from "react";
+
+import os
+
+content = r"""import React, { Suspense, lazy, useRef } from "react";
 import { useLanguage } from "../LanguageContext";
 import { Button } from "./button";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -13,19 +16,13 @@ interface NewHeroProps {
 export function NewHero({ onViewProjects }: NewHeroProps) {
     const { t } = useLanguage();
     const ref = useRef<HTMLDivElement>(null);
-    // Scroll effect removed
-    // const { scrollYProgress } = useScroll({
-    //     target: ref,
-    //     offset: ["start start", "end start"],
-    // });
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"],
+    });
 
-    // const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-    // const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
-    
-    // // Scroll transforms - Fade out, scale down and blur when scrolling
-    // const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-    // const contentScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
-    // const contentBlur = useTransform(scrollYProgress, [0, 0.5], ["blur(0px)", "blur(10px)"]);
+    const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+    const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
     return (
         <div ref={ref} className="relative w-full h-screen overflow-hidden bg-black flex items-center justify-center font-sans">
@@ -39,14 +36,12 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
                 />
             </div>
 
-             <motion.div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+             <motion.div style={{ y: backgroundY }} className="absolute inset-0 z-0 opacity-40 pointer-events-none">
                 {/* Parallax layer if needed */}
              </motion.div>
 
             {/* CONTENT LAYER */}
-            <motion.div 
-                className="relative z-10 grid grid-cols-1 lg:grid-cols-[fr_2fr] gap-12 items-center h-full px-4 max-w-7xl mx-auto pt-20 w-full"
-            >
+            <motion.div style={{ y: textY }} className="relative z-10 grid grid-cols-1 lg:grid-cols-[fr_2fr] gap-12 items-center h-full px-4 max-w-7xl mx-auto pt-20 w-full">
                 <div className="flex flex-col items-start text-left justify-center">
                     {/* Hero Text */}
                     <motion.h1 
@@ -56,7 +51,7 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
                         className="text-4xl lg:text-[92px] font-sans font-bold tracking-tight text-white mb-10 leading-[1.15]"
                     >
                         {t('hero.title.part1')} <br />
-                        <span className="relative ">
+                        <span className="relative">
                             <span className="text-[#a855f7]">
                                 {t('hero.title.part2')}
                             </span>
@@ -113,3 +108,7 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
         </div>
     );
 }
+"""
+
+with open("components/ui/new-hero.tsx", "w", encoding="utf-8") as f:
+    f.write(content)
