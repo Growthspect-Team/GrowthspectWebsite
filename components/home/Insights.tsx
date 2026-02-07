@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, Calendar, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Section, Container, FadeIn, Heading, Text } from '../UI';
+import { MakerBadge } from '../ui/maker-badge';
 import { useLanguage } from '../LanguageContext';
 import { useCursor } from '../CursorContext';
 import { blogPosts } from '../../lib/data';
@@ -22,6 +23,9 @@ export const Insights = ({ onNavigate }: { onNavigate: () => void }) => {
                     {t('insights.headline.part1')} <span className="text-brand-purple">{t('insights.headline.part2')}</span>
                    </h2>
                 </div>
+                <div className="hidden md:block pb-2">
+                  <MakerBadge />
+                </div>
             </div>
         </FadeIn>
 
@@ -29,7 +33,7 @@ export const Insights = ({ onNavigate }: { onNavigate: () => void }) => {
           {recentPosts.map((post, idx) => (
             <FadeIn key={post.id} delay={idx * 0.1}>
               <article 
-                className="group flex flex-col h-full bg-white/[0.02] border border-white/5 hover:border-brand-purple/30 rounded-2xl overflow-hidden transition-all duration-300 hover:bg-white/[0.04] cursor-none relative" 
+                className="group flex flex-col h-full bg-white/[0.02] rounded-2xl overflow-hidden transition-all duration-300 hover:bg-white/[0.04] cursor-none relative" 
                 onClick={onNavigate}
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}

@@ -8,6 +8,7 @@ import {
   Server,
   Database,
   ArrowLeft,
+  ArrowRight,
   Terminal,
   Zap,
   X,
@@ -249,64 +250,71 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onBack }) => {
           </div>
 
           {/* Services List */}
-          <div className="space-y-24">
+          <div className="flex flex-col">
             {detailedServices.map((service, idx) => (
               <FadeIn key={service.id} delay={idx * 0.1}>
-                <div className="group relative grid grid-cols-1 lg:grid-cols-12 gap-8 p-8 lg:p-12 rounded-2xl bg-white/[0.02] border border-white/5 hover:border-brand-purple/30 transition-all duration-500 overflow-hidden">
-
-                  {/* Decorative Background Gradient */}
-                  <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-purple/5 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none group-hover:bg-brand-purple/10 transition-all duration-700" />
-
-                  {/* Icon Column */}
-                  <div className="lg:col-span-1">
-                    <div className="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center text-white group-hover:bg-brand-purple group-hover:scale-110 transition-all duration-300">
-                      <service.icon className="w-6 h-6" />
+                {/* Cleevio-style Section: Top Border Separator */}
+                <div className="border-t border-white/10 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+                  
+                  {/* Left Column: Description & Sub-services */}
+                  <div className="flex flex-col">
+                    <div className="mb-6">
+                       <span className="text-xs font-mono text-brand-purple uppercase tracking-widest">{service.subtitle}</span>
+                       <h3 className="mt-3 text-4xl md:text-5xl font-display font-bold text-white tracking-tight">{service.title}</h3>
                     </div>
-                  </div>
-
-                  {/* Content Column */}
-                  <div className="lg:col-span-6">
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-xs font-mono text-brand-purple uppercase tracking-wider">{service.subtitle}</span>
-                    </div>
-                    <h3 className="text-3xl font-display font-bold text-white mb-6 group-hover:text-brand-purple/90 transition-colors">{service.title}</h3>
-                    <p className="text-gray-400 text-lg leading-relaxed mb-8 border-l-2 border-white/10 pl-4">
+                    
+                    <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-xl">
                       {service.description}
                     </p>
 
-                    <div className="flex flex-wrap gap-2">
-                      {service.tech.map(t => (
-                        <span key={t} className="px-3 py-1 bg-black border border-white/10 rounded-full text-xs text-gray-500 font-mono">
-                          {t}
-                        </span>
-                      ))}
+                    <div>
+                      <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-brand-purple rounded-full" />
+                        Co nabízíme
+                      </h4>
+                      <ul className="space-y-4">
+                        {service.features.map((feature, fIdx) => (
+                          <li key={fIdx} className="flex items-center gap-3 group/item">
+                             <ArrowRight className="w-4 h-4 text-gray-600 group-hover/item:text-brand-purple transition-colors" />
+                             <span className="text-gray-300 font-medium group-hover/item:text-white transition-colors">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
 
-                  {/* Features Column */}
-                  <div className="lg:col-span-5 lg:border-l lg:border-white/5 lg:pl-12 flex flex-col justify-center">
-                    <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
-                      <Terminal className="w-4 h-4 text-gray-500" />
-                      Technická Specifikace
-                    </h4>
-                    <ul className="space-y-4">
-                      {service.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-3">
-                          <Zap className="w-4 h-4 text-brand-purple mt-1 shrink-0" />
-                          <span className="text-gray-300 text-sm font-medium">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="mt-8 pt-8 border-t border-white/5">
-                      <button
+                    <div className="mt-10 pt-8">
+                       <button
                         onClick={() => setIsModalOpen(true)}
-                        className="text-sm text-brand-purple hover:text-white transition-colors flex items-center gap-2 group/btn"
+                        className="text-white border-b border-brand-purple pb-0.5 hover:text-brand-purple transition-colors inline-flex items-center gap-2 font-medium"
                       >
-                        Konzultovat řešení <ArrowLeft className="w-4 h-4 rotate-180 group-hover/btn:translate-x-1 transition-transform" />
+                        Poptávka řešení <ArrowRight className="w-4 h-4 ml-1" />
                       </button>
                     </div>
                   </div>
+
+                  {/* Right Column: Tech Stack & Visual */}
+                  <div className="lg:pl-10 flex flex-col justify-between">
+                     {/* Icon / Abstract Visual */}
+                     <div className="mb-12 opacity-50 hidden lg:block">
+                        <service.icon className="w-16 h-16 text-gray-700" strokeWidth={1} />
+                     </div>
+
+                     <div>
+                        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">
+                          Tech Stack
+                        </h4>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                          {service.tech.map((t, i) => (
+                            <div key={i} className="flex items-center gap-2 p-3 rounded-lg bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] transition-colors">
+                              {/* Placeholder for tech icons if we had them mapped, using generic dot for now */}
+                              <div className="w-1.5 h-1.5 rounded-full bg-gray-500" />
+                              <span className="text-sm text-gray-300 font-mono">{t}</span>
+                            </div>
+                          ))}
+                        </div>
+                     </div>
+                  </div>
+
                 </div>
               </FadeIn>
             ))}

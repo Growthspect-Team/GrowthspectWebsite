@@ -5,8 +5,9 @@ import { AnimatePresence } from 'framer-motion';
 // UI Components
 import { NewHero as Hero } from "./components/ui/new-hero";
 import { ProjectShowcase, projects } from "./components/ui/project-showcase";
-import { ServicesGrid } from "./components/home/ServicesGrid";
+import { ServicesScrollAccordion } from "./components/home/ServicesScrollAccordion";
 import { WhyUs } from "./components/home/WhyUs";
+import { AboutSection } from "./components/home/AboutSection";
 import { Insights } from "./components/home/Insights";
 import { ScalexTeaser } from "./components/home/ScalexTeaser";
 import { CustomCursor } from './components/ui/CustomCursor';
@@ -153,13 +154,16 @@ export default function App() {
                             <>
                                 <SEO title="Domov" />
                                 <Hero onViewProjects={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} />
+                                <AboutSection />
                         <section id="projects">
                             <ProjectShowcase onProjectSelect={(p) => navigate(`/projects/${encodeURIComponent(p.title)}`)} />
                         </section>
-                        <ServicesGrid onSelectService={(id) => navigate(`/services/${id}`)} />
+                        <div className="relative z-10 bg-brand-black">
+                           <ServicesScrollAccordion onSelectService={(id) => navigate(`/services/${id}`)} />
+                        </div>
                         <WhyUs />
-                        <Insights onNavigate={() => navigate('/blog')} />
                         <ScalexTeaser onNavigate={() => navigate('/scalex')} />
+                        <Insights onNavigate={() => navigate('/blog')} />
                     </>
                 } />
                 
