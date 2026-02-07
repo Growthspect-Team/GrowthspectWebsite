@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/assets/Branding/favicon.ico" />
+  <title>Growthspect | Enterprise AI & Systems Studio</title>
+  <meta name="description"
+    content="Premium enterprise software studio specializing in AI agents, automation, Rust infrastructure, and high-performance data platforms." />
+  <meta name="keywords"
+    content="AI, Enterprise Software, Rust, Automation, Data Platforms, Software Studio, GrowthSpect" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://growthspect.com/" />
+  <meta property="og:title" content="Growthspect | Enterprise AI & Systems" />
+  <meta property="og:description"
+    content="Tvoříme chytrá řešení v digitálním prostředí. AI agenti, automatizace a robustní systémy." />
+  <meta property="og:image" content="https://growthspect.com/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Growthspect | Enterprise AI & Systems" />
+  <meta property="twitter:description"
+    content="Tvoříme chytrá řešení v digitálním prostředí. AI agenti, automatizace a robustní systémy." />
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#000000',
+              dark: '#0B0B0C',
+              gray: '#1A1A1C',
+              light: '#F4F4F4',
+              purple: '#8825ed',
+              purpleDim: 'rgba(136, 37, 237, 0.1)',
+            },
+            card: {
+              DEFAULT: '#0B0B0C',
+              foreground: '#FFFFFF',
+            },
+            muted: {
+              DEFAULT: '#1A1A1C',
+              foreground: '#A1A1AA',
+            },
+          },
+          fontFamily: {
+            sans: ['Satoshi', 'sans-serif'],
+            display: ['Satoshi', 'sans-serif'],
+          },
+          backgroundImage: {
+            'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+          },
+          animation: {
+            spotlight: "spotlight 2s ease .75s 1 forwards",
+          },
+          keyframes: {
+            spotlight: {
+              "0%": {
+                opacity: 0,
+                transform: "translate(-72%, -62%) scale(0.5)",
+              },
+              "100%": {
+                opacity: 1,
+                transform: "translate(-50%,-40%) scale(1)",
+              },
+            },
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    /* BASE STYLES */
+    html {
+      width: 100%;
+      height: auto;
+      min-height: 100%;
+      /* Explicitly allowing y-scroll */
+      overflow-y: auto;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-color: #000000;
+      color: #F4F4F4;
+      -webkit-font-smoothing: antialiased;
+      /* Modern fix for horizontal overflow that doesn't break vertical scroll */
+      overflow-x: clip;
+      position: relative;
+    }
+
+    /* Fallback for browsers not supporting clip */
+    @supports not (overflow-x: clip) {
+      body {
+        overflow-x: hidden;
+      }
+    }
+
+    /* Lenis Recommended Styles */
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Custom selection color */
+    ::selection {
+      background: #8825ed;
+      color: white;
+    }
+
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 3px solid #FFF;
+      border-radius: 50%;
+      display: inline-block;
+      position: relative;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+    }
+
+    .loader::after {
+      content: '';
+      box-sizing: border-box;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-bottom-color: #8825ed;
+    }
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
+    "clsx": "https://aistudiocdn.com/clsx@^2.1.0",
+    "tailwind-merge": "https://aistudiocdn.com/tailwind-merge@^2.2.1",
+    "@splinetool/react-spline": "https://esm.sh/@splinetool/react-spline?external=react,react-dom",
+    "@splinetool/runtime": "https://esm.sh/@splinetool/runtime",
+    "lenis": "https://unpkg.com/lenis@1.1.18/dist/lenis.mjs",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
