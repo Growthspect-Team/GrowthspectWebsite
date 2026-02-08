@@ -68,7 +68,7 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
                 onClick={() => onClick(post)}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
-                className="group relative grid lg:grid-cols-2 gap-0 overflow-hidden bg-white/[0.02] border border-white/5 hover:border-brand-purple/30 rounded-3xl cursor-none transition-all duration-500 hover:bg-white/[0.04] mb-20"
+                className="group relative grid lg:grid-cols-2 gap-0 overflow-hidden bg-white/[0.02] rounded-3xl cursor-none transition-all duration-500 hover:bg-white/[0.04] mb-20"
             >
                 {/* Image Section */}
                 <div className="relative h-[300px] lg:h-auto overflow-hidden">
@@ -510,7 +510,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostI
                                     onClick={() => setSelectedPost(post)}
                                     onMouseEnter={() => setIsHoveringCard(true)}
                                     onMouseLeave={() => setIsHoveringCard(false)}
-                                    className="group flex flex-col h-full bg-white/[0.02] border border-white/5 hover:border-brand-purple/30 rounded-2xl overflow-hidden transition-all duration-300 hover:bg-white/[0.04] cursor-none relative"
+                                    className="group flex flex-col h-full bg-white/[0.02] rounded-2xl overflow-hidden transition-all duration-300 hover:bg-white/[0.04] cursor-none relative"
                                 >
                                     {/* Image */}
                                     <div className="relative aspect-[16/10] overflow-hidden">

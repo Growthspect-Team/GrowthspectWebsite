@@ -288,7 +288,7 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-purple"></span>
                     </div>
-                  <span className="text-brand-purple font-mono text-xs uppercase tracking-[0.2em] font-semibold">Internal Project</span>
+                  <span className="text-brand-purple font-sans font-medium text-xs uppercase tracking-[0.2em]">Internal Project</span>
                 </div>
                 <h1 className="text-8xl md:text-[8rem] font-display font-bold text-white tracking-tighter mb-8 leading-[0.85] -ml-1 bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-gray-500">
                   Scalex
@@ -321,7 +321,7 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
                      </div>
                      <div className="absolute bottom-0 left-0 right-0 p-8">
                         <div className="flex items-center gap-3 mb-3">
-                           <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand-purple/20 border border-brand-purple/30 rounded-full text-brand-purple text-xs font-mono font-bold uppercase tracking-wider">
+                           <span className="inline-flex items-center gap-2 px-3 py-1 bg-brand-purple/20 border border-brand-purple/30 rounded-full text-brand-purple text-xs font-sans font-medium uppercase tracking-wider">
                               <span className="w-2 h-2 rounded-full bg-brand-purple animate-pulse" />
                               VSL
                            </span>
@@ -339,7 +339,7 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
           <div className="mb-32 scroll-mt-24" id="process-board">
              <FadeIn>
                 <div className="flex flex-col items-center text-center mb-16">
-                   <h2 className="text-sm font-mono text-brand-purple mb-2 uppercase tracking-widest">Roadmapa</h2>
+                   <h2 className="text-sm font-sans font-medium text-brand-purple mb-2 uppercase tracking-widest">Roadmapa</h2>
                    <h3 className="text-4xl md:text-5xl font-display font-bold text-white">Průběh Spolupráce</h3>
                 </div>
              </FadeIn>
@@ -458,7 +458,7 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
              <FadeIn>
                 <div className="flex items-end justify-between mb-16">
                     <div>
-                        <h2 className="text-sm font-mono text-brand-purple mb-2 uppercase tracking-widest">Ekosystém</h2>
+                        <h2 className="text-sm font-sans font-medium text-brand-purple mb-2 uppercase tracking-widest">Ekosystém</h2>
                         <h3 className="text-4xl md:text-5xl font-display font-bold text-white">Ostatní Moduly</h3>
                     </div>
                 </div>

@@ -46,7 +46,7 @@ export const ScalexTeaser = ({ onNavigate }: { onNavigate: () => void }) => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-purple"></span>
               </span>
-              <span className="text-brand-purple font-mono text-xs uppercase tracking-widest font-semibold drop-shadow-[0_0_8px_rgba(136,37,237,0.5)]">
+              <span className="text-brand-purple font-sans font-medium text-xs uppercase tracking-widest drop-shadow-[0_0_8px_rgba(136,37,237,0.5)]">
                 {t('scalex.teaser.label')}
               </span>
             </div>

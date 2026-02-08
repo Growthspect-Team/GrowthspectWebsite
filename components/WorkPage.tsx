@@ -124,65 +124,53 @@ const WorkCard = ({ project, index }: { project: Project, index: number }) => {
             className="group relative w-full"
         >
             <Link to={project.link === '#' ? `/project/${encodeURIComponent(project.title)}` : project.link} className="block w-full">
-                <div className="relative overflow-hidden rounded-[2.5rem] bg-zinc-900 border border-white/10 aspect-[16/10] md:aspect-[21/9]">
-                    {/* Background Image with Gradient */}
-                    <div className="absolute inset-0">
-                         <img 
-                            src={project.image} 
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent z-10" />
-                    </div>
-
-                    {/* Content Overlay */}
-                    <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-16">
-                        <div className="max-w-2xl">
-                            {/* Tags */}
-                            <div className="flex gap-3 mb-6">
-                                {project.category && (
-                                    <span className="px-4 py-1.5 rounded-full border border-white/20 bg-black/30 backdrop-blur-md text-xs font-medium tracking-wider text-white">
-                                        {project.category.toUpperCase()}
+                <div className="relative overflow-hidden rounded-[2rem] bg-[#050505] flex flex-col lg:flex-row min-h-[400px] lg:h-[420px] shadow-2xl">
+                    {/* Content Side (Left) */}
+                    <div className="w-full lg:w-[45%] p-8 lg:p-12 flex flex-col justify-center relative z-10">
+                        <div className="space-y-6">
+                            <div className="flex items-center gap-3">
+                                {project.logo ? (
+                                    <img src={project.logo} alt="brand" className="h-5 w-auto opacity-80" />
+                                ) : (
+                                    <span className="text-sm font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                                        <div className="w-4 h-4 rounded bg-white/10 flex items-center justify-center text-[10px]">R</div>
+                                        {project.category?.split('&')[0].trim() || 'PROJECT'}
                                     </span>
                                 )}
-                                <span className="px-4 py-1.5 rounded-full border border-white/20 bg-black/30 backdrop-blur-md text-xs font-medium tracking-wider text-white">
-                                    {project.year}
-                                </span>
                             </div>
 
-                            {/* Title */}
-                            <h3 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight group-hover:text-sky-400 transition-colors">
+                            <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight">
                                 {project.title}
                             </h3>
-
-                            {/* Description */}
-                            <p className="text-lg text-zinc-300 line-clamp-2 md:line-clamp-none max-w-xl mb-8">
-                                {project.description}
-                            </p>
-
+                            
                             {/* Metrics */}
                             {project.metrics && (
-                                <div className="grid grid-cols-2 gap-8 md:flex md:gap-16 border-t border-white/10 pt-8">
+                                <div className="grid grid-cols-2 gap-8 pt-4">
                                     {project.metrics.map((metric, i) => (
                                         <div key={i}>
-                                            <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+                                            <span className="block text-2xl font-bold text-white mb-1">
                                                 {metric.value}
-                                            </div>
-                                            <div className="text-xs font-medium text-zinc-400 uppercase tracking-widest">
+                                            </span>
+                                            <span className="block text-xs text-gray-500 font-medium">
                                                 {metric.label}
-                                            </div>
+                                            </span>
                                         </div>
                                     ))}
                                 </div>
                             )}
                         </div>
                     </div>
-                    
-                    {/* Hover Arrow */}
-                    <div className="absolute top-8 right-8 z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20">
-                            <ArrowUpRight className="w-8 h-8 text-white" />
-                        </div>
+
+                    {/* Image Side (Right) */}
+                    <div className="relative w-full lg:w-[55%] h-[300px] lg:h-auto bg-[#050505]">
+                        {/* Gradient overlay - shadow from side */}
+                        <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent z-10 pointer-events-none" />
+                        
+                        <img 
+                            src={project.image} 
+                            alt={project.title}
+                            className="w-full h-full object-cover object-center opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                        />
                     </div>
                 </div>
             </Link>

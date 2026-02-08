@@ -161,7 +161,7 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceId, onBack 
                         <div className="p-2 bg-white/5 rounded-lg border border-white/10">
                             {React.createElement(content.icon, { className: "w-6 h-6 text-brand-purple" })}
                         </div>
-                        <span className="text-brand-purple font-mono text-sm uppercase tracking-widest font-semibold">
+                        <span className="text-brand-purple font-sans font-medium text-sm uppercase tracking-widest">
                             {content.subtitle}
                         </span>
                     </div>

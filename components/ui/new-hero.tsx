@@ -13,31 +13,26 @@ interface NewHeroProps {
 export function NewHero({ onViewProjects }: NewHeroProps) {
     const { t } = useLanguage();
     const ref = useRef<HTMLDivElement>(null);
-    // Scroll effect removed
-    // const { scrollYProgress } = useScroll({
-    //     target: ref,
-    //     offset: ["start start", "end start"],
-    // });
-
-    // const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-    // const textY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
     
-    // // Scroll transforms - Fade out, scale down and blur when scrolling
-    // const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-    // const contentScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
-    // const contentBlur = useTransform(scrollYProgress, [0, 0.5], ["blur(0px)", "blur(10px)"]);
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ["start start", "end start"],
+    });
+
+    const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
     return (
         <div ref={ref} className="relative w-full h-screen overflow-hidden bg-black flex items-center justify-center font-sans">
             {/* Background Animation */}
             
-            <div className="absolute inset-0 z-0">
+            <motion.div style={{ opacity }} className="absolute inset-0 z-0">
                 <TubesCursor />
                 <Spotlight
                     className="-top-40 left-0 md:left-60 md:-top-20"
                     fill="white"
                 />
-            </div>
+                <div className="absolute bottom-0 left-0 w-full h-[500px] bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none" />
+            </motion.div>
 
              <motion.div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
                 {/* Parallax layer if needed */}

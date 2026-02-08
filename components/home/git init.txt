@@ -1,0 +1,5 @@
+git init
+git checkout -B main
+git add -A
+git commit -m "Nahrání kompletního projektu včetně .env"
+git push -u origin main --force-with-lease

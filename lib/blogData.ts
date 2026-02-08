@@ -77,7 +77,7 @@ Nejde o to chatbot mít. Jde o to, aby konverzace, které vede, měly směr a sm
       category: "Development",
       date: "Feb 4, 2026",
       readTime: "6 min read",
-      image: "https://img.freepik.com/free-photo/smartphone-with-opened-ai-chat-it_1268-21624.jpg?t=st=1770235849~exp=1770239449~hmac=7bc2e872f49f8a48e161ca8ee5ae78865090d9f5565b0865db85eb5a4a201ec3",
+      image: "https://framerusercontent.com/images/T84SzYMU2yp2tyhm3OOShvXWc.jpeg?scale-down-to=1024&width=2400&height=1600",
       author: "Jan Novák",
       authorRole: "Tech Lead",
       authorImage: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=100&h=100",

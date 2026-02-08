@@ -73,7 +73,7 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = ({
                                     className="min-w-[300px] md:min-w-[400px] group cursor-pointer snap-center"
                                 >
                                     {/* Image Card */}
-                                    <div className="relative aspect-[16/10] mb-6 rounded-2xl overflow-hidden bg-white/5 border border-white/10 group-hover:border-brand-purple/30 transition-colors">
+                                    <div className="relative aspect-[16/10] mb-6 rounded-2xl overflow-hidden bg-white/5 transition-colors">
                                         <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
                                         <img 
                                             src={post.image} 
