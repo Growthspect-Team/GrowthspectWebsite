@@ -1,0 +1,119 @@
+# ============================================================
+# GrowthSpect Blog CMS Configuration
+# ============================================================
+# Admin panel: http://localhost:3000/admin
+# Docs: https://decapcms.org/docs/
+# ============================================================
+
+# --- Backend ---
+# Pro lokální vývoj (npm run cms) se automaticky použije local proxy.
+# Pro produkci se použije GitHub OAuth.
+backend:
+  name: github
+  repo: Growthspect-Team/GrowthspectWebsite
+  branch: main
+
+# Lokální vývoj: pokud běží decap-server, Decap CMS ho automaticky detekuje
+local_backend: true
+
+# --- Media ---
+media_folder: "public/assets/blog"
+public_folder: "/assets/blog"
+
+# --- Nastavení editoru ---
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+# --- Kolekce: Blog ---
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    editor:
+      preview: false
+    sortable_fields: ["date", "title"]
+    summary: "{{title}} — {{date}}"
+    fields:
+      - label: "Titulek"
+        name: "title"
+        widget: "string"
+        required: true
+
+      - label: "Krátký popis (excerpt)"
+        name: "excerpt"
+        widget: "text"
+        required: true
+        hint: "Zobrazí se v přehledu článků na hlavní stránce."
+
+      - label: "Kategorie"
+        name: "category"
+        widget: "select"
+        options:
+          - "AI & Chatbots"
+          - "Development"
+          - "Infrastructure"
+          - "Data Engineering"
+          - "Design"
+          - "Business"
+          - "Marketing"
+        required: true
+
+      - label: "Datum publikace"
+        name: "date"
+        widget: "datetime"
+        format: "MMM D, YYYY"
+        date_format: "MMM D, YYYY"
+        time_format: false
+        required: true
+
+      - label: "Doba čtení"
+        name: "readTime"
+        widget: "string"
+        required: false
+        hint: "Např. '5 min read'. Pokud necháte prázdné, vypočítá se automaticky."
+
+      - label: "Hlavní obrázek"
+        name: "image"
+        widget: "image"
+        required: true
+        allow_multiple: false
+        hint: "Nahrát obrázek nebo vložit URL adresu."
+
+      - label: "Autor"
+        name: "author"
+        widget: "string"
+        required: true
+
+      - label: "Role autora"
+        name: "authorRole"
+        widget: "string"
+        required: true
+        hint: "Např. 'CEO', 'Tech Lead', 'Head of Data'"
+
+      - label: "Foto autora"
+        name: "authorImage"
+        widget: "image"
+        required: false
+        hint: "Malý portrét autora (100x100px)."
+
+      - label: "Obsah článku"
+        name: "body"
+        widget: "markdown"
+        required: true
+        buttons:
+          - bold
+          - italic
+          - link
+          - heading-two
+          - heading-three
+          - quote
+          - bulleted-list
+          - numbered-list
+          - image

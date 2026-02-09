@@ -52,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
     e.preventDefault();
     if (itemLabel === 'Služby') {
       onNavigate('services');
-    } else if (itemLabel === 'SCALEX') {
+    } else if (itemLabel === 'Scalex') {
       onNavigate('scalex');
     } else if (itemLabel === 'Blog') {
       onNavigate('blog');
@@ -94,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
       initial={{ y: 0 }}
       animate={{ y: 0 }}
       className={cn(
-        "fixed z-50 transition-all duration-300 w-full flex justify-center",
+        "fixed z-[100] transition-all duration-300 w-full flex justify-center",
         // Pokud jsme ve video sekci, chceme transparentní pozadí (isVideoSection override)
         // Jinak standardní logika podle isScrolled
         (isScrolled && !isVideoSection)

@@ -63,11 +63,11 @@ const ServiceDetailWrapper = () => {
 };
 
 const BlogPageWrapper = () => {
-    const { id } = useParams();
+    const { slug } = useParams();
     const navigate = useNavigate();
     
-    const handleSelectPost = (postId: number | null) => {
-        if (postId) navigate(`/blog/${postId}`);
+    const handleSelectPost = (postSlug: string | null) => {
+        if (postSlug) navigate(`/blog/${postSlug}`);
         else navigate('/blog');
     };
 
@@ -76,12 +76,20 @@ const BlogPageWrapper = () => {
             <SEO title="Blog" />
             <BlogPage 
                 posts={blogPosts} 
-                selectedPostId={id ? Number(id) : null} 
+                selectedPostSlug={slug || null} 
                 onSelectPost={handleSelectPost}
                 onBack={() => navigate('/')}
             />
         </>
     );
+};
+
+// Force reload for admin panel to escape SPA routing
+const AdminLoader = () => {
+    useEffect(() => {
+        window.location.href = "/admin/index.html";
+    }, []);
+    return null;
 };
 
 export default function App() {
@@ -159,7 +167,7 @@ export default function App() {
                                 <AboutSection />
                         <Momentum />
                         <section id="services">
-                            <ServicesCleevio onSelectService={(id) => navigate(`/services/${id}`)} />
+                            <ServicesCleevio />
                         </section>
                         <section id="projects">
                             <ProjectShowcase onProjectSelect={(p) => navigate(`/projects/${encodeURIComponent(p.title)}`)} />
@@ -198,7 +206,7 @@ export default function App() {
                 } />
 
                 <Route path="/blog" element={<BlogPageWrapper />} />
-                <Route path="/blog/:id" element={<BlogPageWrapper />} />
+                <Route path="/blog/:slug" element={<BlogPageWrapper />} />
 
                 <Route path="/contact" element={
                     <>
@@ -220,6 +228,10 @@ export default function App() {
                         <PrivacyPolicyPage />
                     </>
                 } />
+
+                {/* Admin route - bypass SPA routing */}
+                <Route path="/admin" element={<AdminLoader />} />
+                <Route path="/admin/*" element={<AdminLoader />} />
 
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

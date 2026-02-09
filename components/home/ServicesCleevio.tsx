@@ -3,11 +3,7 @@ import React from "react";
 import { servicesCleevioData, servicesCleevioDataCs } from "./ServicesCleevioData";
 import { useLanguage } from "../LanguageContext";
 
-interface ServicesCleevioProps {
-  onSelectService?: (id: string) => void;
-}
-
-export const ServicesCleevio: React.FC<ServicesCleevioProps> = ({ onSelectService }) => {
+export const ServicesCleevio: React.FC = () => {
   const { language, t } = useLanguage();
   const servicesData = language === 'cs' ? servicesCleevioDataCs : servicesCleevioData;
 
@@ -49,8 +45,7 @@ export const ServicesCleevio: React.FC<ServicesCleevioProps> = ({ onSelectServic
                 <div className="flex flex-col gap-6 z-10 pt-12 lg:pt-24 justify-center h-full">
                     
                     <h2 
-                        className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight cursor-pointer hover:text-gray-300 transition-colors"
-                        onClick={() => onSelectService && onSelectService(service.id)}
+                        className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight transition-colors"
                     >
                         {service.title}
                     </h2>

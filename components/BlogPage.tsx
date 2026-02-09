@@ -9,9 +9,12 @@ import { ReadingProgressBar } from './blog/ReadingProgressBar';
 import { TableOfContents } from './blog/TableOfContents';
 import { extractHeaders } from './blog/utils';
 import { RelatedPosts } from './blog/RelatedPosts';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface BlogPost {
     id: number;
+    slug?: string;
     title: string;
     excerpt: string;
     category: string;
@@ -27,8 +30,9 @@ interface BlogPost {
 interface BlogPageProps {
     onBack: () => void;
     posts: BlogPost[];
+    selectedPostSlug?: string | null;
     selectedPostId?: number | null;
-    onSelectPost?: (id: number | null) => void;
+    onSelectPost?: (slugOrId: string | number | null) => void;
 }
 
 const InteractiveHover = ({ children, text, onHover }: { children: React.ReactNode; text: string; onHover: (text: string | null) => void }) => {
@@ -118,7 +122,7 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
     );
 };
 
-export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostId, onSelectPost }) => {
+export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostSlug, selectedPostId, onSelectPost }) => {
     const [email, setEmail] = useState('');
     const lenis = useLenis();
     const contentRef = useRef<HTMLDivElement>(null);
@@ -126,13 +130,17 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostI
     
     const [internalSelectedPost, setInternalSelectedPost] = useState<BlogPost | null>(null);
 
-    const selectedPost = selectedPostId !== undefined
-        ? (selectedPostId ? posts.find(p => p.id === selectedPostId) || null : null)
-        : internalSelectedPost;
+    // Support both slug-based and id-based selection (backward compatible)
+    const selectedPost = selectedPostSlug !== undefined
+        ? (selectedPostSlug ? posts.find(p => p.slug === selectedPostSlug) || null : null)
+        : selectedPostId !== undefined
+            ? (selectedPostId ? posts.find(p => p.id === selectedPostId) || null : null)
+            : internalSelectedPost;
 
     const setSelectedPost = (post: BlogPost | null) => {
         if (onSelectPost) {
-            onSelectPost(post ? post.id : null);
+            // Prefer slug, fallback to id
+            onSelectPost(post ? (post.slug || post.id) : null);
         } else {
             setInternalSelectedPost(post);
         }
@@ -345,26 +353,66 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostI
                                          </p>
 
                                         {selectedPost.content ? (
-                                            <div className="text-gray-300 leading-relaxed space-y-8">
-                                                {(() => {
-                                                    let headerIndex = 0;
-                                                    return selectedPost.content.split('\n\n').map((paragraph, idx) => {
-                                                        if (paragraph.startsWith('## ')) {
-                                                            const id = `section-${headerIndex}`;
-                                                            headerIndex++;
+                                            <div className="text-gray-300 leading-relaxed">
+                                                <ReactMarkdown
+                                                    remarkPlugins={[remarkGfm]}
+                                                    components={{
+                                                        h2: ({ children, ...props }) => {
+                                                            const text = typeof children === 'string' ? children : 
+                                                                Array.isArray(children) ? children.join('') : String(children);
+                                                            const headers = selectedPost.content ? extractHeaders(selectedPost.content) : [];
+                                                            const headerIdx = headers.findIndex(h => h.text === text);
+                                                            const id = headerIdx >= 0 ? `section-${headerIdx}` : undefined;
+                                                            return <h2 id={id} className="text-3xl font-bold text-white mt-16 mb-6 scroll-mt-32" {...props}>{children}</h2>;
+                                                        },
+                                                        h3: ({ children, ...props }) => (
+                                                            <h3 className="text-2xl font-bold text-white mt-12 mb-4" {...props}>{children}</h3>
+                                                        ),
+                                                        p: ({ children, ...props }) => (
+                                                            <p className="text-gray-400 text-lg leading-7 font-light mb-6" {...props}>{children}</p>
+                                                        ),
+                                                        ul: ({ children, ...props }) => (
+                                                            <ul className="list-disc list-inside text-gray-400 text-lg leading-8 font-light mb-6 space-y-2 pl-2" {...props}>{children}</ul>
+                                                        ),
+                                                        ol: ({ children, ...props }) => (
+                                                            <ol className="list-decimal list-inside text-gray-400 text-lg leading-8 font-light mb-6 space-y-2 pl-2" {...props}>{children}</ol>
+                                                        ),
+                                                        li: ({ children, ...props }) => (
+                                                            <li className="text-gray-400" {...props}>{children}</li>
+                                                        ),
+                                                        a: ({ children, href, ...props }) => (
+                                                            <a href={href} className="text-[#a855f7] hover:text-white underline decoration-dotted decoration-[#8825ed] underline-offset-4 transition-colors duration-300" target="_blank" rel="noopener noreferrer" {...props}>{children}</a>
+                                                        ),
+                                                        strong: ({ children, ...props }) => (
+                                                            <strong className="text-white font-semibold" {...props}>{children}</strong>
+                                                        ),
+                                                        blockquote: ({ children, ...props }) => (
+                                                            <blockquote className="border-l-4 border-[#8825ed] pl-6 my-8 italic text-gray-300" {...props}>{children}</blockquote>
+                                                        ),
+                                                        code: ({ children, className, ...props }) => {
+                                                            const isInline = !className;
+                                                            if (isInline) {
+                                                                return <code className="bg-white/10 text-[#a855f7] px-2 py-0.5 rounded text-base font-mono" {...props}>{children}</code>;
+                                                            }
                                                             return (
-                                                                <h2 id={id} key={idx} className="text-3xl font-bold text-white mt-16 mb-6 scroll-mt-32">
-                                                                    {paragraph.replace('## ', '')}
-                                                                </h2>
+                                                                <code className="block bg-white/5 border border-white/10 rounded-xl p-6 text-sm font-mono text-gray-300 overflow-x-auto my-6" {...props}>
+                                                                    {children}
+                                                                </code>
                                                             );
-                                                        }
-                                                        return (
-                                                            <p key={idx} className="text-gray-400 text-lg leading-7 font-light">
-                                                                {paragraph}
-                                                            </p>
-                                                        );
-                                                    });
-                                                })()}
+                                                        },
+                                                        pre: ({ children, ...props }) => (
+                                                            <pre className="bg-white/5 border border-white/10 rounded-xl p-6 text-sm font-mono text-gray-300 overflow-x-auto my-6" {...props}>{children}</pre>
+                                                        ),
+                                                        img: ({ src, alt, ...props }) => (
+                                                            <img src={src} alt={alt || ''} className="rounded-2xl my-8 w-full" loading="lazy" {...props} />
+                                                        ),
+                                                        hr: () => (
+                                                            <hr className="border-white/10 my-12" />
+                                                        ),
+                                                    }}
+                                                >
+                                                    {selectedPost.content}
+                                                </ReactMarkdown>
                                             </div>
                                         ) : null}
                                     </div>

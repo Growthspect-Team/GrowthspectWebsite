@@ -107,7 +107,7 @@ export function ProjectShowcase({ onProjectSelect }: ProjectShowcaseProps) {
   const { setCursorText } = useCursor();
 
   return (
-    <div className="w-full bg-black relative overflow-hidden py-32 -mt-32 rounded-t-[3rem] z-50 shadow-[0_-20px_60px_-15px_rgba(255,255,255,0.1)] border-t border-white/10">
+    <div className="w-full bg-black relative overflow-hidden py-32 -mt-32 rounded-t-[3rem] z-30 shadow-[0_-20px_60px_-15px_rgba(255,255,255,0.1)] border-t border-white/10">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
@@ -138,56 +138,60 @@ export function ProjectShowcase({ onProjectSelect }: ProjectShowcaseProps) {
               className="group relative w-full"
             >
               <div 
-                onClick={() => onProjectSelect(project)} 
-                className="cursor-pointer block w-full"
+                onClick={() => {
+                    onProjectSelect(project);
+                    setCursorText(null);
+                }} 
+                className="cursor-none block w-full"
+                onMouseEnter={() => setCursorText('Zobrazit projekt')}
+                onMouseLeave={() => setCursorText(null)}
               >
-                  <div className="relative overflow-hidden rounded-[2rem] bg-[#050505] flex flex-col lg:flex-row min-h-[400px] lg:h-[420px] shadow-2xl border border-white/5 hover:border-white/10 transition-colors">
-                      {/* Content Side (Left) */}
-                      <div className="w-full lg:w-[45%] p-8 lg:p-12 flex flex-col justify-center relative z-10">
-                          <div className="space-y-6">
-                              <div className="flex items-center gap-3">
-                                  {project.logo ? (
-                                      <img src={project.logo} alt="brand" className="h-5 w-auto opacity-80" />
-                                  ) : (
-                                      <span className="text-sm font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                                          <div className="w-4 h-4 rounded bg-white/10 flex items-center justify-center text-[10px]">R</div>
-                                          {project.category?.split('&')[0].trim() || 'PROJECT'}
-                                      </span>
-                                  )}
-                              </div>
+                  <div className="relative overflow-hidden rounded-[2rem] bg-[#0a0a0a] shadow-2xl transition-colors min-h-[420px] md:min-h-[500px]">
+                      {/* Full-bleed Image */}
+                      <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="absolute inset-0 w-full h-full object-cover object-center opacity-70 group-hover:opacity-90 group-hover:scale-[1.03] transition-all duration-700"
+                      />
 
-                              <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                                  {project.title}
-                              </h3>
-                              
-                              {/* Metrics */}
-                              {project.metrics && (
-                                  <div className="grid grid-cols-2 gap-8 pt-4">
-                                      {project.metrics.map((metric, i) => (
-                                          <div key={i}>
-                                              <span className="block text-2xl font-bold text-white mb-1">
-                                                  {metric.value}
-                                              </span>
-                                              <span className="block text-xs text-gray-500 font-medium">
-                                                  {metric.label}
-                                              </span>
-                                          </div>
-                                      ))}
-                                  </div>
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] from-30% via-[#0a0a0a]/90 via-60% to-transparent pointer-events-none" />
+
+                      {/* Content overlaying at bottom */}
+                      <div className="absolute inset-x-0 bottom-0 px-8 md:px-10 pb-8 md:pb-10 pt-4 z-10">
+                          <div className="flex items-center gap-3 mb-3">
+                              {project.logo ? (
+                                  <img src={project.logo} alt="brand" className="h-5 w-auto opacity-80" />
+                              ) : (
+                                  <span className="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                                      <div className="w-4 h-4 rounded bg-white/10 flex items-center justify-center text-[10px]">R</div>
+                                      {project.category?.split('&')[0].trim() || 'PROJECT'}
+                                  </span>
                               )}
                           </div>
-                      </div>
 
-                      {/* Image Side (Right) */}
-                      <div className="relative w-full lg:w-[55%] h-[300px] lg:h-auto bg-[#050505]">
-                          {/* Gradient overlay - shadow from side */}
-                          <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent z-10 pointer-events-none" />
-                          
-                          <img 
-                              src={project.image} 
-                              alt={project.title}
-                              className="w-full h-full object-cover object-center opacity-80 group-hover:opacity-100 transition-opacity duration-500"
-                          />
+                          <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-2">
+                              {project.title}
+                          </h3>
+                          <p className="text-sm md:text-base text-gray-400 max-w-lg leading-relaxed mb-6">
+                              {project.description}
+                          </p>
+
+                          {/* Metrics */}
+                          {project.metrics && project.metrics.length > 0 && (
+                              <div className="flex gap-12 pt-2">
+                                  {project.metrics.map((metric, i) => (
+                                      <div key={i}>
+                                          <span className="block text-xl md:text-2xl font-bold text-white mb-1">
+                                              {metric.value}
+                                          </span>
+                                          <span className="block text-xs text-gray-500 font-medium leading-snug max-w-[180px]">
+                                              {metric.label}
+                                          </span>
+                                      </div>
+                                  ))}
+                              </div>
+                          )}
                       </div>
                   </div>
               </div>

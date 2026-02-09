@@ -45,9 +45,9 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
                 <div className="flex flex-col items-start text-left justify-center">
                     {/* Hero Text */}
                     <motion.h1 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+                        initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
                         className="text-4xl lg:text-[92px] font-sans font-bold tracking-tight text-white mb-10 leading-[1.15]"
                     >
                         {t('hero.title.part1')} <br />
@@ -59,9 +59,9 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
                     </motion.h1>
 
                     <motion.p 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 0.8, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+                        initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                        animate={{ opacity: 0.8, y: 0, filter: "blur(0px)" }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
                         className="text-lg md:text-[26px] text-gray-400 max-w-2xl mb-12 leading-[1.25] font-light"
                     >
                         {t('hero.subtitle')}
