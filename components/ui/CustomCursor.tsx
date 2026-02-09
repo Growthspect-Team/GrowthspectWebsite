@@ -25,7 +25,7 @@ export const CustomCursor: React.FC = () => {
              <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2">
                 <div 
                     className={`
-                        flex items-center justify-center backdrop-blur-md 
+                        flex items-center justify-center backdrop-blur-md bg-[linear-gradient(90deg,#8825ed,#ae1fed)]
                         transition-[transform,opacity,background-color,border-color,box-shadow,width,height,padding,border-radius] duration-300 ease-out origin-center
                         ${cursorText 
                             ? 'bg-brand-purple text-white scale-100 opacity-100 px-4 py-2 rounded-full shadow-lg' 

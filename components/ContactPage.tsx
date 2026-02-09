@@ -133,7 +133,7 @@ export const ContactPage: React.FC = () => {
           
           <div className="relative w-32 h-32 hidden lg:block mt-12">
              {/* Abstract arrow decoration calling back to original design */}
-             <div className="absolute top-0 left-0 text-brand-purple transform -rotate-12 opacity-80">
+             <div className="absolute top-0 left-0  text-brand-purple transform -rotate-12 opacity-80">
                 <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 50 C 30 20, 70 20, 90 50" stroke="currentColor" strokeWidth="2" strokeDasharray="5,5" />
                     <path d="M90 50 L 80 40 M 90 50 L 80 60" stroke="currentColor" strokeWidth="2" />

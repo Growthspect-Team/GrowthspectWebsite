@@ -7,6 +7,27 @@ import { motion, AnimatePresence } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { useLanguage } from "../LanguageContext"
 import { ContainerScroll } from "./container-scroll-animation"
+import { useCursor } from "../CursorContext"
+
+interface InteractiveHoverProps {
+  children: React.ReactNode;
+  text: string;
+  onHover: (text: string | null) => void;
+}
+
+const InteractiveHover: React.FC<InteractiveHoverProps> = ({ children, text, onHover }) => {
+  return (
+    <span 
+      className="group relative inline-block"
+      onMouseEnter={() => onHover(text)}
+      onMouseLeave={() => onHover(null)}
+    >
+      <span className="relative z-10 text-white hover:text-[#a855f7] underline decoration-dotted decoration-[#8825ed] underline-offset-8 decoration-4 transition-all duration-300">
+        {children}
+      </span>
+    </span>
+  );
+};
 
 export interface ProjectMetric {
   label: string;
@@ -83,9 +104,10 @@ interface ProjectShowcaseProps {
 
 export function ProjectShowcase({ onProjectSelect }: ProjectShowcaseProps) {
   const { t } = useLanguage();
+  const { setCursorText } = useCursor();
 
   return (
-    <div className="w-full bg-black relative overflow-hidden py-32">
+    <div className="w-full bg-black relative overflow-hidden py-32 -mt-32 rounded-t-[3rem] z-50 shadow-[0_-20px_60px_-15px_rgba(255,255,255,0.1)] border-t border-white/10">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
@@ -97,7 +119,7 @@ export function ProjectShowcase({ onProjectSelect }: ProjectShowcaseProps) {
             {t('projects.title')}
           </span>
           <h2 className="text-4xl md:text-6xl font-sans font-bold text-white tracking-tight mb-8">
-            Projekty, které <span className="text-gray-400">inspirují</span>
+            Projekty, které <InteractiveHover text="Get Inspired" onHover={setCursorText}>inspirují</InteractiveHover>
           </h2>
         </div>
 
@@ -105,80 +127,69 @@ export function ProjectShowcase({ onProjectSelect }: ProjectShowcaseProps) {
         <div className="max-w-7xl mx-auto pb-32 relative z-10">
         
         {/* Projects List */}
-        <div className="space-y-16 md:space-y-32">
+        <div className="space-y-16 md:space-y-24">
           {projects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="group relative w-full rounded-[2.5rem] overflow-hidden bg-white/5 border border-white/10"
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group relative w-full"
             >
-              {/* Card Container - Stacked on mobile, Side-by-side on desktop */}
-              <div className="flex flex-col lg:flex-row min-h-[600px] lg:h-[650px]">
-                
-                {/* Content Side (Left) */}
-                <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-between relative z-10 bg-black/40 backdrop-blur-sm lg:bg-transparent lg:backdrop-blur-none">
-                  
-                  {/* Top Content */}
-                  <div>
-                    <div className="mb-8">
-                       {project.logo ? (
-                          <img src={project.logo} alt="brand" className="h-6 w-auto" />
-                        ) : (
-                          <span className="text-xl font-bold text-white uppercase tracking-wider">
-                            {project.category?.split('&')[0].trim() || 'GROWTHSPECT'}
-                          </span>
-                        )}
-                    </div>
+              <div 
+                onClick={() => onProjectSelect(project)} 
+                className="cursor-pointer block w-full"
+              >
+                  <div className="relative overflow-hidden rounded-[2rem] bg-[#050505] flex flex-col lg:flex-row min-h-[400px] lg:h-[420px] shadow-2xl border border-white/5 hover:border-white/10 transition-colors">
+                      {/* Content Side (Left) */}
+                      <div className="w-full lg:w-[45%] p-8 lg:p-12 flex flex-col justify-center relative z-10">
+                          <div className="space-y-6">
+                              <div className="flex items-center gap-3">
+                                  {project.logo ? (
+                                      <img src={project.logo} alt="brand" className="h-5 w-auto opacity-80" />
+                                  ) : (
+                                      <span className="text-sm font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                                          <div className="w-4 h-4 rounded bg-white/10 flex items-center justify-center text-[10px]">R</div>
+                                          {project.category?.split('&')[0].trim() || 'PROJECT'}
+                                      </span>
+                                  )}
+                              </div>
 
-                    <h3 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
-                      {project.title}
-                    </h3>
+                              <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+                                  {project.title}
+                              </h3>
+                              
+                              {/* Metrics */}
+                              {project.metrics && (
+                                  <div className="grid grid-cols-2 gap-8 pt-4">
+                                      {project.metrics.map((metric, i) => (
+                                          <div key={i}>
+                                              <span className="block text-2xl font-bold text-white mb-1">
+                                                  {metric.value}
+                                              </span>
+                                              <span className="block text-xs text-gray-500 font-medium">
+                                                  {metric.label}
+                                              </span>
+                                          </div>
+                                      ))}
+                                  </div>
+                              )}
+                          </div>
+                      </div>
 
-                    {/* Description removed to match reference structure
-                    <p className="text-gray-400 text-lg leading-relaxed max-w-lg mb-10">
-                      {project.description}
-                    </p>
-                    */}
+                      {/* Image Side (Right) */}
+                      <div className="relative w-full lg:w-[55%] h-[300px] lg:h-auto bg-[#050505]">
+                          {/* Gradient overlay - shadow from side */}
+                          <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-[#050505] via-[#050505]/80 to-transparent z-10 pointer-events-none" />
+                          
+                          <img 
+                              src={project.image} 
+                              alt={project.title}
+                              className="w-full h-full object-cover object-center opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                          />
+                      </div>
                   </div>
-
-                  {/* Bottom Content / Metrics */}
-                  <div className="mt-auto">
-                    
-                    {/* Metrics Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8">
-                       {project.metrics?.map((metric, mIdx) => (
-                        <div key={mIdx}>
-                          <span className="block text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">
-                            {metric.value}
-                          </span>
-                          <span className="block text-sm text-gray-400 font-medium leading-relaxed">
-                            {metric.label}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Action Button removed to match reference */}
-                  </div>
-                </div>
-
-                {/* Image Side (Right) - Absolute on mobile to act as background with overlay */}
-                <div className="absolute inset-0 lg:relative lg:inset-auto lg:w-1/2 h-full">
-                  <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent lg:from-transparent lg:to-transparent z-0 lg:z-auto" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent lg:hidden z-0" />
-                  
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  
-                   {/* Optional Decor overlay for desktop visual interest */}
-                  <div className="hidden lg:block absolute inset-0 bg-gradient-to-l from-transparent to-black/80 w-32 -left-1" />
-                </div>
               </div>
             </motion.div>
           ))}

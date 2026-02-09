@@ -38,28 +38,29 @@ const InteractiveHover = ({ children, text, onHover }: { children: React.ReactNo
             onMouseEnter={() => onHover(text)}
             onMouseLeave={() => onHover(null)}
         >
-            <span className="relative z-10 text-brand-purple underline decoration-dotted decoration-brand-purple underline-offset-8 decoration-4 transition-all duration-300">
+            <span className="relative z-10 text-white hover:text-[#a855f7] underline decoration-dotted decoration-[#8825ed] underline-offset-8 decoration-4 transition-all duration-300">
                 {children}
             </span>
         </span>
     );
 };
 
-const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel }: { 
+const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel, language }: { 
     post: BlogPost; 
     onClick: (post: BlogPost) => void;
     onMouseEnter: () => void;
     onMouseLeave: () => void;
     featuredLabel: string;
+    language: string;
 }) => {
     return (
         <FadeIn>
             <div className="mb-6 flex items-center gap-3">
                  <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-purple opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-purple"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8825ed] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#8825ed]"></span>
                   </span>
-                 <span className="text-xs font-mono text-brand-purple uppercase tracking-widest font-bold">
+                 <span className="text-xs font-mono text-[#8825ed] uppercase tracking-widest font-bold">
                     {featuredLabel}
                  </span>
             </div>
@@ -83,12 +84,12 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
                 {/* Content Section */}
                 <div className="p-8 lg:p-12 flex flex-col justify-center relative">
                     <div className="hidden lg:flex items-center gap-4 mb-6">
-                         <span className="px-3 py-1 bg-brand-purple/20 border border-brand-purple/30 rounded-full text-xs font-mono text-brand-purple uppercase tracking-wider">
+                         <span className="px-3 py-1 bg-[#8825ed]/20 border border-[#8825ed]/30 rounded-full text-xs font-mono text-[#8825ed] uppercase tracking-wider">
                             {post.category}
                          </span>
                          <span className="flex items-center gap-1.5 text-gray-500 text-xs font-oldschool">
                             <Clock className="w-3.5 h-3.5" />
-                            {post.readTime}
+                            {post.readTime.replace('read', language === 'cs' ? 'čtení' : 'read')}
                          </span>
                     </div>
 
@@ -284,7 +285,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostI
                                             <div className="flex items-center gap-4 mb-8">
                                                  <span className="flex items-center gap-2 text-white/80 text-sm font-medium px-3 py-1  rounded-full ">
                                                     <span className="w-1.5 h-1.5 bg-brand-purple rounded-full animate-pulse"/>
-                                                    {selectedPost.readTime}
+                                                    {selectedPost.readTime.replace('read', language === 'cs' ? 'čtení' : 'read')}
                                                  </span>
                                             </div>
                                             
@@ -435,7 +436,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostI
                         <FadeIn>
                             <div className="flex justify-between items-stretch">
                                 <div className="w-full">
-                                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.25] tracking-normal" style={{ lineHeight: 1.25 }}>
+                                    <h1 className="text-4xl  md:text-6xl lg:text-7xl font-bold text-white leading-[1.25] tracking-normal bg" style={{ lineHeight: 1.25 }}>
                                         {language === 'cs' ? (
                                             <>
                                                 <InteractiveHover text="Inspirujte se" onHover={setCustomCursorText}>
@@ -467,6 +468,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostI
                             onMouseEnter={() => setIsHoveringCard(true)} 
                             onMouseLeave={() => setIsHoveringCard(false)}
                             featuredLabel={language === 'cs' ? 'Doporučujeme' : 'Featured Story'}
+                            language={language}
                         />
                     )}
 
@@ -545,7 +547,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostI
                                         <div className="flex items-center gap-4 text-xs text-gray-500 mb-4 font-oldschool">
                                             <span className="flex items-center gap-1.5">
                                                 <Clock className="w-3.5 h-3.5" />
-                                                {post.readTime}
+                                                {post.readTime.replace('read', language === 'cs' ? 'čtení' : 'read')}
                                             </span>
                                         </div>
 

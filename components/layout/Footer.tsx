@@ -84,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                                 e.preventDefault();
                                 if (onNavigate) onNavigate('contact');
                             }}
-                            className="group flex items-center gap-3 bg-[linear-gradient(90deg,#8825ed,#ae1fed)] hover:opacity-90 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-medium transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(136,37,237,0.3)] hover:shadow-[0_0_30px_rgba(136,37,237,0.5)] w-fit"
+                            className="group flex items-center gap-3 bg-[linear-gradient(90deg,#8825ed,#ae1fed)] hover:opacity-90 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-medium transition-all duration-300 shadow-[0_0_20px_rgba(136,37,237,0.3)] hover:shadow-[0_0_30px_rgba(136,37,237,0.5)] w-fit"
                         >
                             Pojďme začít
                             <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />

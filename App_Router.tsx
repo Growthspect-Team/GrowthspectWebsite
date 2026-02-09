@@ -10,8 +10,8 @@ import { ServicesCleevio } from "./components/home/ServicesCleevio";
 import { WhyUs } from "./components/home/WhyUs";
 import { AboutSection } from "./components/home/AboutSection";
 import { Insights } from "./components/home/Insights";
-import { ScalexTeaser } from "./components/home/ScalexTeaser";
 import { CustomCursor } from './components/ui/CustomCursor';
+import { VideoScrollSection } from './components/home/VideoScrollSection';
 
 // Page Components (Lazy Loaded)
 const ProjectDetail = React.lazy(() => import('./components/ProjectDetail').then(module => ({ default: module.ProjectDetail })));
@@ -155,6 +155,7 @@ export default function App() {
                             <>
                                 <SEO title="Domov" />
                                 <Hero onViewProjects={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} />
+                                <VideoScrollSection />
                                 <AboutSection />
                         <Momentum />
                         <section id="services">
@@ -164,7 +165,6 @@ export default function App() {
                             <ProjectShowcase onProjectSelect={(p) => navigate(`/projects/${encodeURIComponent(p.title)}`)} />
                         </section>
                         <WhyUs />
-                        <ScalexTeaser onNavigate={() => navigate('/scalex')} />
                         <Insights onNavigate={() => navigate('/blog')} />
                     </>
                 } />

@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-purple: #8825ed;
+  --color-brand-black: #000000;
+  --color-brand-dark: #0B0B0C;
+  --color-brand-gray: #1A1A1C;
+  --color-brand-light: #F4F4F4;
+  --color-brand-purpleDim: rgba(136, 37, 237, 0.1);
+  --color-card: #0B0B0C;
+  --color-card-foreground: #FFFFFF;
+  --color-muted: #1A1A1C;
+  --color-muted-foreground: #A1A1AA;
+  
+  --font-sans: 'Satoshi', sans-serif;
+  --font-display: 'Satoshi', sans-serif;
+  --font-oldschool: 'Oldschool Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+}
+
 :root {
   --brand-purple: #8825ed;
   --brand-black: #000000;

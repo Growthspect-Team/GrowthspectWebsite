@@ -17,6 +17,9 @@ export const ServicesCleevio: React.FC<ServicesCleevioProps> = ({ onSelectServic
           {/* Header Section */}
           <div className="flex flex-col lg:flex-row">
               <div className="lg:w-5/12 p-8 xl:p-16 pt-0 pb-8 lg:py-16">
+                  <span className="text-xs font-sans font-medium uppercase tracking-widest block mb-6 bg-gradient-to-r from-brand-purple to-[#a855f7] bg-clip-text text-transparent">
+                      {t('services.badge')}
+                  </span>
                   <h2 className="text-4xl lg:text-5xl font-bold mb-6">{t('services.main_title')}</h2>
                   <p className="text-gray-400 text-lg lg:text-xl max-w-2xl">{t('services.main_subtitle')}</p>
               </div>

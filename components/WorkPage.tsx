@@ -15,11 +15,7 @@ const WorkHero = () => {
     return (
         <section className="relative w-full py-20 lg:py-32 px-4 md:px-8 bg-background overflow-hidden">
              {/* Vertical Text - Hidden on mobile */}
-             <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block mix-blend-difference z-20 pointer-events-none">
-                <div className="text-xs font-bold tracking-[0.3em] text-white/40 -rotate-90 whitespace-nowrap origin-center">
-                    SUCCESS STORIES
-                </div>
-            </div>
+            
 
              <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-sky-500/10 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
              <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2" />
@@ -41,14 +37,14 @@ const WorkHero = () => {
                         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
                             {language === 'cs' ? (
                                 <>
-                                    Digitální produkty, <br />
+                                    Produkty, <br />
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">
                                         které definují trh
                                     </span>
                                 </>
                             ) : (
                                 <>
-                                    Digital Products, <br />
+                                    Products, <br />
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">
                                         Defining the Market
                                     </span>
