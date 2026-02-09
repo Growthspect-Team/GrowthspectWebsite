@@ -41,7 +41,7 @@ export const WhyUs = () => {
                                 transition={{ duration: 0.8 }}
                                 viewport={{ once: true }}
                             >
-                                <span className="text-brand-purple font-mono text-xs tracking-[0.3em] uppercase mb-6 block">
+                                <span className="font-mono text-xs tracking-[0.3em] uppercase mb-6 block bg-gradient-to-r from-brand-purple to-[#a855f7] bg-clip-text text-transparent w-fit">
                                     ECOMMERCE GROWTH
                                 </span>
                                 <h2 className="text-5xl md:text-6xl lg:text-9xl font-sans font-bold text-white tracking-tighter leading-[0.9]">

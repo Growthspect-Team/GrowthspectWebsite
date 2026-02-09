@@ -14,7 +14,7 @@ export const ServicesScroll = ({ onSelectService }: { onSelectService: (id: stri
         {/* LEFT COLUMN - STICKY MENU */}
         <div className="hidden lg:flex w-1/3 flex-col justify-center h-screen sticky top-0 pl-16 xl:pl-24 z-20 pointer-events-none">
           <div className="space-y-6 pointer-events-auto">
-             <h2 className="text-sm font-mono text-brand-purple tracking-widest uppercase mb-10 opacity-70">
+             <h2 className="text-sm font-mono tracking-widest uppercase mb-10 opacity-70 bg-gradient-to-r from-brand-purple to-[#a855f7] bg-clip-text text-transparent w-fit">
                 Naše Služby
              </h2>
              <div className="flex flex-col gap-4">

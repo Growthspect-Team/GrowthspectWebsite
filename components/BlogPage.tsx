@@ -38,7 +38,7 @@ const InteractiveHover = ({ children, text, onHover }: { children: React.ReactNo
             onMouseEnter={() => onHover(text)}
             onMouseLeave={() => onHover(null)}
         >
-            <span className="relative z-10 underline decoration-dotted decoration-brand-purple/50 underline-offset-8 decoration-4 transition-all duration-300 group-hover:decoration-brand-purple group-hover:text-brand-purple">
+            <span className="relative z-10 text-brand-purple underline decoration-dotted decoration-brand-purple underline-offset-8 decoration-4 transition-all duration-300">
                 {children}
             </span>
         </span>
@@ -521,7 +521,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostI
                                             className="w-full h-full object-cover transition-transform duration-500 ease-out transform scale-[1.05] group-hover:-translate-y-2 will-change-transform"
                                         />
                                         <div className="absolute top-4 left-4">
-                                            <span className="px-3 py-1 bg-black/60 backdrop-blur-md border border-white/10 rounded-full text-xs font-mono text-brand-purple">
+                                            <span className="px-3 py-1 bg-brand-purple/20 backdrop-blur-md border border-brand-purple/30 rounded-full text-xs font-mono text-brand-purple uppercase tracking-wider shadow-[0_0_10px_rgba(139,92,246,0.15)]">
                                                 {post.category}
                                             </span>
                                         </div>

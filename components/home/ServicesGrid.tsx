@@ -20,7 +20,7 @@ export const ServicesGrid = ({ onSelectService }: { onSelectService: (id: string
         <FadeIn>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-20">
             <div>
-              <span className="text-gray-500 font-mono text-[10px] tracking-[0.3em] uppercase mb-3 block">
+              <span className="font-mono text-[10px] tracking-[0.3em] uppercase mb-3 block bg-gradient-to-r from-brand-purple to-[#a855f7] bg-clip-text text-transparent w-fit">
                 Platformy
               </span>
               <h2 className="text-4xl md:text-5xl font-sans font-bold text-white tracking-tight">

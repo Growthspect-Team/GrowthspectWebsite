@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import rateLimit from 'express-rate-limit';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import { getClientConfirmationEmail, getTeamNotificationEmail } from './email-templates.js';
@@ -12,7 +13,25 @@ dotenv.config({ path: path.resolve(path.dirname(fileURLToPath(import.meta.url)),
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors({ origin: ['http://localhost:3000', 'http://localhost:5173'] }));
+app.use(cors({ 
+  origin: [
+    'http://localhost:3000', 
+    'http://localhost:5173',
+    'https://growthspect.com',
+    'https://www.growthspect.com',
+    process.env.CLIENT_URL || ''
+  ].filter(Boolean)
+}));
+
+// Rate Limiter
+const contactLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // Limit each IP to 5 requests per windowMs
+  message: { success: false, error: 'Příliš mnoho žádostí. Zkuste to prosím znovu za chvíli.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
 app.use(express.json());
 
 // SMTP transporter
@@ -25,7 +44,7 @@ const transporter = nodemailer.createTransport({
     pass: process.env.SMTP_PASS,
   },
   tls: {
-    rejectUnauthorized: false,
+    rejectUnauthorized: process.env.NODE_ENV === 'production',
   },
 });
 
@@ -37,7 +56,7 @@ transporter.verify().then(() => {
 });
 
 // Contact form endpoint
-app.post('/api/contact', async (req, res) => {
+app.post('/api/contact', contactLimiter, async (req, res) => {
   try {
     const { firstName, lastName, email, company, position, source, message } = req.body;
 

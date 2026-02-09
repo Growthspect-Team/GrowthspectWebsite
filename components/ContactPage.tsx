@@ -86,9 +86,9 @@ export const ContactPage: React.FC = () => {
              
              <button 
                 onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center w-16 h-16 md:w-24 md:h-24 bg-brand-purple rounded-full ml-4 align-middle transform rotate-45 hover:scale-105 hover:bg-opacity-90 transition-all cursor-pointer"
+                className="group inline-flex items-center justify-center w-16 h-16 md:w-24 md:h-24 bg-[linear-gradient(90deg,#8825ed,#ae1fed)] rounded-full ml-4 align-middle transform rotate-45 hover:scale-110 transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(136,37,237,0.3)] hover:shadow-[0_0_25px_rgba(136,37,237,0.6)]"
              >
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white w-8 h-8 md:w-12 md:h-12">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white w-8 h-8 md:w-12 md:h-12 transition-transform duration-300 group-hover:rotate-12">
                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
              </button>
@@ -159,7 +159,7 @@ export const ContactPage: React.FC = () => {
               exit={{ opacity: 0, scale: 0.95 }}
               className="flex flex-col items-center justify-center text-center py-16 px-8"
             >
-              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-brand-purple to-[#a855f7] flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(136,37,237,0.4)]">
+              <div className="w-20 h-20 rounded-full bg-[linear-gradient(135deg,#8825ed,#ae1fed)] flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(136,37,237,0.4)]">
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-3xl font-bold text-white mb-3 tracking-tight">Zpráva odeslána!</h3>
@@ -298,7 +298,7 @@ export const ContactPage: React.FC = () => {
                 </motion.div>
               )}
               <Button 
-                className="group bg-gradient-to-r from-brand-purple to-[#a855f7] hover:opacity-90 text-white rounded-full px-8 py-4 font-semibold text-base flex items-center gap-3 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)] border-none !normal-case tracking-normal overflow-hidden w-full md:w-auto self-start disabled:opacity-50 disabled:cursor-not-allowed"
+                className="group bg-[linear-gradient(90deg,#8825ed,#ae1fed)] hover:opacity-90 text-white rounded-full px-8 py-4 font-semibold text-base flex items-center gap-3 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)] border-none !normal-case tracking-normal overflow-hidden w-full md:w-auto self-start disabled:opacity-50 disabled:cursor-not-allowed"
                 type="submit"
                 variant="primary"
                 disabled={status === 'loading'}

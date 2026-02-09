@@ -52,7 +52,7 @@ export const AboutSection = () => {
     const x = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]); 
 
     return (
-        <section ref={targetRef} className="relative h-[400vh] bg-brand-black">
+        <section ref={targetRef} className="relative h-[250vh] bg-brand-black">
             <div className="sticky top-0 h-screen flex items-center overflow-hidden">
                 <motion.div 
                     style={{ x }}
@@ -67,11 +67,11 @@ export const AboutSection = () => {
                             transition={{ duration: 0.6 }}
                             className="relative z-10"
                         >
-                            <span className="text-xs font-sans font-medium uppercase tracking-widest block mb-6 text-brand-purple">
+                            <span className="text-xs font-sans font-medium uppercase tracking-widest block mb-6 bg-gradient-to-r from-brand-purple to-[#a855f7] bg-clip-text text-transparent">
                                 KDO JSME?
                             </span>
                             <h2 className="text-4xl md:text-5xl lg:text-7xl font-sans font-medium text-white leading-[1.1] tracking-tight text-balance mb-8">
-                                Partner pro digitální růst a AI.
+                                Partner pro digitální <span className="text-[#a855f7]">růst a AI.</span>
                             </h2>
                             <p className="text-gray-400 text-lg leading-relaxed max-w-md">
                                 <span className="text-white">Měníme pravidla hry.</span> Stavíme na moderních technologiích a využíváme sílu AI k tvorbě řešení, která promění vaše výzvy v konkurenční výhodu.
@@ -88,7 +88,7 @@ export const AboutSection = () => {
                             <div className="relative w-full h-full bg-white/5 border border-white/10 rounded-[2.5rem] p-8 md:p-12 overflow-hidden flex flex-col justify-between group hover:bg-white/10 transition-colors duration-500">
                                 
                                 {/* Background Number */}
-                                <span className="absolute top-6 right-8 text-8xl md:text-[10rem] font-oldschool font-bold text-white/5 select-none pointer-events-none transition-colors duration-300">
+                                <span className="absolute bottom-8 right-8 md:bottom-12 md:right-12 text-6xl md:text-[8rem] font-oldschool font-bold text-white/5 select-none pointer-events-none transition-colors duration-300">
                                     {card.id}
                                 </span>
 

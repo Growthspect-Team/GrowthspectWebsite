@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, Loader2 } from 'lucide-react';
+import { Bot, Loader2, ArrowRight } from 'lucide-react';
 import { Section, Container, FadeIn, Heading, Text, Button } from '../UI';
 import { useLanguage } from '../LanguageContext';
 
@@ -67,11 +67,21 @@ export const CTA = () => {
                   <input type="email" name="email" placeholder={t('cta.form.email')} className="bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
                 </div>
                 <textarea rows={3} name="description" placeholder={t('cta.form.description')} className="w-full bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
-                <Button variant="primary" disabled={loading}>
+                <Button 
+                    disabled={loading}
+                    className="group bg-[linear-gradient(90deg,#8825ed,#ae1fed)] hover:opacity-90 text-white rounded-full px-8 py-4 font-semibold text-lg w-full flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)] border-none tracking-normal overflow-hidden mt-2 cursor-pointer"
+                    variant="primary"
+                >
                   {loading ? (
-                    <span className="w-full flex items-center justify-center gap-2"><Loader2 className="w-4 h-4 animate-spin" /> Odesílám...</span>
+                    <span className="flex items-center justify-center gap-2"><Loader2 className="w-4 h-4 animate-spin" /> Odesílám...</span>
                   ) : (
-                    <span className="w-full block text-center">{t('cta.form.submit')}</span>
+                    <>
+                    <span className="relative z-10">{t('cta.form.submit')}</span>
+                     <div className="relative w-4 h-4 ml-1 overflow-hidden">
+                        <ArrowRight className="absolute inset-0 w-full h-full transition-transform duration-300 group-hover:translate-x-[150%]" />
+                         <ArrowRight className="absolute inset-0 w-full h-full -translate-x-[150%] transition-transform duration-300 group-hover:translate-x-0" />
+                    </div>
+                    </>
                   )}
                 </Button>
               </motion.form>

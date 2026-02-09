@@ -6,7 +6,7 @@ import { AnimatePresence } from 'framer-motion';
 import { NewHero as Hero } from "./components/ui/new-hero";
 import { ProjectShowcase, projects } from "./components/ui/project-showcase";
 import { Momentum } from "./components/home/Momentum";
-import { ServicesScroll } from "./components/home/ServicesScroll";
+import { ServicesCleevio } from "./components/home/ServicesCleevio";
 import { WhyUs } from "./components/home/WhyUs";
 import { AboutSection } from "./components/home/AboutSection";
 import { Insights } from "./components/home/Insights";
@@ -158,7 +158,7 @@ export default function App() {
                                 <AboutSection />
                         <Momentum />
                         <section id="services">
-                            <ServicesScroll onSelectService={(id) => navigate(`/services/${id}`)} />
+                            <ServicesCleevio onSelectService={(id) => navigate(`/services/${id}`)} />
                         </section>
                         <section id="projects">
                             <ProjectShowcase onProjectSelect={(p) => navigate(`/projects/${encodeURIComponent(p.title)}`)} />

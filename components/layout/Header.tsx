@@ -16,13 +16,35 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVideoSection, setIsVideoSection] = useState(false);
   const { t } = useLanguage();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 50 && !isScrolled) {
-      setIsScrolled(true);
-    } else if (latest <= 50 && isScrolled) {
-      setIsScrolled(false);
+    // Basic scroll detection
+    const isScrolledDown = latest > 50;
+    
+    // Check if we are in the video section
+    const videoSection = document.getElementById('video-scroll-section');
+    let inVideo = false;
+    
+    if (videoSection) {
+        const rect = videoSection.getBoundingClientRect();
+        // If the section is covering most of the screen or we are inside it
+        // rect.top <= 0 means we scrolled past the start
+        // rect.bottom > 0 means we haven't scrolled past the end
+        // Adjust logic: We want transparent header specifically when the video is "active"
+        // The sticky container is h-screen. 
+        if (rect.top <= 100 && rect.bottom >= 100) {
+            inVideo = true;
+        }
+    }
+
+    if (inVideo !== isVideoSection) {
+        setIsVideoSection(inVideo);
+    }
+
+    if (isScrolledDown !== isScrolled) {
+      setIsScrolled(isScrolledDown);
     }
   });
 
@@ -38,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
       onNavigate('careers');
     } else if (itemLabel === 'Projekty') {
       onNavigate('projects'); // Need to handle this in App
-    } else if (itemLabel === 'Domov') {
+    } else if (itemLabel === 'Domů') {
         onNavigate('home');
     } else {
          // Fallback for anchors
@@ -69,9 +91,13 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
 
   return (
     <motion.header
+      initial={{ y: 0 }}
+      animate={{ y: 0 }}
       className={cn(
         "fixed z-50 transition-all duration-300 w-full flex justify-center",
-        isScrolled
+        // Pokud jsme ve video sekci, chceme transparentní pozadí (isVideoSection override)
+        // Jinak standardní logika podle isScrolled
+        (isScrolled && !isVideoSection)
           ? "top-0 bg-[#0B0B0C]/85 backdrop-blur-md border-b border-white/5 py-3 md:py-4"
           : "top-0 bg-transparent py-4 md:py-6"
       )}
@@ -99,7 +125,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
                              (item.label === 'Blog' && activePage === 'blog') ||
                              (item.label === 'Scalex' && activePage === 'scalex') ||
                              (item.label === 'Projekty' && activePage === 'projects') ||
-                             ((item.label === 'Domov' || item.id === 'home') && activePage === 'home');
+                             ((item.label === 'Domů' || item.id === 'home') && activePage === 'home');
 
             return (
               <a
@@ -133,7 +159,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
              <div className="hidden md:block">
                 <Button 
                     onClick={(e: any) => handleMenuAction('contact')} 
-                    className="group bg-gradient-to-r from-brand-purple to-[#a855f7] hover:opacity-90 text-white rounded-full px-5 py-2.5 font-semibold text-sm flex items-center gap-2 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)] border-none !normal-case tracking-normal overflow-hidden"
+                    className="group bg-[linear-gradient(90deg,#8825ed,#ae1fed)] hover:opacity-90 text-white rounded-full px-5 py-2.5 font-semibold text-sm flex items-center gap-2 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)] border-none !normal-case tracking-normal overflow-hidden cursor-pointer"
                     variant="primary"
                 >
                     <span className="relative z-10">{t('nav.inquiry') || "Domluvit mini-audit"}</span>

@@ -1,5 +1,5 @@
 export const NAV_ITEMS = [
-  { label: 'Domov', id: 'home' },
+  { label: 'Domů', id: 'home' },
   { label: 'Služby', id: 'services' },
   { label: 'Projekty', id: 'projects' },
   { label: 'Scalex', id: 'scalex' },

@@ -4,14 +4,19 @@ import { ServiceItem } from '../types';
 export const services: ServiceItem[] = [
   {
     id: 'ai-agents',
-    title: 'Autonomní AI Systémy',
+    title: 'AI Systémy',
     description: 'Vytváříme pokročilé AI agenty, kteří automatizují komplexní kognitivní úlohy. Od zákaznické podpory po analýzu dat – naše řešení pracují 24/7 s precizností a rychlostí, kterou lidský tým nemůže dosáhnout.',
     icon: Bot,
     features: [
+        
+        "Agenti a automatizace",
+        "AI Consulting",
         "Vlastní LLM modely a integrace",
         "Inteligentní RAG systémy",
         "Autonomní rozhodovací procesy",
-        "Multimodální interakce"
+        "Modernizace starších systémů",
+        
+      
     ]
   },
   {

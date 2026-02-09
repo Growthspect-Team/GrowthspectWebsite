@@ -1,5 +1,6 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 type Language = 'cs' | 'en';
 
@@ -18,7 +19,7 @@ const translations = {
         'nav.scalex': 'Scalex',
         'nav.contact': 'Kontakt',
         'nav.inquiry': 'Domluvit mini audit',
-        'hero.title.part1': 'Tvoříme digitální budoucnost.',
+        'hero.title.part1': 'Tvoříme budoucnost.',
         'hero.title.part2': 'Poháněnou AI.',
         'hero.subtitle': 'Propojujeme technologickou preciznost a rychlost umělé inteligence v produkty a řešení s podnikatelským přesahem.',
         'hero.cta.consult': 'Domluvit mini audit',
@@ -99,7 +100,9 @@ const translations = {
         'strategic.editor.note': 'Poznámka',
         'strategic.editor.note.text': 'Nezapomeňte aktualizovat WebSocket protokol...',
         'strategic.status.changed': 'Změněn stav na',
-        'strategic.status.completed': 'Dokončeno'
+        'strategic.status.completed': 'Dokončeno',
+        'services.main_title': 'Naše Služby',
+        'services.main_subtitle': 'Od AI integrací po cloudovou infrastrukturu. Dodáváme komplexní technologická řešení.'
     },
     en: {
         'nav.services': 'Services',
@@ -187,7 +190,9 @@ const translations = {
         'contact.form.message': 'Your message',
         'contact.form.submit': "Let's talk",
         'contact.form.consent': 'By clicking the button you agree to our',
-        'contact.form.privacy': 'Privacy Policy'
+        'contact.form.privacy': 'Privacy Policy',
+        'services.main_title': 'Our Services',
+        'services.main_subtitle': 'From AI integrations to cloud infrastructure. We deliver comprehensive technological solutions.'
     }
 };
 
@@ -225,6 +230,9 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t, isTransitioning, finishTransition }}>
+            <Helmet>
+                <html lang={language} />
+            </Helmet>
             {children}
         </LanguageContext.Provider>
     );

@@ -73,7 +73,7 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4"
                     >
-                        <Button size="lg" className="group relative overflow-hidden h-14 px-8 text-base font-medium tracking-tight transition-all bg-gradient-to-r from-brand-purple to-[#a855f7] hover:opacity-90 text-white border-0 rounded-full shadow-[0_0_20px_rgba(136,37,237,0.4)]">
+                        <Button size="lg" className="group relative overflow-hidden h-14 px-8 text-base font-medium tracking-tight transition-all bg-[linear-gradient(90deg,#8825ed,#ae1fed)] hover:opacity-90 text-white border-0 rounded-full shadow-[0_0_20px_rgba(136,37,237,0.4)]">
                             <span className="relative z-10 flex items-center">
                                 {t('hero.cta.consult')} 
                                 <div className="relative w-5 h-5 ml-2 overflow-hidden">

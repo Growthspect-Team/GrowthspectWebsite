@@ -93,7 +93,7 @@ export function ProjectShowcase({ onProjectSelect }: ProjectShowcaseProps) {
         
         {/* Header Section */}
         <div className="mb-24">
-          <span className="text-xs font-sans font-medium uppercase tracking-widest block mb-6 text-brand-purple">
+          <span className="text-xs font-sans font-medium uppercase tracking-widest block mb-6 bg-gradient-to-r from-brand-purple to-[#a855f7] bg-clip-text text-transparent">
             {t('projects.title')}
           </span>
           <h2 className="text-4xl md:text-6xl font-sans font-bold text-white tracking-tight mb-8">
