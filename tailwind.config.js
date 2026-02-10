@@ -10,6 +10,8 @@ export default {
     extend: {
       colors: {
         "brand-purple": "#8825ed",
+        "brand-cyan": "#0ea5e9",
+        "brand-cyanDim": "rgba(14, 165, 233, 0.1)",
         "brand-black": "#000000",
         "brand-dark": "#0B0B0C",
         "brand-gray": "#1A1A1C",

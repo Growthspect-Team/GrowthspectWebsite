@@ -23,7 +23,7 @@ export const LoadingScreen: React.FC<{ onFinished: () => void; isFast?: boolean 
     >
         {/* Ambient Background Glow */}
         <motion.div 
-            className="absolute w-[500px] h-[500px] bg-brand-purple/10 blur-[120px] rounded-full pointer-events-none"
+            className="absolute w-[500px] h-[500px] bg-brand-purple/10 blur-[120px] rounded-full pointer-events-none will-change-[opacity,transform]"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0.3, 0.5, 0.3], scale: [0.8, 1.1, 0.8] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -35,13 +35,19 @@ export const LoadingScreen: React.FC<{ onFinished: () => void; isFast?: boolean 
                 initial={{ opacity: 0, scale: 0.95, filter: "blur(12px)" }}
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                 transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }} 
-                className="relative w-64 md:w-80 h-auto px-4"
+                className="relative w-64 md:w-80 h-auto px-4 will-change-[opacity,transform,filter]"
             >
-                <img src={logo} alt="GrowthSpect" className="w-full h-full object-contain" />
+                <img 
+                    src={logo}  
+                    alt="GrowthSpect" 
+                    width={320}
+                    height={80}
+                    className="w-full h-full object-contain" 
+                />
                 
                 {/* Shimmer Effect */}
                 <motion.div
-                    className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12"
+                    className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 will-change-[transform,opacity]"
                     initial={{ x: '-150%', opacity: 0 }}
                     animate={{ x: '150%', opacity: 1 }}
                     transition={{ 

@@ -12,6 +12,88 @@ interface ScalexPageProps {
   onBack: () => void;
 }
 
+const TargetAudienceCard = ({ item, index }: { item: any, index: number }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  // Scale up as it enters, but stay full size (don't shrink when leaving)
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.8, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [0.6, 1]);
+
+  return (
+    <motion.div 
+      ref={ref}
+      style={{ 
+        scale, 
+        opacity,
+        top: `calc(10% + ${index * 20}px)` // Stacking effect
+      }} 
+      className="sticky w-full mx-auto min-h-[45vh] flex-shrink-0 rounded-[2.5rem] overflow-hidden border border-white/5 bg-brand-black/90 backdrop-blur-sm group hover:border-sky-400/30 transition-all duration-500 z-10"
+    >
+      {/* Subtle cyan-purple glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 to-brand-purple/5 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
+      
+      {/* Background Icon */}
+      <div className="absolute -top-10 -right-10 p-12 opacity-[0.02] group-hover:opacity-[0.05] transition-opacity duration-700 text-white">
+          <item.icon className="w-96 h-96" />
+      </div>
+      
+      <div className="relative h-full p-8 md:p-14 flex flex-col justify-center items-center text-center">
+          <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-sky-400/50 group-hover:text-sky-400 transition-colors duration-300">
+              <item.icon className="w-8 h-8 text-white group-hover:text-sky-400 transition-colors duration-300" />
+          </div>
+          <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">{item.title}</h3>
+          <p className="text-lg md:text-2xl text-gray-400 leading-relaxed font-light max-w-6xl">
+              {item.text}
+          </p>
+      </div>
+    </motion.div>
+  );
+};
+
+const TargetAudienceSection = () => {
+  const items = [
+    {
+      title: "Scale-ups & Enterprises",
+      text: "Pro firmy, které už AI automatizaci mají, ale nemají kapacitu ji řešit interně.",
+      icon: Users,
+      color: "from-blue-500 to-cyan-400"
+    },
+    {
+      title: "Stability First Teams", 
+      text: "Pro týmy, které chtějí stabilní systém, ne jednorázové řešení.",
+      icon: ShieldCheck,
+      color: "from-sky-400 to-brand-purple"
+    },
+    {
+      title: "Growth Leaders",
+      text: "Pro podniky, které berou škálování vážně a potřebují robustní infrastrukturu.",
+      icon: TrendingUp,
+      color: "from-amber-400 to-orange-500"
+    }
+  ];
+
+  return (
+    <section className="bg-brand-black py-32 px-4 md:px-8 relative">
+            <div className="mb-32 text-center">
+                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Pro koho je Scalex</h2>
+                 <p className="text-lg text-white/50 max-w-2xl mx-auto">
+                    Naše řešení není pro každého. Zaměřujeme se na ty, kteří to myslí vážně.
+                 </p>
+            </div>
+            
+            <div className="flex flex-col gap-12 sm:gap-24 w-full max-w-6xl mx-auto pb-32">
+                {items.map((item, idx) => (
+                    <TargetAudienceCard key={idx} item={item} index={idx} />
+                ))}
+            </div>
+    </section>
+  );
+};
+
 export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
   useLenis();
 
@@ -316,47 +398,8 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
         </motion.div>
         <Container>
 
-        {/* Target Audience */}
-        <Section className="mb-20 py-16" noPadding>
-          <FadeIn delay={0.3}>
-            <div>
-              <h2 className="text-4xl font-bold mb-12">Pro koho je Scalex</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[
-                  {
-                    text: "Pro firmy, které už AI automatizaci mají, ale nemají kapacitu ji řešit interně",
-                    icon: Users
-                  },
-                  {
-                    text: "Pro týmy, které chtějí stabilní systém, ne jednorázové řešení",
-                    icon: ShieldCheck
-                  },
-                  {
-                    text: "Pro podniky, které berou škálování vážně",
-                    icon: TrendingUp
-                  }
-                ].map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    whileHover={{ y: -5 }}
-                    className="group relative p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-brand-purple/50 transition-colors duration-300 overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    <div className="relative z-10">
-                      <div className="w-12 h-12 rounded-2xl bg-brand-purple/20 flex items-center justify-center mb-6 text-brand-purple group-hover:scale-110 group-hover:bg-brand-purple group-hover:text-white transition-all duration-300">
-                        <item.icon className="w-6 h-6" />
-                      </div>
-                      <p className="text-lg font-medium text-white/90 leading-relaxed">
-                        {item.text}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-        </Section>
+        {/* Target Audience - Horizontal Scroll */}
+        <TargetAudienceSection />
 
         {/* Why Scalex (Bento Grid) */}
         <Section>

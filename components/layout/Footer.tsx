@@ -84,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                                 e.preventDefault();
                                 if (onNavigate) onNavigate('contact');
                             }}
-                            className="group flex items-center gap-3 bg-[linear-gradient(90deg,#8825ed,#ae1fed)] hover:opacity-90 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-medium transition-all duration-300 shadow-[0_0_20px_rgba(136,37,237,0.3)] hover:shadow-[0_0_30px_rgba(136,37,237,0.5)] w-fit"
+                            className="group flex items-center gap-3 bg-[linear-gradient(90deg,#0ea5e9,#8825ed,#ae1fed)] hover:opacity-90 text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-lg md:text-xl font-medium transition-all duration-300 shadow-[0_0_20px_rgba(14,165,233,0.3),0_0_30px_rgba(136,37,237,0.3)] hover:shadow-[0_0_30px_rgba(14,165,233,0.5),0_0_40px_rgba(136,37,237,0.5)] w-fit"
                         >
                             Pojďme začít
                             <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -147,8 +147,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
                              {/* Social Icons moved here */}
                              <div className="flex gap-4 mt-4">
-                                 <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-2 bg-white/5 rounded-full hover:bg-brand-purple hover:text-white transition-colors duration-300"><Linkedin size={18}/></a>
-                                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-2 bg-white/5 rounded-full hover:bg-brand-purple hover:text-white transition-colors duration-300"><Instagram size={18}/></a>
+                                 <a href="https://www.linkedin.com/in/growthspect-%E2%80%8E-046b74355/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-2 bg-white/5 rounded-full hover:bg-brand-purple hover:text-white transition-colors duration-300"><Linkedin size={18}/></a>
+                                 <a href="https://instagram.com/growthspect" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-2 bg-white/5 rounded-full hover:bg-brand-purple hover:text-white transition-colors duration-300"><Instagram size={18}/></a>
                                  <a href="https://clutch.co/profile/growthspect" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-2 bg-white/5 rounded-full hover:bg-brand-purple hover:text-white transition-colors duration-300">
                                     <svg width="63" height="18" viewBox="0 0 84 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clipPath="url(#clip0_2320_51751)">

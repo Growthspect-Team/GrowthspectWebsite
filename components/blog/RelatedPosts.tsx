@@ -123,14 +123,14 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = ({
                                 >
                                     {/* Image */}
                                     <div className="relative aspect-[16/10] overflow-hidden">
-                                        <div className="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10" />
+                                        <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-brand-purple/20 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10" />
                                         <img
                                             src={post.image}
                                             alt={post.title}
                                             className="w-full h-full object-cover transition-transform duration-500 ease-out transform scale-[1.05] group-hover:-translate-y-2 will-change-transform"
                                         />
                                         <div className="absolute top-4 left-4">
-                                            <span className="px-3 py-1 bg-brand-purple/20 backdrop-blur-md border border-brand-purple/30 rounded-full text-xs font-mono text-brand-purple uppercase tracking-wider shadow-[0_0_10px_rgba(139,92,246,0.15)]">
+                                            <span className="px-3 py-1 bg-black/50 backdrop-blur-md border border-white/20 rounded-full text-xs font-mono text-sky-400 uppercase tracking-wider shadow-lg group-hover:border-sky-400/50 group-hover:bg-black/70 transition-all duration-300">
                                                 {post.category}
                                             </span>
                                         </div>

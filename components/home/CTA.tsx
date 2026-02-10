@@ -69,7 +69,7 @@ export const CTA = () => {
                 <textarea rows={3} name="description" placeholder={t('cta.form.description')} className="w-full bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
                 <Button 
                     disabled={loading}
-                    className="group bg-[linear-gradient(90deg,#8825ed,#ae1fed)] hover:opacity-90 text-white rounded-full px-8 py-4 font-semibold text-lg w-full flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)] border-none tracking-normal overflow-hidden mt-2 cursor-pointer"
+                    className="group bg-[linear-gradient(90deg,#0ea5e9,#8825ed,#ae1fed)] hover:opacity-90 text-white rounded-full px-8 py-4 font-semibold text-lg w-full flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_0_15px_rgba(14,165,233,0.3),0_0_25px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(14,165,233,0.5),0_0_35px_rgba(124,58,237,0.5)] border-none tracking-normal overflow-hidden mt-2 cursor-pointer"
                     variant="primary"
                 >
                   {loading ? (

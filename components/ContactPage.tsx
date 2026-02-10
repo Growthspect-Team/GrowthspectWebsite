@@ -69,8 +69,8 @@ export const ContactPage: React.FC = () => {
       }} />
 
       {/* Decorative background elements */}
-      <div className="absolute top-40 left-10 w-64 h-64 bg-brand-purple/20 rounded-full blur-[100px]" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px]" />
+      <div className="absolute top-40 left-10 w-64 h-64 bg-sky-500/15 rounded-full blur-[100px]" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand-purple/20 rounded-full blur-[100px]" />
       
       <div className="max-w-7xl mx-auto relative z-10">
         
@@ -86,7 +86,7 @@ export const ContactPage: React.FC = () => {
              
              <button 
                 onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group inline-flex items-center justify-center w-16 h-16 md:w-24 md:h-24 bg-[linear-gradient(90deg,#8825ed,#ae1fed)] rounded-full ml-4 align-middle transform rotate-45 hover:scale-110 transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(136,37,237,0.3)] hover:shadow-[0_0_25px_rgba(136,37,237,0.6)]"
+                className="group inline-flex items-center justify-center w-16 h-16 md:w-24 md:h-24 bg-[linear-gradient(90deg,#0ea5e9,#8825ed,#ae1fed)] rounded-full ml-4 align-middle transform rotate-45 hover:scale-110 transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(14,165,233,0.3),0_0_25px_rgba(136,37,237,0.3)] hover:shadow-[0_0_25px_rgba(14,165,233,0.5),0_0_35px_rgba(136,37,237,0.5)]"
              >
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white w-8 h-8 md:w-12 md:h-12 transition-transform duration-300 group-hover:rotate-12">
                    <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -133,7 +133,7 @@ export const ContactPage: React.FC = () => {
           
           <div className="relative w-32 h-32 hidden lg:block mt-12">
              {/* Abstract arrow decoration calling back to original design */}
-             <div className="absolute top-0 left-0  text-brand-purple transform -rotate-12 opacity-80">
+             <div className="absolute top-0 left-0 text-sky-400 transform -rotate-12 opacity-80">
                 <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 50 C 30 20, 70 20, 90 50" stroke="currentColor" strokeWidth="2" strokeDasharray="5,5" />
                     <path d="M90 50 L 80 40 M 90 50 L 80 60" stroke="currentColor" strokeWidth="2" />
@@ -159,7 +159,7 @@ export const ContactPage: React.FC = () => {
               exit={{ opacity: 0, scale: 0.95 }}
               className="flex flex-col items-center justify-center text-center py-16 px-8"
             >
-              <div className="w-20 h-20 rounded-full bg-[linear-gradient(135deg,#8825ed,#ae1fed)] flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(136,37,237,0.4)]">
+              <div className="w-20 h-20 rounded-full bg-[linear-gradient(135deg,#0ea5e9,#8825ed,#ae1fed)] flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(14,165,233,0.3),0_0_50px_rgba(136,37,237,0.4)]">
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-3xl font-bold text-white mb-3 tracking-tight">Zpráva odeslána!</h3>

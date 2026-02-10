@@ -92,7 +92,7 @@ export const ServicesAccordion = ({ onSelectService }: { onSelectService: (id: s
                     </span>
                     <span className={cn(
                         "p-2 rounded-full border transition-all duration-300",
-                        isActive ? "border-brand-purple text-brand-purple rotate-45" : "border-white/10 text-gray-500 group-hover:border-white/30"
+                        isActive ? "border-sky-400 text-sky-400 rotate-45" : "border-white/10 text-gray-500 group-hover:border-white/30"
                     )}>
                         <Plus className="w-6 h-6" />
                     </span>
@@ -110,7 +110,7 @@ export const ServicesAccordion = ({ onSelectService }: { onSelectService: (id: s
                       <div className="pb-12 md:pb-16 pt-2 flex flex-col md:flex-row gap-8 md:gap-20">
                          {/* Icon section */}
                          <div className="md:w-1/3">
-                            <div className="w-16 h-16 rounded-2xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple mb-6">
+                            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-500/10 to-brand-purple/10 border border-sky-400/20 flex items-center justify-center text-sky-400 mb-6">
                                 <service.icon className="w-8 h-8" />
                             </div>
                             <p className="text-gray-400 leading-relaxed text-sm md:text-lg mb-8">
@@ -119,7 +119,7 @@ export const ServicesAccordion = ({ onSelectService }: { onSelectService: (id: s
                             
                             <button 
                                 onClick={() => onSelectService(service.id)}
-                                className="flex items-center gap-2 text-white bg-brand-purple/10 hover:bg-brand-purple hover:text-white border border-brand-purple/20 hover:border-brand-purple px-6 py-3 rounded-full transition-all duration-300 text-sm font-medium tracking-wide group/btn w-fit"
+                                className="flex items-center gap-2 text-white bg-gradient-to-r from-sky-500/10 to-brand-purple/10 hover:from-sky-500 hover:to-brand-purple hover:text-white border border-sky-400/20 hover:border-transparent px-6 py-3 rounded-full transition-all duration-300 text-sm font-medium tracking-wide group/btn w-fit"
                             >
                                 Prozkoumat službu <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                             </button>
@@ -139,7 +139,7 @@ export const ServicesAccordion = ({ onSelectService }: { onSelectService: (id: s
                                         transition={{ delay: i * 0.1 }}
                                         className="text-lg md:text-xl text-gray-300 flex items-center gap-4 hover:text-white transition-colors"
                                     >
-                                        <span className="w-2 h-2 rounded-full bg-brand-purple/50 md:mt-1" />
+                                        <span className="w-2 h-2 rounded-full bg-gradient-to-r from-sky-400 to-brand-purple md:mt-1" />
                                         {feature}
                                     </motion.li>
                                 ))}

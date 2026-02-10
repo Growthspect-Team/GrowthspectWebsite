@@ -34,11 +34,30 @@ import { blogPosts } from "./lib/data";
 import { ScrollToTop } from './components/ScrollToTop';
 import { SEO } from './components/SEO';
 
+// Analytics
+import { analytics, useAnalytics, useScrollDepthTracker } from './lib/analytics';
+
+// Initialize analytics on app load
+analytics.init({
+    debug: import.meta.env.DEV,
+    // Add your Google Analytics ID here:
+    // googleAnalyticsId: 'G-XXXXXXXXXX',
+    // Add your Hotjar ID here for heatmaps:
+    // hotjarId: 'XXXXXXX',
+});
+
 // Wrappers
 const ProjectDetailWrapper = () => {
     const { title } = useParams();
     const navigate = useNavigate();
     const project = projects.find(p => p.title === decodeURIComponent(title || ''));
+
+    // Track project view
+    useEffect(() => {
+        if (project) {
+            analytics.trackProjectView(project.title);
+        }
+    }, [project]);
 
     if (!project) return <Navigate to="/" replace />;
     
@@ -95,6 +114,10 @@ const AdminLoader = () => {
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isFastLoad, setIsFastLoad] = useState(false);
+
+  // Analytics tracking
+  useAnalytics(); // Tracks page views on route changes
+  useScrollDepthTracker(); // Tracks scroll depth
 
   useEffect(() => {
     const hasVisited = sessionStorage.getItem('hasVisited');
@@ -157,7 +180,7 @@ export default function App() {
                 <Header onNavigate={handleNavigate} activePage={activePage} />
                 
                 <main>
-                  <React.Suspense fallback={<div className="h-screen w-full flex items-center justify-center bg-brand-black text-white/50 font-mono">Loading...</div>}>
+                  <React.Suspense fallback={<div className="h-screen w-full bg-brand-black" />}>
                     <Routes>
                         <Route path="/" element={
                             <>

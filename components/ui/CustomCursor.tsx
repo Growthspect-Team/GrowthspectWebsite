@@ -25,12 +25,12 @@ export const CustomCursor: React.FC = () => {
              <div className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2">
                 <div 
                     className={`
-                        flex items-center justify-center backdrop-blur-md bg-[linear-gradient(90deg,#8825ed,#ae1fed)]
+                        flex items-center justify-center backdrop-blur-md bg-[linear-gradient(90deg,#0ea5e9,#8825ed,#ae1fed)]
                         transition-[transform,opacity,background-color,border-color,box-shadow,width,height,padding,border-radius] duration-300 ease-out origin-center
                         ${cursorText 
-                            ? 'bg-brand-purple text-white scale-100 opacity-100 px-4 py-2 rounded-full shadow-lg' 
+                            ? 'bg-transparent text-white scale-100 opacity-100 px-4 py-2 rounded-full shadow-[0_0_15px_rgba(14,165,233,0.3),0_0_25px_rgba(136,37,237,0.3)]' 
                             : isHovering
-                                ? 'bg-brand-purple/90 text-white scale-100 opacity-100 border border-white/20 shadow-2xl w-24 h-24 rounded-full'
+                                ? 'bg-transparent text-white scale-100 opacity-90 border border-white/20 shadow-[0_0_25px_rgba(14,165,233,0.2),0_0_40px_rgba(136,37,237,0.2)] w-24 h-24 rounded-full'
                                 : 'bg-transparent scale-0 opacity-0 border-transparent shadow-none w-24 h-24 rounded-full'}
                     `}
                 >

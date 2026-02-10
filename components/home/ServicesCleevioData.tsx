@@ -1,6 +1,10 @@
 
 import React from 'react';
 import { serviceIcons } from './service-icons';
+import AIServiceImg from '../../assets/assets/AIService.png';
+import DesignImg from '../../assets/assets/design.png';
+import EngineeringImg from '../../assets/assets/engineering.png';
+import CloudImg from '../../assets/assets/cloud.png';
 
 export interface ServiceSubSection {
   title: string;
@@ -28,7 +32,7 @@ export const servicesCleevioDataEn: ServiceData[] = [
     step: '1/4',
     title: <>Artificial<br />Intelligence</>,
     description: "We leverage advanced AI and autonomous agents to streamline development, reduce expenses, and build smarter systems. Our approach ensures your business stays agile and innovative in a rapidly evolving digital landscape.",
-    image: "https://cdn.prod.website-files.com/68d84454a60cd6d3de1ce17b/68e1135d44741e06b2d20476_slu%CC%8Ad.avif",
+    image: AIServiceImg,
     features: [
       "Generative AI Consulting",
       "Agents & AI Automation",
@@ -49,7 +53,7 @@ export const servicesCleevioDataEn: ServiceData[] = [
     step: '2/4',
     title: 'Design',
     description: "From initial concept validation to stunning UX/UI, our AI-enhanced process reveals your product's true potential and accelerates its journey to market.",
-    image: "https://cdn.prod.website-files.com/68d84454a60cd6d3de1ce17b/68e117d84c9b7703e51fea8a_dskl.avif",
+    image: DesignImg,
     features: [
       "Product Discovery",
       "MVP Design",
@@ -78,7 +82,7 @@ export const servicesCleevioDataEn: ServiceData[] = [
     step: '3/4',
     title: 'Engineering',
     description: "Our expert full-stack team crafts high-performance native and hybrid apps, scalable backends, and intuitive frontends. We use AI automation to deliver robust solutions significantly faster without compromising quality.",
-    image: "https://cdn.prod.website-files.com/68d84454a60cd6d3de1ce17b/68e119278d22b6af5afe865b_dslu%CC%8Av.avif",
+    image: EngineeringImg,
     subSections: [
       {
         title: "Native Mobile Apps",
@@ -114,7 +118,7 @@ export const servicesCleevioDataEn: ServiceData[] = [
     step: '4/4',
     title: <>Cloud<br />Technologies</>,
     description: "With extensive experience in cloud consulting, DevOps, and modernization, we provide seamless integration and engineered solutions across major platforms like Google Cloud, Azure, and AWS.",
-    image: "https://cdn.prod.website-files.com/68d84454a60cd6d3de1ce17b/68e119106e340a7e2ea72f74_sdnkj.avif",
+    image: CloudImg,
     features: [
       "Cloud Consulting",
       "Cloud Engineering",
@@ -142,7 +146,7 @@ export const servicesCleevioDataCs: ServiceData[] = [
     step: '1/4',
     title: <>Umělá<br />Inteligence</>,
     description: "Využíváme pokročilou AI a autonomní agenty pro zefektivnění vývoje, snížení nákladů a tvorbu chytrých systémů. Náš přístup zajišťuje, že vaše podnikání zůstane agilní a inovativní v rychle se vyvíjejícím digitálním světě.",
-    image: "https://cdn.prod.website-files.com/68d84454a60cd6d3de1ce17b/68e1135d44741e06b2d20476_slu%CC%8Ad.avif",
+    image: AIServiceImg,
     features: [
       "Konzultace Generativní AI",
       "Agenti a AI Automatizace",
@@ -163,7 +167,7 @@ export const servicesCleevioDataCs: ServiceData[] = [
     step: '2/4',
     title: 'Design',
     description: "Od prvotní validace konceptu po ohromující UX/UI, náš proces vylepšený o AI odhaluje skutečný potenciál vašeho produktu a urychluje jeho vstup na trh.",
-    image: "https://cdn.prod.website-files.com/68d84454a60cd6d3de1ce17b/68e117d84c9b7703e51fea8a_dskl.avif",
+    image: DesignImg,
     features: [
       "Product Discovery",
       "MVP Design",
@@ -192,7 +196,7 @@ export const servicesCleevioDataCs: ServiceData[] = [
     step: '3/4',
     title: 'Engineering',
     description: "Náš expertní full-stack tým tvoří výkonné nativní i hybridní aplikace, škálovatelné backendy a intuitivní frontendy. Využíváme AI automatizaci pro dodání robustních řešení výrazně rychleji, bez kompromisů v kvalitě.",
-    image: "https://cdn.prod.website-files.com/68d84454a60cd6d3de1ce17b/68e119278d22b6af5afe865b_dslu%CC%8Av.avif",
+    image: EngineeringImg,
     subSections: [
       {
         title: "Nativní mobilní aplikace",
@@ -228,7 +232,7 @@ export const servicesCleevioDataCs: ServiceData[] = [
     step: '4/4',
     title: <>Cloudové<br />Technologie</>,
     description: "S bohatými zkušenostmi v oblasti cloudového poradenství, DevOps a modernizace poskytujeme bezproblémovou integraci a technická řešení napříč hlavními platformami jako Google Cloud, Azure a AWS.",
-    image: "https://cdn.prod.website-files.com/68d84454a60cd6d3de1ce17b/68e119106e340a7e2ea72f74_sdnkj.avif",
+    image: CloudImg,
     features: [
       "Cloudové poradenství",
       "Cloud Engineering",

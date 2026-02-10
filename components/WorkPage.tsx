@@ -14,7 +14,7 @@ const WorkHero = () => {
     const { language } = useLanguage();
     
     return (
-        <section className="relative w-full py-20 lg:py-32 px-4 md:px-8 bg-background overflow-hidden">
+        <section className="relative w-full pt-32 lg:pt-52 pb-20 lg:pb-32 px-4 md:px-8 bg-background overflow-hidden">
              {/* Vertical Text - Hidden on mobile */}
             
 
@@ -22,20 +22,19 @@ const WorkHero = () => {
              <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="grid lg:grid-cols-2 gap-12 items-start">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <div className="inline-flex items-center gap-2 mb-6">
-                            <span className="w-2 h-2 rounded-full bg-brand-purple animate-pulse"></span>
+                        <div className="inline-flex items-center mb-10">
                             <span className="text-sm font-medium text-brand-purple uppercase tracking-widest">
                                 {language === 'cs' ? 'Selected Work' : 'Selected Work'}
                             </span>
                         </div>
                         
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 leading-[1.1]">
+                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-12 leading-[1.1]">
                             {language === 'cs' ? (
                                 <>
                                     Produkty, <br />
@@ -53,23 +52,23 @@ const WorkHero = () => {
                             )}
                         </h1>
 
-                        <p className="text-lg text-muted-foreground mb-8 max-w-xl leading-relaxed">
+                        <p className="text-[22px] text-muted-foreground mb-8 max-w-xl leading-relaxed">
                             {language === 'cs' 
                                 ? "Nejsme jen vývojáři, jsme architekti vašeho růstu. Propojujeme moderní technologie a umělou inteligenci tak, abychom doručili řešení, která skutečně fungují a generují zisk."
                                 : "We aren't just developers, we are architects of your growth. We bridge modern technology and AI to deliver solutions that actually work and generate measurable profit."}
                         </p>
 
                         <div className="flex items-center gap-4">
-                            <Link to="/contact" className="relative group">
+                            <div className="relative group">
                                 <div className="absolute -inset-1 bg-gradient-to-r from-sky-500 via-purple-500 to-pink-500 bg-[length:200%_auto] animate-water-flow rounded-full blur-md opacity-50 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
-                                <Button size="lg" className="relative rounded-full px-8 bg-black hover:bg-black text-white border border-white/10 shadow-2xl overflow-hidden">
+                                <Button onClick={() => document.querySelector('#work-projects')?.scrollIntoView({ behavior: 'smooth' })} size="lg" className="relative rounded-full px-8 bg-black hover:bg-black text-white border border-white/10 shadow-2xl overflow-hidden">
                                      <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     <span className="relative z-10 flex items-center">
-                                        {language === 'cs' ? 'Pojďme to probrat' : 'Let\'s Discuss'}
+                                        {language === 'cs' ? 'Objevit úspěšné projekty' : 'Discover More'}
                                         <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                                     </span>
                                 </Button>
-                            </Link>
+                            </div>
                         </div>
                     </motion.div>
                     
@@ -111,7 +110,12 @@ const WorkHero = () => {
     );
 };
 
-const WorkCard = ({ project, index }: { project: Project, index: number }) => {
+interface WorkCardProps {
+    project: Project;
+    index: number;
+}
+
+const WorkCard: React.FC<WorkCardProps> = ({ project, index }) => {
     const { setCursorText } = useCursor();
     return (
         <motion.div
@@ -181,6 +185,8 @@ const WorkCard = ({ project, index }: { project: Project, index: number }) => {
     );
 };
 
+import { Insights } from './home/Insights';
+
 export const WorkPage = () => {
     const { language } = useLanguage();
 
@@ -188,13 +194,15 @@ export const WorkPage = () => {
         <main className="min-h-screen bg-background">
             <WorkHero />
             
-            <section className="px-4 md:px-8 pb-32">
+            <section id="work-projects" className="px-4 md:px-8 pb-32">
                 <div className="max-w-7xl mx-auto space-y-16 md:space-y-24">
                     {projects.map((project, index) => (
                         <WorkCard key={index} project={project} index={index} />
                     ))}
                 </div>
             </section>
+            
+            <Insights onNavigate={() => window.location.href = '/blog'} />
         </main>
     );
 };

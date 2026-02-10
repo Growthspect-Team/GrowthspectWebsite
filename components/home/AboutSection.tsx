@@ -71,7 +71,7 @@ export const AboutSection = () => {
                                 KDO JSME?
                             </span>
                             <h2 className="text-4xl md:text-5xl lg:text-7xl font-sans font-medium text-white leading-[1.1] tracking-tight text-balance mb-8">
-                                Partner pro digitální <span className="text-[#a855f7]">růst a AI.</span>
+                                Partner pro digitální <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-[#a855f7]">růst a AI.</span>
                             </h2>
                             <p className="text-gray-400 text-lg leading-relaxed max-w-md">
                                 <span className="text-white">Měníme pravidla hry.</span> Stavíme na moderních technologiích a využíváme sílu AI k tvorbě řešení, která promění vaše výzvy v konkurenční výhodu.

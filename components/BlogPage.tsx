@@ -42,7 +42,7 @@ const InteractiveHover = ({ children, text, onHover }: { children: React.ReactNo
             onMouseEnter={() => onHover(text)}
             onMouseLeave={() => onHover(null)}
         >
-            <span className="relative z-10 text-white hover:text-[#a855f7] underline decoration-dotted decoration-[#8825ed] underline-offset-8 decoration-4 transition-all duration-300">
+            <span className="relative z-10 text-white hover:text-[#a855f7] underline decoration-dotted decoration-brand-purple underline-offset-8 decoration-4 transition-all duration-300">
                 {children}
             </span>
         </span>
@@ -61,10 +61,10 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
         <FadeIn>
             <div className="mb-6 flex items-center gap-3">
                  <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8825ed] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#8825ed]"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
                   </span>
-                 <span className="text-xs font-mono text-[#8825ed] uppercase tracking-widest font-bold">
+                 <span className="text-xs font-mono text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-brand-purple uppercase tracking-widest font-bold">
                     {featuredLabel}
                  </span>
             </div>
@@ -77,7 +77,7 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
             >
                 {/* Image Section */}
                 <div className="relative h-[300px] lg:h-auto overflow-hidden">
-                    <div className="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-brand-purple/20 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10" />
                     <img 
                         src={post.image} 
                         alt={post.title}
@@ -88,7 +88,7 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
                 {/* Content Section */}
                 <div className="p-8 lg:p-12 flex flex-col justify-center relative">
                     <div className="hidden lg:flex items-center gap-4 mb-6">
-                         <span className="px-3 py-1 bg-[#8825ed]/20 border border-[#8825ed]/30 rounded-full text-xs font-mono text-[#8825ed] uppercase tracking-wider">
+                         <span className="px-3 py-1 bg-gradient-to-r from-sky-500/10 to-brand-purple/10 border border-brand-purple/30 rounded-full text-xs font-mono text-sky-400 uppercase tracking-wider">
                             {post.category}
                          </span>
                          <span className="flex items-center gap-1.5 text-gray-500 text-xs font-oldschool">
@@ -529,7 +529,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                         key={cat}
                                         onClick={() => setSelectedCategory(cat)}
                                         className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${selectedCategory === cat
-                                                ? 'bg-brand-purple text-white border-brand-purple'
+                                                ? 'bg-gradient-to-r from-sky-400 to-brand-purple text-white border-transparent'
                                                 : 'bg-white/5 text-gray-400 border-white/5 hover:bg-white/10 hover:text-white'
                                             }`}
                                     >
@@ -564,14 +564,14 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                 >
                                     {/* Image */}
                                     <div className="relative aspect-[16/10] overflow-hidden">
-                                        <div className="absolute inset-0 bg-brand-purple/20 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10" />
+                                        <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-brand-purple/20 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10" />
                                         <img
                                             src={post.image}
                                             alt={post.title}
                                             className="w-full h-full object-cover transition-transform duration-500 ease-out transform scale-[1.05] group-hover:-translate-y-2 will-change-transform"
                                         />
                                         <div className="absolute top-4 left-4">
-                                            <span className="px-3 py-1 bg-brand-purple/20 backdrop-blur-md border border-brand-purple/30 rounded-full text-xs font-mono text-brand-purple uppercase tracking-wider shadow-[0_0_10px_rgba(139,92,246,0.15)]">
+                                            <span className="px-3 py-1 bg-brand-purple/20 backdrop-blur-md border border-brand-purple/30 rounded-full text-xs font-mono text-sky-300 uppercase tracking-wider shadow-[0_0_10px_rgba(139,92,246,0.15)]">
                                                 {post.category}
                                             </span>
                                         </div>

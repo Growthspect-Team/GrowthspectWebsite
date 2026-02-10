@@ -2,75 +2,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Bot,
-  Workflow,
-  Code2,
-  Server,
-  Database,
   ArrowLeft,
-  ArrowRight,
-  Terminal,
-  Zap,
   X,
   CheckCircle,
   Loader2,
   Send
 } from 'lucide-react';
-import { Container, Section, Heading, Text, Button, FadeIn } from './UI';
+import { Container, Section, Button, FadeIn } from './UI';
 import ParticleBackground from './ParticleBackground';
 import { useLenis } from './SmoothScroll';
+import { ServicesCleevio } from './home/ServicesCleevio';
+import { Insights } from './home/Insights';
 
 interface ServicesPageProps {
   onBack: () => void;
 }
-
-const detailedServices = [
-  {
-    id: 'ai-agents',
-    icon: Bot,
-    title: 'Autonomní AI Agenti',
-    subtitle: 'Intelligent Workforce',
-    description: 'Nejedná se o chatboty, ale o autonomní agenty schopné vykonávat komplexní sekvence úkolů. Využíváme RAG (Retrieval-Augmented Generation) nad vašimi firemními daty pro maximální kontextovou přesnost.',
-    features: ['Custom LLM Fine-tuning', 'Multi-Agent Orchestration', 'Context-aware Memory', 'Self-correcting loops'],
-    tech: ['OpenAI', 'LangChain', 'Pinecone', 'Python']
-  },
-  {
-    id: 'automation',
-    icon: Workflow,
-    title: 'Enterprise Automatizace',
-    subtitle: 'Process Orchestration',
-    description: 'Eliminujeme manuální datové vstupy a rutinní procesy. Stavíme robustní integrační mosty mezi izolovanými systémy (ERP, CRM, Slack, Email) s důrazem na error-handling a auditabilitu.',
-    features: ['End-to-end Workflow Design', 'API Integration Strategy', 'Automated Reporting', 'Event-driven Architecture'],
-    tech: ['n8n', 'Make', 'Kafka', 'Webhooks']
-  },
-  {
-    id: 'software',
-    icon: Code2,
-    title: 'Custom Software',
-    subtitle: 'Mission Critical Apps',
-    description: 'Vývoj interních nástrojů a zákaznických portálů na míru. Zaměřujeme se na výkon, bezpečnost a dlouhodobou udržitelnost kódu. Žádný vendor-lock, čistá architektura.',
-    features: ['Scalable Frontend Architecture', 'Secure Auth & RBAC', 'Real-time Dashboards', 'PWA capabilities'],
-    tech: ['React', 'TypeScript', 'Next.js', 'Tailwind']
-  },
-  {
-    id: 'rust',
-    icon: Server,
-    title: 'Rust Infrastruktura',
-    subtitle: 'High-Performance Backend',
-    description: 'Pro systémy, kde záleží na každé milisekundě. Přepisujeme kritické backendové služby do Rustu pro dosažení maximální propustnosti, paměťové bezpečnosti a minimalizaci nákladů na cloud.',
-    features: ['Memory Safety Guarantee', 'Zero-cost Abstractions', 'Concurrency without Data Races', 'WASM support'],
-    tech: ['Rust', 'Tokio', 'Axum', 'Actix']
-  },
-  {
-    id: 'data',
-    icon: Database,
-    title: 'Datové Platformy',
-    subtitle: 'Unified Intelligence',
-    description: 'Konsolidace dat z roztříštěných zdrojů do jedné "Source of Truth". Navrhujeme moderní datové sklady a pipelines, které krmí vaše AI modely a BI reporty v reálném čase.',
-    features: ['ETL/ELT Pipelines', 'Data Warehousing', 'Data Governance', 'Real-time Analytics'],
-    tech: ['PostgreSQL', 'Snowflake', 'dbt', 'Airflow']
-  }
-];
 
 // --- CONTACT MODAL COMPONENT ---
 
@@ -224,117 +170,11 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onBack }) => {
         <ParticleBackground />
       </div>
 
-      <Section className="relative z-10 pt-24 pb-12">
-        <Container>
-          {/* Header */}
-          <div className="mb-16">
-            <button
-              onClick={onBack}
-              className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 group"
-            >
-              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-              <span className="text-sm font-medium uppercase tracking-wider">Zpět na přehled</span>
-            </button>
 
-            <FadeIn>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-px bg-brand-purple w-12" />
-                <span className="text-brand-purple font-mono uppercase tracking-widest text-sm">Capabilities</span>
-              </div>
-              <Heading level="h1" className="mb-6">Technologické Služby</Heading>
-              <Text className="max-w-3xl text-xl">
-                Nenabízíme krabicová řešení. Stavíme digitální infrastrukturu na míru,
-                která kombinuje sílu moderního AI s nekompromisním výkonem nízkoúrovňových jazyků.
-              </Text>
-            </FadeIn>
-          </div>
 
-          {/* Services List */}
-          <div className="flex flex-col">
-            {detailedServices.map((service, idx) => (
-              <FadeIn key={service.id} delay={idx * 0.1}>
-                {/* Cleevio-style Section: Top Border Separator */}
-                <div className="border-t border-white/10 py-16 lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-                  
-                  {/* Left Column: Description & Sub-services */}
-                  <div className="flex flex-col">
-                    <div className="mb-6">
-                       <span className="text-xs font-mono text-brand-purple uppercase tracking-widest">{service.subtitle}</span>
-                       <h3 className="mt-3 text-4xl md:text-5xl font-display font-bold text-white tracking-tight">{service.title}</h3>
-                    </div>
-                    
-                    <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-xl">
-                      {service.description}
-                    </p>
+      <ServicesCleevio />
 
-                    <div>
-                      <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6 flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-brand-purple rounded-full" />
-                        Co nabízíme
-                      </h4>
-                      <ul className="space-y-4">
-                        {service.features.map((feature, fIdx) => (
-                          <li key={fIdx} className="flex items-center gap-3 group/item">
-                             <ArrowRight className="w-4 h-4 text-gray-600 group-hover/item:text-brand-purple transition-colors" />
-                             <span className="text-gray-300 font-medium group-hover/item:text-white transition-colors">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="mt-10 pt-8">
-                       <button
-                        onClick={() => setIsModalOpen(true)}
-                        className="text-white border-b border-brand-purple pb-0.5 hover:text-brand-purple transition-colors inline-flex items-center gap-2 font-medium"
-                      >
-                        Poptávka řešení <ArrowRight className="w-4 h-4 ml-1" />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Right Column: Tech Stack & Visual */}
-                  <div className="lg:pl-10 flex flex-col justify-between">
-                     {/* Icon / Abstract Visual */}
-                     <div className="mb-12 opacity-50 hidden lg:block">
-                        <service.icon className="w-16 h-16 text-gray-700" strokeWidth={1} />
-                     </div>
-
-                     <div>
-                        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-6 border-b border-white/5 pb-2">
-                          Tech Stack
-                        </h4>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                          {service.tech.map((t, i) => (
-                            <div key={i} className="flex items-center gap-2 p-3 rounded-lg bg-white/[0.03] border border-white/5 hover:bg-white/[0.06] transition-colors">
-                              {/* Placeholder for tech icons if we had them mapped, using generic dot for now */}
-                              <div className="w-1.5 h-1.5 rounded-full bg-gray-500" />
-                              <span className="text-sm text-gray-300 font-mono">{t}</span>
-                            </div>
-                          ))}
-                        </div>
-                     </div>
-                  </div>
-
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-
-          {/* Bottom CTA */}
-          <div className="mt-32 text-center">
-            <FadeIn>
-              <h2 className="text-3xl font-display font-bold text-white mb-6">Nejste si jistí, co potřebujete?</h2>
-              <p className="text-gray-400 mb-8 max-w-xl mx-auto">
-                Navrhneme architekturu přesně pro vaši situaci. Začínáme technickým auditem a návrhem MVP.
-              </p>
-              <Button onClick={() => setIsModalOpen(true)}>
-                Sjednat technický audit
-              </Button>
-            </FadeIn>
-          </div>
-
-        </Container>
-      </Section>
+      <Insights onNavigate={() => window.location.href = '/blog'} />
 
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>

@@ -7,6 +7,7 @@ import { useLanguage } from '../LanguageContext';
 import { LanguageSwitcher } from '../ui/language-switcher';
 import { NavDropdown } from '../ui/nav-dropdown';
 import { NAV_ITEMS } from '../../lib/constants';
+import logo from '../../assets/Branding/Growthspect_AI_white.png';
 
 interface HeaderProps {
   onNavigate: (page: 'home' | 'services' | 'scalex' | 'blog' | 'services' | 'careers') => void;
@@ -110,8 +111,10 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
           onClick={() => onNavigate('home')}
         >
           <img
-            src="https://www.growthspect.com/Growthspect%20AI%20white.png"
+            src={logo}
             alt="Growthspect AI"
+            width={160}
+            height={48}
             className="h-12 md:h-12 object-contain"
           />
         </div>
@@ -159,7 +162,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
              <div className="hidden md:block">
                 <Button 
                     onClick={(e: any) => handleMenuAction('contact')} 
-                    className="group bg-[linear-gradient(90deg,#8825ed,#ae1fed)] hover:opacity-90 text-white rounded-full px-5 py-2.5 font-semibold text-sm flex items-center gap-2 transition-all duration-300 shadow-[0_0_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)] border-none !normal-case tracking-normal overflow-hidden cursor-pointer"
+                    className="group bg-[linear-gradient(90deg,#0ea5e9,#8825ed,#ae1fed)] hover:opacity-90 text-white rounded-full px-5 py-2.5 font-semibold text-sm flex items-center gap-2 transition-all duration-300 shadow-[0_0_15px_rgba(14,165,233,0.3),0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(14,165,233,0.5),0_0_30px_rgba(124,58,237,0.5)] border-none !normal-case tracking-normal overflow-hidden cursor-pointer"
                     variant="primary"
                 >
                     <span className="relative z-10">{t('nav.inquiry') || "Domluvit mini-audit"}</span>
