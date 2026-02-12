@@ -8,6 +8,14 @@ export const ScalexTeaser = ({ onNavigate }: { onNavigate: () => void }) => {
   const { t } = useLanguage();
   const fadeContainerRef = useRef<HTMLDivElement>(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
+  const [orbitRadius, setOrbitRadius] = useState(140);
+
+  React.useEffect(() => {
+    const updateRadius = () => setOrbitRadius(window.innerWidth < 640 ? 85 : 140);
+    updateRadius();
+    window.addEventListener('resize', updateRadius);
+    return () => window.removeEventListener('resize', updateRadius);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!fadeContainerRef.current) return;
@@ -79,7 +87,7 @@ export const ScalexTeaser = ({ onNavigate }: { onNavigate: () => void }) => {
               ref={fadeContainerRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="relative aspect-square md:aspect-video lg:aspect-square rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 flex items-center justify-center overflow-hidden group hover:border-brand-purple/30 transition-all duration-200 preserve-3d"
+              className="relative aspect-square rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-4 sm:p-8 flex items-center justify-center overflow-hidden group hover:border-brand-purple/30 transition-all duration-200 preserve-3d max-h-[350px] sm:max-h-none"
               style={{
                 transform: `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
                 transformStyle: 'preserve-3d'
@@ -89,14 +97,14 @@ export const ScalexTeaser = ({ onNavigate }: { onNavigate: () => void }) => {
               <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px] opacity-30 mask-image-[radial-gradient(ellipse_at_center,black_70%,transparent_100%)]" />
 
               {/* Central Planet */}
-              <div className="relative z-20 w-28 h-28 bg-[#0B0B0C] border border-brand-purple/50 rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(136,37,237,0.3)] group-hover:shadow-[0_0_60px_rgba(136,37,237,0.5)] transition-all duration-500 transform group-hover:scale-105">
+              <div className="relative z-20 w-16 h-16 sm:w-28 sm:h-28 bg-[#0B0B0C] border border-brand-purple/50 rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(136,37,237,0.3)] group-hover:shadow-[0_0_60px_rgba(136,37,237,0.5)] transition-all duration-500 transform group-hover:scale-105">
                  <div className="absolute inset-0 rounded-full bg-brand-purple/10 animate-pulse" />
-                 <span className="text-4xl font-display font-bold text-white tracking-tighter drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">S</span>
+                 <span className="text-2xl sm:text-4xl font-display font-bold text-white tracking-tighter drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">S</span>
               </div>
 
               {/* Orbit Rings */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20">
-                 <div className="w-[280px] h-[280px] rounded-full border border-dashed border-white/30" />
+                 <div className="w-[180px] sm:w-[280px] h-[180px] sm:h-[280px] rounded-full border border-dashed border-white/30" />
               </div>
 
               {/* Orbiter Container */}
@@ -104,15 +112,15 @@ export const ScalexTeaser = ({ onNavigate }: { onNavigate: () => void }) => {
                 {[0, 60, 120, 180, 240, 300].map((deg, i) => (
                   <div
                     key={i}
-                    className="absolute top-1/2 left-1/2 w-14 h-14 -ml-7 -mt-7 rounded-2xl bg-[#0F0F10]/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 z-10 hover:text-white hover:border-brand-purple hover:bg-brand-purple/20 hover:scale-110 hover:shadow-[0_0_20px_rgba(136,37,237,0.3)] transition-all duration-300 cursor-pointer"
-                    style={{ transform: `rotate(${deg}deg) translate(140px) rotate(-${deg}deg)` }}
+                    className="absolute top-1/2 left-1/2 w-9 h-9 sm:w-14 sm:h-14 -ml-[18px] sm:-ml-7 -mt-[18px] sm:-mt-7 rounded-xl sm:rounded-2xl bg-[#0F0F10]/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-gray-400 z-10 hover:text-white hover:border-brand-purple hover:bg-brand-purple/20 hover:scale-110 hover:shadow-[0_0_20px_rgba(136,37,237,0.3)] transition-all duration-300 cursor-pointer"
+                    style={{ transform: `rotate(${deg}deg) translate(${orbitRadius}px) rotate(-${deg}deg)` }}
                   >
-                    {i === 0 && <Megaphone className="w-6 h-6" />}
-                    {i === 1 && <PenTool className="w-6 h-6" />}
-                    {i === 2 && <ShoppingCart className="w-6 h-6" />}
-                    {i === 3 && <Activity className="w-6 h-6" />}
-                    {i === 4 && <Users className="w-6 h-6" />}
-                    {i === 5 && <Calendar className="w-6 h-6" />}
+                    {i === 0 && <Megaphone className="w-4 h-4 sm:w-6 sm:h-6" />}
+                    {i === 1 && <PenTool className="w-4 h-4 sm:w-6 sm:h-6" />}
+                    {i === 2 && <ShoppingCart className="w-4 h-4 sm:w-6 sm:h-6" />}
+                    {i === 3 && <Activity className="w-4 h-4 sm:w-6 sm:h-6" />}
+                    {i === 4 && <Users className="w-4 h-4 sm:w-6 sm:h-6" />}
+                    {i === 5 && <Calendar className="w-4 h-4 sm:w-6 sm:h-6" />}
                   </div>
                 ))}
               </div>

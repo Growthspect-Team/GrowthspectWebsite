@@ -103,7 +103,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
           : "top-0 bg-transparent py-4 md:py-6"
       )}
     >
-      <div className="w-full max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="w-full max-w-7xl mx-auto px-3 flex items-center justify-between">
         
         {/* Left: Logo */}
         <div
@@ -115,7 +115,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
             alt="Growthspect AI"
             width={160}
             height={48}
-            className="h-12 md:h-12 object-contain"
+            className="h-9 md:h-12 object-contain"
           />
         </div>
 
@@ -174,7 +174,14 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
              </div>
 
             {/* Mobile Menu Toggle */}
-             <div className="md:hidden">
+             <div className="md:hidden flex items-center gap-2">
+                <Button 
+                    onClick={(e: any) => handleMenuAction('contact')} 
+                    className="bg-[linear-gradient(90deg,#0ea5e9,#8825ed,#ae1fed)] active:opacity-90 text-white rounded-full px-4 py-1.5 text-[11px] font-semibold flex items-center border-none !normal-case tracking-normal shadow-[0_0_10px_rgba(14,165,233,0.3),0_0_15px_rgba(124,58,237,0.3)] whitespace-nowrap h-9"
+                    variant="primary"
+                >
+                    <span className="relative z-10">Domluvit mini audit</span>
+                </Button>
                 <NavDropdown onSelect={handleMenuAction} />
              </div>
         </div>

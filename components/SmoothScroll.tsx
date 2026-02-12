@@ -10,8 +10,21 @@ export const useLenis = () => useContext(LenisContext);
 
 export const SmoothScroll = ({ children }: { children?: React.ReactNode }) => {
   const [lenis, setLenis] = useState<Lenis | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Vypnout Lenis na mobilu - normální scroll
+    if (isMobile) {
+      return;
+    }
+
     // Add required class for Lenis CSS
     document.documentElement.classList.add('lenis');
 
@@ -21,7 +34,7 @@ export const SmoothScroll = ({ children }: { children?: React.ReactNode }) => {
       orientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1,
     });
 
     setLenis(lenisInstance);
@@ -41,7 +54,7 @@ export const SmoothScroll = ({ children }: { children?: React.ReactNode }) => {
       document.documentElement.classList.remove('lenis');
       setLenis(null);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <LenisContext.Provider value={lenis}>

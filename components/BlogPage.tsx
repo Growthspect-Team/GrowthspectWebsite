@@ -107,12 +107,12 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
 
                     <div className="flex items-center gap-4 mt-8">
                         {post.authorImage && (
-                            <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10">
+                            <div className="w-12 h-12 rounded-full overflow-hidden border border-white/10">
                                 <img src={post.authorImage} alt={post.author} className="w-full h-full object-cover" />
                             </div>
                         )}
                         <div>
-                           <div className="text-sm font-bold text-white">{post.author}</div>
+                           <div className="text-base font-bold text-white">{post.author}</div>
                            <div className="text-xs text-gray-500">{post.authorRole}</div>
                         </div>
                     </div>
@@ -303,8 +303,8 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                             </h1>
 
                                             {/* Author Box */}
-                                            <div className="flex items-center gap-4 p-2 pr-6 rounded-2xl w-fit">
-                                                <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 bg-white/5">
+                                            <div className="flex items-center gap-5 p-2 pr-6 rounded-2xl w-fit">
+                                                <div className="w-16 h-16 rounded-xl overflow-hidden border border-white/10 bg-white/5">
                                                     <img 
                                                         src={selectedPost.authorImage || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=100&h=100"} 
                                                         alt={selectedPost.author} 
@@ -312,10 +312,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                                     />
                                                 </div>
                                                 <div>
-                                                    <div className="text-white font-bold text-sm">
+                                                    <div className="text-white font-bold text-lg mb-0.5">
                                                         {language === 'cs' ? '' : 'Written by '}{selectedPost.author || 'GrowthSpect Team'}
                                                     </div>
-                                                    <div className="text-gray-400 text-xs">
+                                                    <div className="text-gray-400 text-sm">
                                                         {selectedPost.authorRole || 'Editor'}
                                                     </div>
                                                 </div>

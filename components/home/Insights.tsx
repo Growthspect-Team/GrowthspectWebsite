@@ -14,12 +14,12 @@ export const Insights = ({ onNavigate }: { onNavigate: () => void }) => {
   const { setIsHovering, setCursorText } = useCursor();
 
   return (
-    <Section id="blog" className="bg-brand-black relative py-24 border-t border-white/5">
+    <Section id="blog" className="bg-brand-black relative py-16 sm:py-24 border-t border-white/5">
       <Container>
         <FadeIn>
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 relative">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 relative">
                 <div className="max-w-3xl">
-                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-[1.1]">
+                   <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white tracking-tight leading-[1.1]">
                     {t('insights.headline.part1')} <span className="text-brand-purple">{t('insights.headline.part2')}</span>
                    </h2>
                 </div>
@@ -29,7 +29,7 @@ export const Insights = ({ onNavigate }: { onNavigate: () => void }) => {
             </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-8 sm:gap-y-12">
           {recentPosts.map((post, idx) => (
             <FadeIn key={post.id} delay={idx * 0.1}>
               <article 

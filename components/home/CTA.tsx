@@ -42,10 +42,10 @@ export const CTA = () => {
   };
 
   return (
-    <Section id="contact" className="relative py-32 overflow-hidden bg-black">
+    <Section id="contact" className="relative py-20 sm:py-32 overflow-hidden bg-black">
       <Container className="relative z-10 text-center">
         <FadeIn>
-          <Heading level="h2" className="text-4xl md:text-6xl mb-8">
+          <Heading level="h2" className="text-3xl sm:text-4xl md:text-6xl mb-6 sm:mb-8">
             {t('cta.title')}
           </Heading>
           <Text className="max-w-xl mx-auto mb-12">
@@ -62,11 +62,11 @@ export const CTA = () => {
                 className="max-w-md mx-auto space-y-4 mb-12"
                 onSubmit={handleSubmit}
               >
-                <div className="grid grid-cols-2 gap-4">
-                  <input type="text" name="name" placeholder={t('cta.form.name')} className="bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
-                  <input type="email" name="email" placeholder={t('cta.form.email')} className="bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                  <input type="text" name="name" placeholder={t('cta.form.name')} className="bg-brand-black border border-white/10 p-3 sm:p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors rounded-lg" required />
+                  <input type="email" name="email" placeholder={t('cta.form.email')} className="bg-brand-black border border-white/10 p-3 sm:p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors rounded-lg" required />
                 </div>
-                <textarea rows={3} name="description" placeholder={t('cta.form.description')} className="w-full bg-brand-black border border-white/10 p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors" required />
+                <textarea rows={3} name="description" placeholder={t('cta.form.description')} className="w-full bg-brand-black border border-white/10 p-3 sm:p-4 text-white text-sm focus:border-brand-purple focus:outline-none transition-colors rounded-lg" required />
                 <Button 
                     disabled={loading}
                     className="group bg-[linear-gradient(90deg,#0ea5e9,#8825ed,#ae1fed)] hover:opacity-90 text-white rounded-full px-8 py-4 font-semibold text-lg w-full flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_0_15px_rgba(14,165,233,0.3),0_0_25px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(14,165,233,0.5),0_0_35px_rgba(124,58,237,0.5)] border-none tracking-normal overflow-hidden mt-2 cursor-pointer"

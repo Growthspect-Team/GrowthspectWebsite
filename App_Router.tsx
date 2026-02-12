@@ -135,7 +135,7 @@ export default function App() {
   const getActivePage = (path: string) => {
       if (path === '/') return 'home';
       if (path.startsWith('/services')) return 'services';
-      if (path.startsWith('/projects') || path.startsWith('/work')) return 'projects';
+      if (path.startsWith('/projects')) return 'projects';
       if (path.startsWith('/scalex')) return 'scalex';
       if (path.startsWith('/blog')) return 'blog';
       if (path.startsWith('/careers')) return 'careers';
@@ -153,7 +153,7 @@ export default function App() {
     else if (page === 'blog') navigate('/blog');
     else if (page === 'careers') navigate('/careers');
     else if (page === 'contact') navigate('/contact');
-    else if (page === 'projects') navigate('/work');
+    else if (page === 'projects') navigate('/projects');
     else if (page === 'privacy-policy') navigate('/privacy-policy');
   };
 
@@ -210,11 +210,11 @@ export default function App() {
                 } />
                 <Route path="/services/:id" element={<ServiceDetailWrapper />} />
 
-                {/* Work Page */}
-                <Route path="/work" element={
+                {/* Projects Page */}
+                <Route path="/projects" element={
                     <>
                         <SEO 
-                            title="Our Work | GrowthSpect" 
+                            title="Our Projects | GrowthSpect" 
                             description="Explore our portfolio of custom software solutions, AI implementations, and digital transformation projects." 
                         />
                         <WorkPage />

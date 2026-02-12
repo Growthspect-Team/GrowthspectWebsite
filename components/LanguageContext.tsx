@@ -55,7 +55,8 @@ const translations: Record<Language, Record<string, string>> = {
         
         // Services
         'services.badge': 'Naše Služby',
-        'services.main_title': 'Měníme nápady ve škálovatelná řešení.',
+        'services.main_title': 'Měníme nápady ve',
+        'services.main_title_highlight': 'škálovatelná řešení.',
         'services.main_subtitle': 'Navrhujeme a stavíme digitální řešení, která doručují reálné výsledky.',
         'services.cta': 'Více o službách',
         'services.all': 'Všechny služby',
@@ -250,7 +251,8 @@ const translations: Record<Language, Record<string, string>> = {
         
         // Services
         'services.badge': 'Our Services',
-        'services.main_title': 'Transforming Ideas into Scalable Solutions.',
+        'services.main_title': 'Transforming Ideas into',
+        'services.main_title_highlight': 'Scalable Solutions.',
         'services.main_subtitle': 'We design and build digital solutions that deliver real results.',
         'services.cta': 'Learn more about services',
         'services.all': 'All services',

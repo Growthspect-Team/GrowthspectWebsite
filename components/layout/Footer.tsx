@@ -34,13 +34,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   };
 
   return (
-    <footer className="bg-brand-black text-white p-2 md:p-6 lg:p-8 min-h-screen flex flex-col">
+    <footer className="bg-brand-black text-white p-2 md:p-6 lg:p-8 min-h-[80vh] sm:min-h-screen flex flex-col">
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="flex-1 rounded-[2.5rem] bg-[#0A0A0A] border border-white/5 relative overflow-hidden flex flex-col"
+        className="flex-1 rounded-2xl sm:rounded-[2.5rem] bg-[#0A0A0A] border border-white/5 relative overflow-hidden flex flex-col"
       >
         
         {/* Top Bar with "Back to top" */}
@@ -58,10 +58,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="flex flex-col lg:flex-row h-full flex-1">
             
             {/* Main Content Area */}
-            <div className="flex-1 p-8 md:p-16 lg:p-20 flex flex-col relative z-10 w-full">
+            <div className="flex-1 p-6 sm:p-8 md:p-16 lg:p-20 flex flex-col relative z-10 w-full">
                 
                 {/* Upper Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-24 lg:mb-auto w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-16 lg:gap-8 mb-14 sm:mb-24 lg:mb-auto w-full">
                     
                     {/* CTA Column */}
                     <div className="lg:col-span-5 flex flex-col items-start justify-center">
@@ -69,7 +69,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.6 }}
-                            className="text-3xl md:text-4xl lg:text-6xl font-sans font-medium mb-8 leading-tight"
+                            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-sans font-medium mb-6 sm:mb-8 leading-tight"
                         >
                             Připraveni na váš <br />
                             <span className="text-gray-500">další velký projekt?</span>
@@ -169,7 +169,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </div>
 
                 {/* Big Footer Text - Full Width Now */}
-                <div className="mt-auto pt-20 pb-8 w-full flex justify-center overflow-hidden">
+                <div className="mt-auto pt-12 sm:pt-20 pb-6 sm:pb-8 w-full flex justify-center overflow-hidden">
                     <motion.h1 
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}

@@ -107,27 +107,27 @@ export function ProjectShowcase({ onProjectSelect }: ProjectShowcaseProps) {
   const { setCursorText } = useCursor();
 
   return (
-    <div className="w-full bg-black relative overflow-hidden py-32 -mt-32 rounded-t-[3rem] z-30 shadow-[0_-20px_60px_-15px_rgba(255,255,255,0.1)] border-t border-white/10">
+    <div className="w-full bg-black relative overflow-hidden py-20 sm:py-32 border-t border-white/10">
       {/* Background Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header Section */}
-        <div className="mb-24">
-          <span className="text-xs font-sans font-medium uppercase tracking-widest block mb-6 bg-gradient-to-r from-brand-purple to-[#a855f7] bg-clip-text text-transparent">
+        <div className="mb-14 sm:mb-24">
+          <span className="text-xs font-sans font-medium uppercase tracking-widest block mb-4 sm:mb-6 bg-gradient-to-r from-brand-purple to-[#a855f7] bg-clip-text text-transparent">
             {t('projects.title')}
           </span>
-          <h2 className="text-4xl md:text-6xl font-sans font-bold text-white tracking-tight mb-8">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-sans font-bold text-white tracking-tight mb-6 sm:mb-8">
             Projekty, které <InteractiveHover text="Get Inspired" onHover={setCursorText}>inspirují</InteractiveHover>
           </h2>
         </div>
 
         {/* Projects List */}
-        <div className="max-w-7xl mx-auto pb-32 relative z-10">
+        <div className="max-w-7xl mx-auto pb-16 sm:pb-32 relative z-10">
         
         {/* Projects List */}
-        <div className="space-y-16 md:space-y-24">
+        <div className="space-y-10 sm:space-y-16 md:space-y-24">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -146,7 +146,7 @@ export function ProjectShowcase({ onProjectSelect }: ProjectShowcaseProps) {
                 onMouseEnter={() => setCursorText('Zobrazit projekt')}
                 onMouseLeave={() => setCursorText(null)}
               >
-                  <div className="relative overflow-hidden rounded-[2rem] bg-[#0a0a0a] shadow-2xl transition-colors min-h-[420px] md:min-h-[500px]">
+                  <div className="relative overflow-hidden rounded-2xl sm:rounded-[2rem] bg-[#0a0a0a] shadow-2xl transition-colors min-h-[320px] sm:min-h-[420px] md:min-h-[500px]">
                       {/* Full-bleed Image */}
                       <img 
                           src={project.image} 
@@ -158,7 +158,7 @@ export function ProjectShowcase({ onProjectSelect }: ProjectShowcaseProps) {
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] from-30% via-[#0a0a0a]/90 via-60% to-transparent pointer-events-none" />
 
                       {/* Content overlaying at bottom */}
-                      <div className="absolute inset-x-0 bottom-0 px-8 md:px-10 pb-8 md:pb-10 pt-4 z-10">
+                      <div className="absolute inset-x-0 bottom-0 px-5 sm:px-8 md:px-10 pb-5 sm:pb-8 md:pb-10 pt-4 z-10">
                           <div className="flex items-center gap-3 mb-3">
                               {project.logo ? (
                                   <img src={project.logo} alt="brand" className="h-5 w-auto opacity-80" />
@@ -170,22 +170,22 @@ export function ProjectShowcase({ onProjectSelect }: ProjectShowcaseProps) {
                               )}
                           </div>
 
-                          <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-2">
+                          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight mb-2">
                               {project.title}
                           </h3>
-                          <p className="text-sm md:text-base text-gray-400 max-w-lg leading-relaxed mb-6">
+                          <p className="text-xs sm:text-sm md:text-base text-gray-400 max-w-lg leading-relaxed mb-4 sm:mb-6">
                               {project.description}
                           </p>
 
                           {/* Metrics */}
                           {project.metrics && project.metrics.length > 0 && (
-                              <div className="flex gap-12 pt-2">
+                              <div className="flex flex-wrap gap-6 sm:gap-12 pt-2">
                                   {project.metrics.map((metric, i) => (
                                       <div key={i}>
-                                          <span className="block text-xl md:text-2xl font-bold text-white mb-1">
+                                          <span className="block text-lg sm:text-xl md:text-2xl font-bold text-white mb-1">
                                               {metric.value}
                                           </span>
-                                          <span className="block text-xs text-gray-500 font-medium leading-snug max-w-[180px]">
+                                          <span className="block text-[10px] sm:text-xs text-gray-500 font-medium leading-snug max-w-[140px] sm:max-w-[180px]">
                                               {metric.label}
                                           </span>
                                       </div>

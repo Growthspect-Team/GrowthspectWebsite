@@ -40,15 +40,15 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
 
             {/* CONTENT LAYER */}
             <motion.div 
-                className="relative z-10 grid grid-cols-1 lg:grid-cols-[fr_2fr] gap-12 items-center h-full px-4 max-w-7xl mx-auto pt-20 w-full"
+                className="relative z-10 flex items-center h-full px-4 sm:px-6 max-w-7xl mx-auto pt-24 sm:pt-20 w-full"
             >
-                <div className="flex flex-col items-start text-left justify-center">
+                <div className="flex flex-col items-start text-left justify-center max-w-4xl">
                     {/* Hero Text */}
                     <motion.h1 
                         initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
                         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                        className="text-4xl lg:text-[92px] font-sans font-bold tracking-tight text-white mb-10 leading-[1.15]"
+                        className="text-[48px] sm:text-5xl lg:text-[92px] font-sans font-bold tracking-tight text-white mb-6 sm:mb-10 leading-[1.15]"
                     >
                         {t('hero.title.part1')} <br />
                         <span className="relative ">
@@ -62,7 +62,7 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
                         initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
                         animate={{ opacity: 0.8, y: 0, filter: "blur(0px)" }}
                         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-                        className="text-lg md:text-[26px] text-gray-400 max-w-2xl mb-12 leading-[1.25] font-light"
+                        className="text-[20px] md:text-[26px] text-gray-400 max-w-2xl mb-8 sm:mb-12 leading-[1.35] sm:leading-[1.25] font-light"
                     >
                         {t('hero.subtitle')}
                     </motion.p>
@@ -73,10 +73,10 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4"
                     >
-                        <Button size="lg" className="group relative overflow-hidden h-14 px-8 text-base font-medium tracking-tight transition-all bg-[linear-gradient(90deg,#0ea5e9,#8825ed,#ae1fed)] hover:opacity-90 text-white border-0 rounded-full shadow-[0_0_20px_rgba(14,165,233,0.3),0_0_40px_rgba(136,37,237,0.3)]">
+                        <Button size="lg" className="group relative overflow-hidden h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-medium tracking-tight transition-all bg-[linear-gradient(90deg,#0ea5e9,#8825ed,#ae1fed)] hover:opacity-90 text-white border-0 rounded-full shadow-[0_0_20px_rgba(14,165,233,0.3),0_0_40px_rgba(136,37,237,0.3)]">
                             <span className="relative z-10 flex items-center">
                                 {t('hero.cta.consult')} 
-                                <div className="relative w-5 h-5 ml-2 overflow-hidden">
+                                <div className="relative w-4 sm:w-5 h-4 sm:h-5 ml-2 overflow-hidden">
                                     <ArrowRight className="absolute inset-0 w-full h-full transition-transform duration-300 group-hover:translate-x-[150%]" />
                                     <ArrowRight className="absolute inset-0 w-full h-full -translate-x-[150%] transition-transform duration-300 group-hover:translate-x-0" />
                                 </div>
@@ -85,7 +85,7 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
                         <Button
                             size="lg"
                             variant="outline"
-                            className="group h-14 px-8 text-base font-medium tracking-tight border-white/20 bg-transparent hover:bg-transparent transition-all text-white rounded-full overflow-hidden"
+                            className="group h-12 sm:h-14 px-6 sm:px-8 text-sm sm:text-base font-medium tracking-tight border-white/20 bg-transparent hover:bg-transparent transition-all text-white rounded-full overflow-hidden"
                             onClick={onViewProjects}
                         >
                             <span className="flex items-center gap-2">
@@ -98,9 +98,6 @@ export function NewHero({ onViewProjects }: NewHeroProps) {
                         </Button>
                     </motion.div>
                 </div>
-
-                {/* Spacer for the right side graphic */}
-                <div className="hidden lg:block w-full h-full"></div>
             </motion.div>
 
             {/* Subtle radial gradient for depth */}

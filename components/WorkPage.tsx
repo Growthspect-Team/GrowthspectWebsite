@@ -14,7 +14,7 @@ const WorkHero = () => {
     const { language } = useLanguage();
     
     return (
-        <section className="relative w-full pt-32 lg:pt-52 pb-20 lg:pb-32 px-4 md:px-8 bg-background overflow-hidden">
+        <section className="relative w-full pt-32 lg:pt-52 pb-20 lg:pb-32 px-4 md:px-8 bg-background">
              {/* Vertical Text - Hidden on mobile */}
             
 
@@ -191,7 +191,7 @@ export const WorkPage = () => {
     const { language } = useLanguage();
 
     return (
-        <main className="min-h-screen bg-background">
+        <main className="min-h-screen bg-background overflow-x-hidden">
             <WorkHero />
             
             <section id="work-projects" className="px-4 md:px-8 pb-32">

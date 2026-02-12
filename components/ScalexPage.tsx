@@ -31,7 +31,7 @@ const TargetAudienceCard = ({ item, index }: { item: any, index: number }) => {
         opacity,
         top: `calc(10% + ${index * 20}px)` // Stacking effect
       }} 
-      className="sticky w-full mx-auto min-h-[45vh] flex-shrink-0 rounded-[2.5rem] overflow-hidden border border-white/5 bg-brand-black/90 backdrop-blur-sm group hover:border-sky-400/30 transition-all duration-500 z-10"
+      className="sticky w-full mx-auto min-h-[35vh] sm:min-h-[45vh] flex-shrink-0 rounded-2xl sm:rounded-[2.5rem] overflow-hidden border border-white/5 bg-brand-black/90 backdrop-blur-sm group hover:border-sky-400/30 transition-all duration-500 z-10"
     >
       {/* Subtle cyan-purple glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 to-brand-purple/5 opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
@@ -41,12 +41,12 @@ const TargetAudienceCard = ({ item, index }: { item: any, index: number }) => {
           <item.icon className="w-96 h-96" />
       </div>
       
-      <div className="relative h-full p-8 md:p-14 flex flex-col justify-center items-center text-center">
-          <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:border-sky-400/50 group-hover:text-sky-400 transition-colors duration-300">
-              <item.icon className="w-8 h-8 text-white group-hover:text-sky-400 transition-colors duration-300" />
+      <div className="relative h-full p-6 sm:p-8 md:p-14 flex flex-col justify-center items-center text-center">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-4 sm:mb-6 group-hover:border-sky-400/50 group-hover:text-sky-400 transition-colors duration-300">
+              <item.icon className="w-6 h-6 sm:w-8 sm:h-8 text-white group-hover:text-sky-400 transition-colors duration-300" />
           </div>
-          <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">{item.title}</h3>
-          <p className="text-lg md:text-2xl text-gray-400 leading-relaxed font-light max-w-6xl">
+          <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 sm:mb-4">{item.title}</h3>
+          <p className="text-base sm:text-lg md:text-2xl text-gray-400 leading-relaxed font-light max-w-6xl">
               {item.text}
           </p>
       </div>
@@ -77,15 +77,15 @@ const TargetAudienceSection = () => {
   ];
 
   return (
-    <section className="bg-brand-black py-32 px-4 md:px-8 relative">
-            <div className="mb-32 text-center">
-                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Pro koho je Scalex</h2>
+    <section className="bg-brand-black py-20 sm:py-32 px-4 md:px-8 relative">
+            <div className="mb-16 sm:mb-32 text-center">
+                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">Pro koho je Scalex</h2>
                  <p className="text-lg text-white/50 max-w-2xl mx-auto">
                     Naše řešení není pro každého. Zaměřujeme se na ty, kteří to myslí vážně.
                  </p>
             </div>
             
-            <div className="flex flex-col gap-12 sm:gap-24 w-full max-w-6xl mx-auto pb-32">
+            <div className="flex flex-col gap-8 sm:gap-12 sm:gap-24 w-full max-w-6xl mx-auto pb-16 sm:pb-32">
                 {items.map((item, idx) => (
                     <TargetAudienceCard key={idx} item={item} index={idx} />
                 ))}
@@ -118,7 +118,7 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
     <div className="bg-brand-black min-h-screen text-white pb-20">
       
         {/* NEW HERO SECTION - LANES STYLE GRID */}
-        <Section className="mb-32 pt-0 md:pt-0 relative h-screen flex items-center justify-center overflow-hidden w-full max-w-[100vw]" noPadding>
+        <Section className="mb-16 sm:mb-32 pt-0 md:pt-0 relative h-screen flex items-center justify-center overflow-hidden w-full max-w-[100vw]" noPadding>
              
              {/* Back button absolute */}
              <div className="absolute top-28 left-6 md:left-12 z-50">
@@ -254,12 +254,12 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
              </div>
              
              {/* Subtitle - moved to bottom */}
-            <div className="absolute bottom-12 left-0 right-0 z-30 flex justify-center px-6">
+             <div className="absolute bottom-12 left-0 right-0 z-30 flex justify-center px-6">
                  <motion.p 
                     initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                    className="text-lg md:text-2xl text-white/90 font-light tracking-wide text-center max-w-2xl text-shadow-sm"
+                    className="text-base sm:text-lg md:text-2xl text-white/90 font-light tracking-wide text-center max-w-2xl text-shadow-sm"
                  >
                     Infrastruktura navržená pro nekonečný růst.
                  </motion.p>
@@ -271,10 +271,10 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
         {/* Problem Definition */}
         <Section className="mb-16">
           <FadeIn delay={0.1}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white/5 p-8 md:p-12 rounded-3xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center bg-white/5 p-6 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl">
               <div>
-                <h2 className="text-3xl font-bold mb-6">Realita ve firmách</h2>
-                <p className="text-lg text-secondary leading-relaxed mb-4">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Realita ve firmách</h2>
+                <p className="text-base sm:text-lg text-secondary leading-relaxed mb-4">
                   Firmy často narazí na stejný problém: systémy a automatizace jsou nasazené, ale nikdo je aktivně neřídí. 
                 </p>
                 <div className="flex gap-4 items-start p-4 bg-red-500/10 rounded-xl">
@@ -320,8 +320,8 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
                   style={{ scale: headingScale, translateY: headingTranslateUp }}
                   className="flex flex-col items-center text-center"
                 >
-                  <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight">Co Scalex reálně dělá</h2>
-                  <p className="text-lg md:text-xl text-white/50 mt-6 max-w-xl">Komplexní správa, kterou byste jinak potřebovali celý tým.</p>
+                  <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight">Co Scalex reálně dělá</h2>
+                  <p className="text-base sm:text-lg md:text-xl text-white/50 mt-4 sm:mt-6 max-w-xl">Komplexní správa, kterou byste jinak potřebovali celý tým.</p>
                 </motion.div>
             </Container>
           </div>
@@ -372,10 +372,10 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
                   className="group w-full border-b border-white/10 transition-all duration-500 hover:bg-white/[0.02]"
                 >
                   <Container>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 py-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 py-10 sm:py-20">
                     {/* Left Column - Category */}
                     <div className="flex items-center">
-                        <h3 className="text-4xl md:text-6xl font-bold tracking-tight text-white">
+                        <h3 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white">
                         {row.category}
                         </h3>
                     </div>
@@ -405,11 +405,11 @@ export const ScalexPage: React.FC<ScalexPageProps> = ({ onBack }) => {
         <Section>
           <FadeIn delay={0.4}>
             <div className="mb-16">
-              <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 sm:mb-8 leading-tight">
                 Nedodáváme jen kód. <br className="hidden md:block" />
                 <span className="text-brand-purple">Dodáváme stabilitu.</span>
               </h2>
-              <p className="text-xl text-secondary max-w-3xl leading-relaxed">
+              <p className="text-base sm:text-xl text-secondary max-w-3xl leading-relaxed">
                 Automatizace bez správy je jen dočasná úspora. Scalex z ní dělá dlouhodobý konkurenční nástroj, který vám dává jistotu pro další růst.
               </p>
             </div>

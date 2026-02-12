@@ -13,17 +13,17 @@ export const Momentum = () => {
     const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
     return (
-        <section ref={containerRef} className="w-full bg-brand-black py-24 lg:py-32 relative overflow-hidden text-white border-y border-white/5">
+        <section ref={containerRef} className="w-full bg-brand-black py-16 sm:py-24 lg:py-32 relative overflow-hidden text-white border-y border-white/5">
             {/* Background Elements */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(100,50,255,0.05),transparent_40%)]" />
 
             <Container className="relative z-10">
                 {/* 3-Column Header Layout like requested */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 mb-24 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-8 mb-14 sm:mb-24 items-start">
                     
                     {/* Col 1: Main Title */}
                     <div className="lg:col-span-1">
-                        <h2 className="text-4xl md:text-5xl font-sans font-medium tracking-tight leading-[1.05] text-white">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-sans font-medium tracking-tight leading-[1.05] text-white">
                             Rychlý start. <br />
                             Snadný růst.
                         </h2>
