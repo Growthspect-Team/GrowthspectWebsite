@@ -42,22 +42,41 @@ function parseFrontmatter(raw: string): FrontmatterResult {
   const content = match[2];
 
   const data: Record<string, string> = {};
+  let currentKey = '';
 
   for (const line of frontmatterBlock.split('\n')) {
+    const trimmedLine = line.trim();
+    if (!trimmedLine) continue;
+
+    // Check for indentation (continuation of previous value)
+    const isIndented = line.startsWith(' ') || line.startsWith('\t');
+    
+    // Find colon for key:value pair
     const colonIndex = line.indexOf(':');
-    if (colonIndex === -1) continue;
-
-    const key = line.slice(0, colonIndex).trim();
-    let value = line.slice(colonIndex + 1).trim();
-
-    // Remove surrounding quotes
-    if ((value.startsWith('"') && value.endsWith('"')) ||
-        (value.startsWith("'") && value.endsWith("'"))) {
-      value = value.slice(1, -1);
+    
+    // If we have a key and this line is indented OR has no colon (and likely a continuation), append it
+    if (currentKey && (isIndented || colonIndex === -1)) {
+        let appendedValue = trimmedLine;
+        // Strip quotes if they were continuing a quoted string? (simplified: just append with space)
+        data[currentKey] += ' ' + appendedValue;
+        continue;
     }
 
-    if (key) {
-      data[key] = value;
+    // New Key
+    if (colonIndex !== -1) {
+      const key = line.slice(0, colonIndex).trim();
+      let value = line.slice(colonIndex + 1).trim();
+
+      // Remove surrounding quotes
+      if ((value.startsWith('"') && value.endsWith('"')) ||
+          (value.startsWith("'") && value.endsWith("'"))) {
+        value = value.slice(1, -1);
+      }
+
+      if (key) {
+        data[key] = value;
+        currentKey = key;
+      }
     }
   }
 
