@@ -1,5 +1,5 @@
 ---
-title: Datová sila jsou mrtvá. Budoucnost je v unifikovaných pipeline.
+title: Datová sila jsou mrtvá. Budoucnost je v unifikovaných pipeline
 excerpt: Firmy mají data všude. V CRM, v ERP, v Excelech. Moderní datová
   platforma není o tom mít větší sklad dat (Data Warehouse). Je o tom mít data
   tekoucí v reálném čase tam, kde jsou potřeba pro rozhodování.
