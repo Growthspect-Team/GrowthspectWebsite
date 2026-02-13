@@ -8,19 +8,20 @@ export interface BlogPostHeader {
 export const extractHeaders = (content: string): BlogPostHeader[] => {
     if (!content) return [];
     
-    const lines = content.split('\n');
+    // Match ## or ###, allowing optional leading whitespace
+    const regex = /^\s*(#{2,3})\s+(.*)$/gm;
     const headers: BlogPostHeader[] = [];
-    
-    // We only care about ## headers based on existing code, but let's be robust
-    // Existing code uses: content.split('\n\n') and checks startsWith('## ')
-    // Let's stick to regex matching to find all headers in order to generate unique IDs
-    
-    const matches = content.match(/^## (.*$)/gm);
-    if (!matches) return [];
+    let match;
+    let index = 0;
 
-    return matches.map((match, index) => ({
-        id: `section-${index}`,
-        text: match.replace('## ', ''),
-        level: 2
-    }));
+    while ((match = regex.exec(content)) !== null) {
+        headers.push({
+            id: `section-${index}`,
+            text: match[2].trim(),
+            level: match[1].length
+        });
+        index++;
+    }
+
+    return headers;
 };

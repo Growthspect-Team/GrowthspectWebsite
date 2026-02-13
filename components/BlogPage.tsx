@@ -339,9 +339,16 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                                             const id = headerIdx >= 0 ? `section-${headerIdx}` : undefined;
                                                             return <h2 id={id} className="text-3xl font-bold text-white mt-16 mb-6 scroll-mt-32" {...props}>{children}</h2>;
                                                         },
-                                                        h3: ({ children, ...props }) => (
-                                                            <h3 className="text-2xl font-bold text-white mt-12 mb-4" {...props}>{children}</h3>
-                                                        ),
+                                                        h3: ({ children, ...props }) => {
+                                                            const text = typeof children === 'string' ? children : 
+                                                                Array.isArray(children) ? children.join('') : String(children);
+                                                            const headers = selectedPost.content ? extractHeaders(selectedPost.content) : [];
+                                                            const headerIdx = headers.findIndex(h => h.text === text);
+                                                            const id = headerIdx >= 0 ? `section-${headerIdx}` : undefined;
+                                                            return (
+                                                                <h3 id={id} className="text-2xl font-bold text-white mt-12 mb-4" {...props}>{children}</h3>
+                                                            );
+                                                        },
                                                         p: ({ children, ...props }) => (
                                                             <p className="text-gray-400 text-lg leading-7 font-light mb-6" {...props}>{children}</p>
                                                         ),

@@ -66,6 +66,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ headers, langu
                                 onClick={(e) => handleScroll(header.id, e)}
                                 className={`
                                     block text-sm transition-all duration-300 leading-relaxed
+                                    ${header.level === 3 ? 'pl-4 text-xs' : ''}
                                     ${activeId === header.id 
                                         ? 'text-brand-purple font-medium translate-x-1' 
                                         : 'text-gray-400 hover:text-white hover:translate-x-1'}
