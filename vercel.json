@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    { "source": "/((?!api|admin|assets).*)", "destination": "/index.html" }
+  ],
+  "functions": {
+    "api/contact.ts": {
+      "maxDuration": 30
+    },
+    "api/auth.ts": {
+      "maxDuration": 10
+    },
+    "api/callback.ts": {
+      "maxDuration": 10
+    }
+  }
+}

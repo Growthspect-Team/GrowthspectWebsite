@@ -12,6 +12,8 @@ backend:
   name: github
   repo: Growthspect-Team/GrowthspectWebsite
   branch: main
+  base_url: https://growthspect.com
+  auth_endpoint: api/auth
 
 # Lokální vývoj: pokud běží decap-server, Decap CMS ho automaticky detekuje
 local_backend: true
@@ -110,10 +112,10 @@ collections:
         buttons:
           - bold
           - italic
+          - code
           - link
           - heading-two
           - heading-three
           - quote
           - bulleted-list
           - numbered-list
-          - image

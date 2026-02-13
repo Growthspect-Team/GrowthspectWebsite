@@ -23,11 +23,7 @@ export const ServicesCleevio: React.FC = () => {
     <section className="bg-black text-white relative w-full pt-20 sm:pt-32 lg:pt-52 pb-16 lg:pb-32 px-4 md:px-8">
       <div className="w-full max-w-7xl mx-auto">
           {/* Header Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+          <div
             className="flex flex-col lg:flex-row"
           >
               <div className="lg:w-9/12">
@@ -45,7 +41,7 @@ export const ServicesCleevio: React.FC = () => {
                   </p>
               </div>
               <div className="hidden lg:block lg:w-3/12"></div>
-          </motion.div>
+          </div>
 
       {isMobile ? (
         <motion.div
@@ -139,11 +135,7 @@ export const ServicesCleevio: React.FC = () => {
 
         return (
         <React.Fragment key={service.id}>
-           <motion.div 
-             initial={{ opacity: 0, y: 40 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true, margin: "-100px" }}
-             transition={{ duration: 0.6, delay: index * 0.1 }}
+           <div 
              className={`${isLongService ? 'relative' : (isMobile ? 'relative' : 'sticky top-0')} flex flex-col lg:flex-row ${isMobile ? 'min-h-0' : 'min-h-screen'} group bg-black ${index > 0 ? 'shadow-[0_-1px_0_rgba(255,255,255,0.1)]' : ''}`}
              id={`service-${service.id}`}
              style={{ zIndex: index + 1 }}
@@ -260,7 +252,7 @@ export const ServicesCleevio: React.FC = () => {
                 </div>
 
              </div>
-           </motion.div>
+           </div>
         </React.Fragment>
         );
       })

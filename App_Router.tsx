@@ -23,6 +23,7 @@ const BlogPage = React.lazy(() => import('./components/BlogPage').then(module =>
 const ContactPage = React.lazy(() => import('./components/ContactPage').then(module => ({ default: module.ContactPage })));
 const CareersPage = React.lazy(() => import('./components/CareersPage').then(module => ({ default: module.CareersPage })));
 const PrivacyPolicyPage = React.lazy(() => import('./components/PrivacyPolicyPage').then(module => ({ default: module.PrivacyPolicyPage })));
+const NotFoundPage = React.lazy(() => import('./components/NotFoundPage').then(module => ({ default: module.NotFoundPage })));
 
 // Layout & Utils
 import { Header } from './components/layout/Header';
@@ -186,7 +187,7 @@ export default function App() {
                             <>
                                 <SEO title="Domov" />
                                 <Hero onViewProjects={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} />
-                                <VideoScrollSection />
+                                {/* <VideoScrollSection /> */}
                                 <AboutSection />
                         <Momentum />
                         <section id="services">
@@ -256,7 +257,12 @@ export default function App() {
                 <Route path="/admin" element={<AdminLoader />} />
                 <Route path="/admin/*" element={<AdminLoader />} />
 
-                <Route path="*" element={<Navigate to="/" replace />} />
+                <Route path="*" element={
+                    <>
+                        <SEO title="404 - Stránka nenalezena" noIndex />
+                        <NotFoundPage />
+                    </>
+                } />
             </Routes>
           </React.Suspense>
         </main>

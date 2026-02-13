@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Container, Section, Heading, Text, FadeIn, Button } from './UI';
 import { ArrowLeft, Calendar, Clock, ArrowRight, Mail, Send, Zap, Brain, TrendingUp, Search, Linkedin, Facebook, Twitter, Link as LinkIcon } from 'lucide-react';
+import RotatingSocialCards from './ui/rotating-social-cards';
 import { useLenis } from './SmoothScroll';
 import { useLanguage } from './LanguageContext';
 import { useCursor } from './CursorContext';
@@ -105,17 +106,7 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
                         {post.excerpt}
                     </p>
 
-                    <div className="flex items-center gap-4 mt-8">
-                        {post.authorImage && (
-                            <div className="w-12 h-12 rounded-full overflow-hidden border border-white/10">
-                                <img src={post.authorImage} alt={post.author} className="w-full h-full object-cover" />
-                            </div>
-                        )}
-                        <div>
-                           <div className="text-base font-bold text-white">{post.author}</div>
-                           <div className="text-xs text-gray-500">{post.authorRole}</div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </FadeIn>
@@ -302,24 +293,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                                 {selectedPost.title}
                                             </h1>
 
-                                            {/* Author Box */}
-                                            <div className="flex items-center gap-5 p-2 pr-6 rounded-2xl w-fit">
-                                                <div className="w-16 h-16 rounded-xl overflow-hidden border border-white/10 bg-white/5">
-                                                    <img 
-                                                        src={selectedPost.authorImage || "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=100&h=100"} 
-                                                        alt={selectedPost.author} 
-                                                        className="w-full h-full object-cover" 
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <div className="text-white font-bold text-lg mb-0.5">
-                                                        {language === 'cs' ? '' : 'Written by '}{selectedPost.author || 'GrowthSpect Team'}
-                                                    </div>
-                                                    <div className="text-gray-400 text-sm">
-                                                        {selectedPost.authorRole || 'Editor'}
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -482,8 +456,8 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                     {/* Header */}
                     <div className="mb-20 mt-12 relative">
                         <FadeIn>
-                            <div className="flex justify-between items-stretch">
-                                <div className="w-full">
+                            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
+                                <div className="w-full lg:w-[55%]">
                                     <h1 className="text-4xl  md:text-6xl lg:text-7xl font-bold text-white leading-[1.25] tracking-normal bg" style={{ lineHeight: 1.25 }}>
                                         {language === 'cs' ? (
                                             <>
@@ -503,6 +477,9 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                             </>
                                         )}
                                     </h1>
+                                </div>
+                                <div className="hidden lg:flex w-full lg:w-[40%] justify-end">
+                                    <RotatingSocialCards />
                                 </div>
                             </div>
                         </FadeIn>
@@ -576,18 +553,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                             </span>
                                         </div>
 
-                                        {/* Author Hover Effect */}
-                                        {post.authorImage && (
-                                            <div className="absolute bottom-0 left-0 z-20">
-                                                <div className="w-16 h-16 rounded-tr-2xl overflow-hidden border-t-[6px] border-r-[6px] border-[#0a0a0a] transform translate-y-full -translate-x-full group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-transform">
-                                                    <img 
-                                                        src={post.authorImage} 
-                                                        alt={post.author || 'Author'} 
-                                                        className="w-full h-full object-cover" 
-                                                    />
-                                                </div>
-                                            </div>
-                                        )}
+
                                     </div>
 
                                     {/* Content */}

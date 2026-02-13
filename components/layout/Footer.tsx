@@ -68,6 +68,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         <motion.h2 
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
                             transition={{ delay: 0.2, duration: 0.6 }}
                             className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-sans font-medium mb-6 sm:mb-8 leading-tight"
                         >
@@ -78,6 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         <motion.a 
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
                             transition={{ delay: 0.4, duration: 0.5 }}
                             href="/contact"
                             onClick={(e) => {
@@ -93,6 +95,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                         <motion.div 
                              initial={{ opacity: 0 }}
                              whileInView={{ opacity: 1 }}
+                             viewport={{ once: true }}
                              transition={{ delay: 0.6 }}
                              className="mt-8 flex items-center gap-2 text-sm text-gray-500"
                         >
@@ -107,6 +110,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     <motion.div 
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 0.3, duration: 0.6 }}
                         className="lg:col-span-3 lg:col-start-7 flex flex-col gap-4"
                     >
@@ -130,6 +134,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     <motion.div 
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 0.4, duration: 0.6 }}
                         className="lg:col-span-3 flex flex-col gap-4"
                     >
@@ -173,6 +178,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     <motion.h1 
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                         transition={{ delay: 0.5, duration: 1 }}
                         className="text-[9vw] md:text-[10.5vw] leading-none font-bold text-white/5 tracking-tighter select-none whitespace-nowrap hover:text-white/10 transition-colors duration-700 cursor-default w-full text-center"
                     >
