@@ -331,22 +331,14 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                                 <ReactMarkdown
                                                     remarkPlugins={[remarkGfm]}
                                                     components={{
-                                                        h2: ({ children, ...props }) => {
-                                                            const text = typeof children === 'string' ? children : 
-                                                                Array.isArray(children) ? children.join('') : String(children);
-                                                            const headers = selectedPost.content ? extractHeaders(selectedPost.content) : [];
-                                                            const headerIdx = headers.findIndex(h => h.text === text);
-                                                            const id = headerIdx >= 0 ? `section-${headerIdx}` : undefined;
+                                                        h2: ({ node, children, ...props }) => {
+                                                            const id = node?.position?.start.line ? `header-L${node.position.start.line}` : undefined;
                                                             return <h2 id={id} className="text-3xl font-bold text-white mt-16 mb-6 scroll-mt-32" {...props}>{children}</h2>;
                                                         },
-                                                        h3: ({ children, ...props }) => {
-                                                            const text = typeof children === 'string' ? children : 
-                                                                Array.isArray(children) ? children.join('') : String(children);
-                                                            const headers = selectedPost.content ? extractHeaders(selectedPost.content) : [];
-                                                            const headerIdx = headers.findIndex(h => h.text === text);
-                                                            const id = headerIdx >= 0 ? `section-${headerIdx}` : undefined;
+                                                        h3: ({ node, children, ...props }) => {
+                                                            const id = node?.position?.start.line ? `header-L${node.position.start.line}` : undefined;
                                                             return (
-                                                                <h3 id={id} className="text-2xl font-bold text-white mt-12 mb-4" {...props}>{children}</h3>
+                                                                <h3 id={id} className="text-2xl font-bold text-white mt-12 mb-4 scroll-mt-32" {...props}>{children}</h3>
                                                             );
                                                         },
                                                         p: ({ children, ...props }) => (

@@ -15,8 +15,11 @@ export const extractHeaders = (content: string): BlogPostHeader[] => {
     let index = 0;
 
     while ((match = regex.exec(content)) !== null) {
+        // Calculate line number by counting newlines up to the match index
+        const lineNumber = content.substring(0, match.index).split('\n').length;
+        
         headers.push({
-            id: `section-${index}`,
+            id: `header-L${lineNumber}`,
             text: match[2].trim().replace(/\*\*/g, '').replace(/^\*|\*$/g, ''),
             level: match[1].length
         });
