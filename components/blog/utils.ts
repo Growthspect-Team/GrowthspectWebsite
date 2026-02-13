@@ -17,7 +17,7 @@ export const extractHeaders = (content: string): BlogPostHeader[] => {
     while ((match = regex.exec(content)) !== null) {
         headers.push({
             id: `section-${index}`,
-            text: match[2].trim(),
+            text: match[2].trim().replace(/\*\*/g, '').replace(/^\*|\*$/g, ''),
             level: match[1].length
         });
         index++;
