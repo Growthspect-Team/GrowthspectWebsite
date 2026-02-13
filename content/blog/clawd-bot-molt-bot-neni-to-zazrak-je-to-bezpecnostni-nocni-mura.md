@@ -1,8 +1,7 @@
 ---
 title: "Clawd Bot / Molt Bot: Není to zázrak. Je to bezpečnostní noční můra."
-excerpt: >
-  Clawd Bot je AI chatbot postavený na modelu Claude Opus 4.5, který funguje
-  přes Telegram, WhatsApp a cron (plánovač zpráv). Lidé kolem něj budují
+excerpt: Clawd Bot je AI chatbot postavený na modelu Claude Opus 4.5, který
+  funguje přes Telegram, WhatsApp a cron (plánovač zpráv). Lidé kolem něj budují
   obrovský hype, ale ve skutečnosti nedělá nic, co by AI neuměla už dávno. A co
   je horší — má závažné bezpečnostní díry, kvůli kterým mohou cizí lidé získat
   přístup k vašim datům.
