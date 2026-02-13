@@ -128,7 +128,24 @@ export function getAllPosts(): BlogPost[] {
 
   // Sort by date (newest first)
   posts.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+
+    // Handle invalid dates
+    const isValidA = !isNaN(dateA);
+    const isValidB = !isNaN(dateB);
+
+    if (!isValidA && !isValidB) return 0;
+    if (!isValidA) {
+      console.warn(`Invalid date for post: ${a.title} (${a.date})`);
+      return 1; // Move invalid dates to the end
+    }
+    if (!isValidB) {
+      console.warn(`Invalid date for post: ${b.title} (${b.date})`);
+      return -1;
+    }
+
+    return dateB - dateA;
   });
 
   // Re-assign IDs after sorting
