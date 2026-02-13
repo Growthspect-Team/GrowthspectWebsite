@@ -1,13 +1,15 @@
 ---
-title: "Datová sila jsou mrtvá. Budoucnost je v unifikovaných pipeline"
-excerpt: "Firmy mají data všude. V CRM, v ERP, v Excelech. Moderní datová platforma není o tom mít větší sklad dat (Data Warehouse). Je o tom mít data tekoucí v reálném čase tam, kde jsou potřeba pro rozhodování."
-category: "Data Engineering"
-date: "Feb 12, 2026"
-readTime: "7 min read"
-image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
-author: "Petra Svobodová"
-authorRole: "Head of Data"
-authorImage: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=100&h=100"
+title: Datová sila jsou mrtvá. Budoucnost je v unifikovaných pipeline.
+excerpt: Firmy mají data všude. V CRM, v ERP, v Excelech. Moderní datová
+  platforma není o tom mít větší sklad dat (Data Warehouse). Je o tom mít data
+  tekoucí v reálném čase tam, kde jsou potřeba pro rozhodování.
+category: Data Engineering
+date: Feb 12, 2026
+readTime: 7 min read
+image: https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop
+author: Petra Svobodová
+authorRole: Head of Data
+authorImage: https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=100&h=100
 ---
 
 Tradiční přístup k datům byl: jednou za den všechno zkopírujeme do velkého skladu a ráno si manažeři prohlédnou reporty. V roce 2026 je tento model příliš pomalý.

@@ -60,7 +60,7 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
 }) => {
     return (
         <FadeIn>
-            <div className="mb-6 flex items-center gap-3">
+            <div className="mb-4 sm:mb-6 flex items-center gap-3">
                  <span className="flex h-2 w-2 relative">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
@@ -74,10 +74,10 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
                 onClick={() => onClick(post)}
                 onMouseEnter={onMouseEnter}
                 onMouseLeave={onMouseLeave}
-                className="group relative grid lg:grid-cols-2 gap-0 overflow-hidden bg-white/[0.02] rounded-3xl cursor-none transition-all duration-500 hover:bg-white/[0.04] mb-20"
+                className="group relative grid lg:grid-cols-2 gap-0 overflow-hidden bg-white/[0.02] rounded-2xl sm:rounded-3xl cursor-none transition-all duration-500 hover:bg-white/[0.04] mb-10 sm:mb-14 md:mb-20"
             >
                 {/* Image Section */}
-                <div className="relative h-[300px] lg:h-auto overflow-hidden">
+                <div className="relative h-[200px] sm:h-[250px] md:h-[300px] lg:h-auto overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-brand-purple/20 opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-10" />
                     <img 
                         src={post.image} 
@@ -87,7 +87,7 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
                 </div>
 
                 {/* Content Section */}
-                <div className="p-8 lg:p-12 flex flex-col justify-center relative">
+                <div className="p-5 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-center relative">
                     <div className="hidden lg:flex items-center gap-4 mb-6">
                          <span className="px-3 py-1 bg-gradient-to-r from-sky-500/10 to-brand-purple/10 border border-brand-purple/30 rounded-full text-xs font-mono text-sky-400 uppercase tracking-wider">
                             {post.category}
@@ -98,11 +98,11 @@ const FeaturedPost = ({ post, onClick, onMouseEnter, onMouseLeave, featuredLabel
                          </span>
                     </div>
 
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight group-hover:text-brand-purple transition-colors duration-300">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-tight group-hover:text-brand-purple transition-colors duration-300">
                         {post.title}
                     </h2>
 
-                    <p className="text-gray-400 text-base leading-relaxed mb-8 line-clamp-3 lg:line-clamp-4">
+                    <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 md:mb-8 line-clamp-2 sm:line-clamp-3 lg:line-clamp-4">
                         {post.excerpt}
                     </p>
 
@@ -246,10 +246,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
     return (
         <div className="min-h-screen bg-brand-black relative">
             {selectedPost ? (
-                <div className="min-h-screen bg-[#050505] relative z-10 pt-32 pb-24">
+                <div className="min-h-screen bg-[#050505] relative z-10 pt-20 sm:pt-24 md:pt-32 pb-12 md:pb-24">
                    
                    {/* Back Button Container */}
-                   <Container className="!max-w-[1600px] px-6 md:px-12 mb-12">
+                   <Container className="!max-w-[1600px] px-4 sm:px-6 md:px-12 mb-8 md:mb-12">
                         <button
                             onClick={() => setSelectedPost(null)}
                             className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors group uppercase text-xs tracking-widest font-medium"
@@ -261,9 +261,9 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
 
                    <FadeIn>
                         {/* HERO SECTION - Full Width Layout */}
-                        <div className="relative w-full mb-32">
+                        <div className="relative w-full mb-12 md:mb-20 lg:mb-32">
                              {/* Background Image - Pinned to Right Edge */}
-                             <div className="lg:absolute lg:top-0 lg:right-0 lg:w-[60%] lg:h-full h-[500px] z-0">
+                             <div className="lg:absolute lg:top-0 lg:right-0 lg:w-[60%] lg:h-full h-[250px] sm:h-[350px] md:h-[500px] z-0">
                                  <div className="relative h-full w-full lg:rounded-l-[4rem] overflow-hidden border-y border-l border-white/10">
                                      <div className="absolute inset-0 bg-black/20 z-10" />
                                      <img
@@ -275,11 +275,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                              </div>
                             
                             {/* Content - Contained */}
-                            <Container className="!max-w-[1600px] px-6 md:px-12 relative z-10 pointer-events-none">
-                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[600px]">
+                            <Container className="!max-w-[1600px] px-4 sm:px-6 md:px-12 relative z-10 pointer-events-none">
+                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 items-center min-h-0 lg:min-h-[600px]">
                                     <div className="lg:col-span-8 pointer-events-auto">
                                         {/* Text Card Overlay */}
-                                        <div className="relative bg-[#050505] p-6 md:p-12 rounded-[30px] lg:pr-24 lg:-mr-24">
+                                        <div className="relative bg-[#050505] p-4 sm:p-6 md:p-12 rounded-xl sm:rounded-2xl md:rounded-[30px] lg:pr-24 lg:-mr-24">
                                              {/* Read time pill */}
                                             <div className="flex items-center gap-4 mb-8">
                                                  <span className="flex items-center gap-2 text-white/80 text-sm font-medium px-3 py-1  rounded-full ">
@@ -289,7 +289,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                             </div>
                                             
                                             {/* Title */}
-                                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-12 leading-[1.25] tracking-tighter mix-blend-normal">
+                                            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-12 leading-[1.2] md:leading-[1.25] tracking-tighter mix-blend-normal">
                                                 {selectedPost.title}
                                             </h1>
 
@@ -301,8 +301,8 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                         </div>
 
                         {/* CONTENT GRID */}
-                        <Container className="!max-w-[1600px] px-6 md:px-12">
-                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+                        <Container className="!max-w-[1600px] px-4 sm:px-6 md:px-12">
+                            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 lg:gap-20">
                                 {/* LEFT SIDEBAR: CONTENTS */}
                                 <div className="hidden lg:block lg:col-span-3">
                                     <div className="sticky top-32 space-y-12">
@@ -322,7 +322,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                   
                                     <div className="prose prose-invert prose-lg max-w-none">
                                          {/* Excerpt as Intro */}
-                                         <p className="text-xl md:text-2xl text-white leading-relaxed font-medium mb-12 not-prose">
+                                         <p className="text-lg sm:text-xl md:text-2xl text-white leading-relaxed font-medium mb-8 md:mb-12 not-prose">
                                             {selectedPost.excerpt}
                                          </p>
 
@@ -454,11 +454,11 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                 <Section className="relative z-10 pt-24 pb-24">
                 <Container className="!max-w-[1440px]">
                     {/* Header */}
-                    <div className="mb-20 mt-12 relative">
+                    <div className="mb-10 sm:mb-14 md:mb-20 mt-6 sm:mt-8 md:mt-12 relative">
                         <FadeIn>
-                            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-10">
-                                <div className="w-full lg:w-[55%]">
-                                    <h1 className="text-4xl  md:text-6xl lg:text-7xl font-bold text-white leading-[1.25] tracking-normal bg" style={{ lineHeight: 1.25 }}>
+                            <div className="relative min-h-0 md:min-h-[300px] lg:min-h-[400px] flex items-center">
+                                <div className="w-full max-w-4xl relative z-20">
+                                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.2] md:leading-[1.25] tracking-normal" style={{ lineHeight: 1.25 }}>
                                         {language === 'cs' ? (
                                             <>
                                                 <InteractiveHover text="Inspirujte se" onHover={setCustomCursorText}>
@@ -478,7 +478,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                         )}
                                     </h1>
                                 </div>
-                                <div className="hidden lg:flex w-full lg:w-[40%] justify-end">
+                                <div className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-[400px]">
                                     <RotatingSocialCards />
                                 </div>
                             </div>
@@ -499,7 +499,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
 
                     {/* Categories and Search */}
                     <FadeIn delay={0.2}>
-                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-12 border-b border-white/10 pb-8">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4 mb-8 sm:mb-10 md:mb-12 border-b border-white/10 pb-6 sm:pb-8">
                             <div className="flex flex-wrap gap-4">
                                 {categories.length > 2 && categories.map(cat => (
                                     <button
@@ -530,7 +530,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                     </FadeIn>
 
                     {/* Posts Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                         {currentPosts.map((post, idx) => (
                             <FadeIn key={post.id} delay={idx * 0.1}>
                                 <article
@@ -635,7 +635,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
 
                     {/* Newsletter Section */}
                     <FadeIn>
-                        <div className="relative rounded-[2rem] overflow-hidden bg-[#050505] border border-white/10 p-8 md:p-12 lg:p-16 isolate mt-20">
+                        <div className="relative rounded-xl sm:rounded-2xl md:rounded-[2rem] overflow-hidden bg-[#050505] border border-white/10 p-5 sm:p-8 md:p-12 lg:p-16 isolate mt-10 sm:mt-14 md:mt-20">
                             {/* Decorative background elements */}
                             <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-brand-purple/10 blur-[100px] rounded-full pointer-events-none" />
                             <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-500/10 blur-[100px] rounded-full pointer-events-none" />
@@ -649,7 +649,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onBack, posts, selectedPostS
                                         </span>
                                     </div>
                                     
-                                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
                                         {language === 'cs' 
                                             ? 'Dostávejte nejnovější insighty a strategie přímo do inboxu'
                                             : 'Receive the most up to date insights & strategies'

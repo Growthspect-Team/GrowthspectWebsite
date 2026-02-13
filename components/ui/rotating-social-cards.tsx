@@ -86,7 +86,7 @@ export default function RotatingSocialCards() {
   }, []);
 
   return (
-    <div className="relative w-full max-w-md h-[320px]">
+    <div className="relative w-full max-w-md h-[140px]">
       <AnimatePresence mode="wait">
         <motion.div
           key={activeIndex}

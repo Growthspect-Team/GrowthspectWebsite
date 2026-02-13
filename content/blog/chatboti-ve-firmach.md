@@ -1,13 +1,15 @@
 ---
 title: "Chatboti ve firmách: jaký je rozdíl mezi pravidly, NLP a LLM řešeními"
-excerpt: "Firemní komunikace je plná opakujících se dotazů. Zabírají čas lidí, zpomalují reakce a zvyšují náklady. Právě tady mají chatboti smysl. Ne každý chatbot ale přináší stejnou hodnotu."
-category: "AI & Chatbots"
-date: "Feb 4, 2026"
-readTime: "8 min read"
-image: "https://img.freepik.com/free-vector/chat-bot-mobile-chatting-isometric-concept_107791-286.jpg?t=st=1770234686~exp=1770238286~hmac=be5bf71f60ec58142de30e87cbe43f17782237a67645fda7a2629be0c518d915"
-author: "David Zadražil"
-authorRole: "CEO of Cleevio Labs"
-authorImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=100&h=100"
+excerpt: Firemní komunikace je plná opakujících se dotazů. Zabírají čas lidí,
+  zpomalují reakce a zvyšují náklady. Právě tady mají chatboti smysl. Ne každý
+  chatbot ale přináší stejnou hodnotu.
+category: AI & Chatbots
+date: Feb 4, 2026
+readTime: 8 min read
+image: https://img.freepik.com/free-vector/chat-bot-mobile-chatting-isometric-concept_107791-286.jpg?t=st=1770234686~exp=1770238286~hmac=be5bf71f60ec58142de30e87cbe43f17782237a67645fda7a2629be0c518d915
+author: David Zadražil
+authorRole: CEO of Cleevio Labs
+authorImage: ""
 ---
 
 Firemní komunikace je plná opakujících se dotazů. Zabírají čas lidí, zpomalují reakce a zvyšují náklady. Právě tady mají chatboti smysl. Ne každý chatbot ale přináší stejnou hodnotu. Rozdíly mezi jednotlivými typy mají přímý dopad na provoz, škálování i kvalitu služeb.
