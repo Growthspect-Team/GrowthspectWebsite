@@ -68,11 +68,11 @@ export const SEO: React.FC<SEOProps> = ({
   const { language } = useLanguage();
   
   const defaultDescriptions = {
-    cs: "Tvoříme chytrá řešení v digitálním prostředí. AI agenti, automatizace a robustní systémy.",
-    en: "We create smart solutions in the digital environment. AI agents, automation, and robust systems."
+    cs: "Tvoříme vysoce výkonné datové platformy, AI agenty a robustní firemní software. Pomáháme firmám škálovat pomocí moderní infrastruktury a automatizace.",
+    en: "We build high-performance data platforms, AI agents, and robust enterprise software. We help companies scale using modern infrastructure and automation."
   };
   
-  const siteTitle = "Growthspect | Enterprise AI & Systems";
+  const siteTitle = "Growthspect | Enterprise AI & Systems Studio | Build, Automate & Scale";
   const fullTitle = title ? `${title} | Growthspect` : siteTitle;
   const metaDescription = description || defaultDescriptions[language];
   const canonicalUrl = `${BASE_URL}${location.pathname}`;
